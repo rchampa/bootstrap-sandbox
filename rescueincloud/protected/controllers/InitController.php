@@ -12,10 +12,6 @@ class InitController extends Controller
         $this->render('login');
     }
     
-    private function lalal(){
-        $this->redirect(array('home/index'));
-    }
-    
     public function actionPrueba()
     { 
         $this->redirect(array('home/index'));
