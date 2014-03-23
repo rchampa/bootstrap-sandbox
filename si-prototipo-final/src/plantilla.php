@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="utf-8">
   <title>Bootstrap 3, from LayoutIt!</title>
@@ -36,98 +36,46 @@
 <div class="container">
 	<div class="row clearfix">
 		<div class="col-md-12 column">
-			<table class="table">
-				<thead>
-					<tr>
-						<th>
-							#
-						</th>
-						<th>
-							Product
-						</th>
-						<th>
-							Payment Taken
-						</th>
-						<th>
-							Status
-						</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>
-							1
-						</td>
-						<td>
-							TB - Monthly
-						</td>
-						<td>
-							01/04/2012
-						</td>
-						<td>
-							Default
-						</td>
-					</tr>
-					<tr class="active">
-						<td>
-							1
-						</td>
-						<td>
-							TB - Monthly
-						</td>
-						<td>
-							01/04/2012
-						</td>
-						<td>
-							Approved
-						</td>
-					</tr>
-					<tr class="success">
-						<td>
-							2
-						</td>
-						<td>
-							TB - Monthly
-						</td>
-						<td>
-							02/04/2012
-						</td>
-						<td>
-							Declined
-						</td>
-					</tr>
-					<tr class="warning">
-						<td>
-							3
-						</td>
-						<td>
-							TB - Monthly
-						</td>
-						<td>
-							03/04/2012
-						</td>
-						<td>
-							Pending
-						</td>
-					</tr>
-					<tr class="danger">
-						<td>
-							4
-						</td>
-						<td>
-							TB - Monthly
-						</td>
-						<td>
-							04/04/2012
-						</td>
-						<td>
-							Call in to confirm
-						</td>
-					</tr>
-				</tbody>
-			</table>
+			<div class="page-header">
+				<h1>
+					Rescue in cloud <small>Servicio de emergencia</small>
+				</h1>
+			</div>
+			<div class="tabbable" id="tabs-152783">
+				<ul class="nav nav-tabs">
+					<li class="active">
+						<a href="#panel-674930" data-toggle="tab">Home</a>
+					</li>
+					<li>
+						<a href="#panel-979243" data-toggle="tab">Perfil</a>
+					</li>
+					<li>
+						<a href="#panel-979244" data-toggle="tab">Preferencias</a>
+					</li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active" id="panel-674930">
+						<!-- primera pestaña-->
+					</div>
+					<div class="tab-pane" id="panel-979243">
+						<p>
+							Modificar los datos del perfil de usuario
+						</p>
+					</div>
+					<div class="tab-pane" id="panel-979244">
+						<p>
+							Las preferencias...
+						</p>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
+
+	<hr class="featurette-divider">
+	<footer>
+        <p>&copy; Rescue in Cloud Company 2013-2014</p>
+    </footer>
 </div>
 </body>
 </html>
