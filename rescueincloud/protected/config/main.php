@@ -8,6 +8,7 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Rescue in cloud',
+        'defaultController' => 'init',
         'theme'=>'layoutit',
 
 	// preloading 'log' component
