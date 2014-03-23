@@ -1,8 +1,7 @@
 <?php
 
-class FarmacosController extends Controller
-{
-    //public $layout = 'webroot.themes.layoutit.views.layouts.plantilla';
+class HomeController extends Controller
+{    
     public $layout = 'plantilla';
     
     public function actionIndex()
