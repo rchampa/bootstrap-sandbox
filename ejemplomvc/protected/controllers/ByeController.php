@@ -4,12 +4,17 @@ class ByeController extends CController
 {
     public function actionIndex()
     {
-       
+
         $this->render('index');
     }
  
-    public function actionReqTest01() {
+    public function actionMostrarhora() {
         echo date('H:i:s');
+        Yii::app()->end();
+    }
+    
+    public function actionOcultarhora() {
+        echo "hora ocultada";
         Yii::app()->end();
     }
 }
