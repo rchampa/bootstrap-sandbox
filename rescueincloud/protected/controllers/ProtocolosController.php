@@ -24,7 +24,8 @@ class ProtocolosController extends ControllerAuth
     { 
        $this->accion = "crear";
        $result_set = "";
-       $this->render('index',compact("result_set"));
+       $this->renderPartial('//protocolos/index_ajaxContent', null, false, false);
+       //Yii::app()->end();
     }
     
 }
