@@ -31,7 +31,7 @@
 
     <div class="container">
 
-        <form class="form-signin" role="form" action="prueba" method="post">
+        <form class="form-signin" role="form" action="validar" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
         <input type="email" class="form-control" name="email" placeholder="Email address" required autofocus>
         <input type="password" class="form-control" name="password" placeholder="Password" required>

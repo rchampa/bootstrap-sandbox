@@ -12,7 +12,7 @@ class InitController extends Controller
         $this->render('login');
     }
     
-    public function actionPrueba()
+    public function actionValidar()
     { 
         if(isset($_POST['email']) && isset($_POST['password']))
         {
