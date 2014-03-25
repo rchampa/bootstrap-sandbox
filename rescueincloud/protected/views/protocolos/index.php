@@ -1,4 +1,11 @@
-  
+<?php 
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/graph/raphael-min.js');
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/graph/dracula_graffle.js'); 
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/graph/dracula_graph.js'); 
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/graph/example.js'); 
+?>
+
+
 <div class="row clearfix">
     <div class="col-md-2 column">
         <div style="height:1px; background: transparent;">
@@ -82,7 +89,7 @@
             $this->renderPartial('index_ajaxContent', array('result_set'=>$result_set)); 
         }
         else if($this->accion==="crear"){
-            $this->renderPartial('crear_ajaxContent', array('prueba'=>'hola soy ajax')); 
+            $this->renderPartial('crear_ajaxContent', array('prueba'=>'hola')); 
         }
         ?>
             

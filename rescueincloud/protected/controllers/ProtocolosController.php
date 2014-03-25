@@ -21,7 +21,7 @@ class ProtocolosController extends ControllerAuth
         $email_usuario = Yii::app()->user->getName();
         $model = new Protocolos();
         $result_set = $model->listar_protocolos(0, 6, $email_usuario);
-        $this->renderPartial('index_ajaxContent', compact("result_set"), false, false);
+        $this->renderPartial('index_ajaxContent', compact("result_set"), false, true);
        
     }
     
@@ -29,9 +29,7 @@ class ProtocolosController extends ControllerAuth
     { 
        $this->accion = "crear";
        $result_set = "";
-       $this->renderPartial('crear_ajaxContent', null, false, false);
-       //Yii::app()->end();
-       //$this->render('index',compact("result_set"));
+       $this->renderPartial('crear_ajaxContent', compact("result_set"));
     }
     
     public function actionGrafo()

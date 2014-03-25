@@ -2,11 +2,9 @@
     
         Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/graph/raphael-min.js');
         Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/graph/dracula_graffle.js'); 
-        //Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/jquery.min.js'); 
         Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/graph/dracula_graph.js'); 
         Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/js/graph/example.js'); 
-        
-    ?>    
+?>    
     
 
     <div id="canvas"></div>
