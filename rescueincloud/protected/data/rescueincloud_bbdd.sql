@@ -117,6 +117,11 @@ CREATE TABLE IF NOT EXISTS `farmacos_propios` (
 --
 -- Volcar la base de datos para la tabla `farmacos_propios`
 --
+INSERT INTO `farmacos_propios` (`id_farmaco`, `nombre_farmaco`, `nombre_fabricante`, `presentacion_farmaco`, `tipo_administracion`, `creado_en`, `modificado_en`, `descripcion_farmaco`, `borrado`) VALUES
+(1, 'Aspirina', 'Bayer', '500mg', 'comprimidos', '2014-01-13 23:46:18', '0000-00-00 00:00:00', '', 0),
+(2, 'Diazepam', 'Bayer', 'sobres', 'oral', '2014-01-14 00:27:03', '0000-00-00 00:00:00', '', 0),
+(3, 'Paracetamol', 'Cinfa', 'Comprimidos', 'oral', '2014-01-22 23:07:31', '0000-00-00 00:00:00', '', 0),
+(4, 'Gelocatil', 'Bayer', 'Comprimidos', 'oral', '2014-01-22 23:31:51', '0000-00-00 00:00:00', '', 0);
 
 
 

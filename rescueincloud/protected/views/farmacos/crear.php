@@ -14,6 +14,10 @@
 
     </div>
   
+    <!-- TODO: 
+        1. Enlazar los enlaces anteriores con su respectiva vista.
+        2. Generar la tabla con datos reales.
+    -->
     
     <div class="col-md-10 column">
         <?php 
