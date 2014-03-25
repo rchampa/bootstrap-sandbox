@@ -1,8 +1,4 @@
-<script>
-    function handeSuccess(){
-        console.log("meeeeeeeeeehye");
-    }
-</script>    
+  
 <div class="row clearfix">
     <div class="col-md-2 column">
         <div style="height:1px; background: transparent;">
@@ -15,7 +11,7 @@
                             '<i class="glyphicon glyphicon-user"></i> Listar protocolos', // The text for the anchor tag
                             Yii::app()->createUrl('/protocolos/listar'), // The url for the ajax request
                             array( // The ajaxOptions (jQuery stuff)
-                                    'update' => '#partial' // Page will output json to parse
+                                    'update' => '#partial'
                             )
                     );
                 ?>
@@ -37,15 +33,9 @@
                 <?php 
                     echo CHtml::ajaxLink(
                             '<i class="glyphicon glyphicon-remove"></i> Eliminar protocolo', // The text for the anchor tag
-                            Yii::app()->request->baseUrl.'/protocolos/eliminar', // The url for the ajax request
+                            Yii::app()->createUrl('/protocolos/eliminar'), // The url for the ajax request
                             array( // The ajaxOptions (jQuery stuff)
-                                    'dataType' => 'json', // Page will output json to parse
-                                    'success' => 'js:handeSuccess', // javascript function to call on success
-                                    'data' => array('ajax' => "hola"), // The $_GET data (parameters) to pass
-                            ),
-                            array( // The htmlOptions for the anchor tag
-                                    'href' => Yii::app()->request->baseUrl.'/protocolos/eliminar', // This is what the href of the anchor will be, defaults to #
-                                    //'class' => 'class_x'// ^^ that's the new option I found out about, I didn't know it worked that way...
+                                    'update' => '#partial' // Page will output json to parse
                             )
                     );
                 ?>
@@ -56,15 +46,9 @@
                 <?php 
                     echo CHtml::ajaxLink(
                             '<i class="glyphicon glyphicon-search"></i> Buscar protocolo', // The text for the anchor tag
-                            Yii::app()->request->baseUrl.'/protocolos/buscar', // The url for the ajax request
+                            Yii::app()->createUrl('/protocolos/buscar'), // The url for the ajax request
                             array( // The ajaxOptions (jQuery stuff)
-                                    'dataType' => 'json', // Page will output json to parse
-                                    'success' => 'js:handeSuccess', // javascript function to call on success
-                                    'data' => array('ajax' => "hola") // The $_GET data (parameters) to pass
-                            ),
-                            array( // The htmlOptions for the anchor tag
-                                    'href' => Yii::app()->request->baseUrl.'/protocolos/buscar', // This is what the href of the anchor will be, defaults to #
-                                    //'class' => 'class_x'// ^^ that's the new option I found out about, I didn't know it worked that way...
+                                    'update' => '#partial' // Page will output json to parse
                             )
                     );
                 ?>
@@ -88,6 +72,9 @@
     
     <div class="col-md-10 column">
         
+        <div style="height:10px; background: transparent;">
+            <hr style="display:none;" />
+        </div>
         <div id="partial">
         
         <?php 

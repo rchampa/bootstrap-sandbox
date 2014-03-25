@@ -1,7 +1,5 @@
 
-<div style="height:10px; background: transparent;">
-    <hr style="display:none;" />
-</div>
+
 <table class="table table-hover table-bordered">
             <thead>
                     <tr>

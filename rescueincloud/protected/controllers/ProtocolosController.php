@@ -34,4 +34,9 @@ class ProtocolosController extends ControllerAuth
        //$this->render('index',compact("result_set"));
     }
     
+    public function actionGrafo()
+    { 
+      $this->render('grafo');  
+    }
+    
 }
