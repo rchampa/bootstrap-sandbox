@@ -22,6 +22,19 @@ class Farmacos {
         return $result_rows;
     }
     
+    public function listar_farmacos_publicos($ini, $lenght){
+       
+        $sql="SELECT pub.* 
+              FROM farmacos_publicos pub 
+              LEFT JOIN farmacos_propios pro 
+                     ON pub.id_farmaco = pro.id_farmaco
+              WHERE pro.id_farmaco is NULL";
+        $sql.=" LIMIT ".$ini.", ".$lenght;
+        $result_rows=$this->connection->createCommand($sql)->queryAll();
+        
+        return $result_rows;
+    }
+    
 }
 
 ?>

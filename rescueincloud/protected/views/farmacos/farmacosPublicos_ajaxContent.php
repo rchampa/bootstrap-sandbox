@@ -3,7 +3,7 @@
     <hr style="display:none;" />
 </div>
 <h6>
-    <b> · Lista de Mis fármacos: </b>
+    <b> · Fármacos públicos encontrados: </b>
 </h6>
 <div style="height:10px; background: transparent;">
     <hr style="display:none;" />
@@ -24,6 +24,9 @@
                     <th>
                             Tipo Administración
                     </th>
+                    <th>
+                            Añadir A Mis Fármacos
+                    </th>
             </tr>
     </thead>
     <tbody>
@@ -38,6 +41,11 @@
                             <td><?php echo $dato["nombre_fabricante"] ?></td>
                             <td><?php echo $dato["presentacion_farmaco"] ?></td>
                             <td><?php echo $dato["tipo_administracion"] ?></td>
+                            <td>
+                                <button name="Add" type="submit" value="AddMisFarmacos" style="background: transparent; border: transparent; margin: 0 40%;">
+                                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/img/AddFarmacosIcon.png">
+                                </button>
+                            </td>
                             </tr>
                             <?php 
                         }

@@ -21,5 +21,13 @@ class FarmacosController extends Controller
         $model = new Farmacos();
         $this->render('crear');
     }
+    
+    public function actionFarmacosPublicos()
+    { 
+        $this->accion = "farmacosPublicos";
+        $model = new Farmacos();
+        $result_set = $model->listar_farmacos_publicos(0, 3);
+        $this->render('farmacosPublicos',compact("result_set"));
+    }
 }
 
