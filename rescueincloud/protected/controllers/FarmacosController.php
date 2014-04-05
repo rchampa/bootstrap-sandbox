@@ -29,5 +29,20 @@ class FarmacosController extends Controller
         $result_set = $model->listar_farmacos_publicos(0, 3);
         $this->render('farmacosPublicos',compact("result_set"));
     }
+    
+    public function actionActualizar()
+    { 
+        $this->accion = "actualizar";
+        $model = new Farmacos();
+        $this->render('actualizar');
+    }
+    
+    public function actionInsertar()
+    { 
+        $this->accion = "insertar";
+        $model = new Farmacos();
+        //$result_set = $model->listar_farmacos_publicos(0, 3);
+        $this->render('insertar');//,compact("result_set"));
+    }
 }
 

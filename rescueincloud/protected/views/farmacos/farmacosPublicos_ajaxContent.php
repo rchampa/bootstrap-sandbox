@@ -8,51 +8,53 @@
 <div style="height:10px; background: transparent;">
     <hr style="display:none;" />
 </div>
-
-<table class="table table-hover table-bordered">
-    <thead>
-            <tr>
-                    <th>
-                            Nombre Fármaco
-                    </th>
-                    <th>
-                            Nombre Fabricante
-                    </th>
-                    <th>
-                            Presentación Fármaco
-                    </th>
-                    <th>
-                            Tipo Administración
-                    </th>
-                    <th>
-                            Añadir A Mis Fármacos
-                    </th>
-            </tr>
-    </thead>
-    <tbody>
-            <tr class="active">
-                    <?php
-                        $i=0;
-                        foreach($result_set as $dato)
-                        {
+<div id="data">
+    <table class="table table-hover table-bordered">
+        <thead>
+                <tr>
+                        <th>
+                                Nombre Fármaco
+                        </th>
+                        <th>
+                                Nombre Fabricante
+                        </th>
+                        <th>
+                                Presentación Fármaco
+                        </th>
+                        <th>
+                                Tipo Administración
+                        </th>
+                        <th>
+                                
+                        </th>
+                </tr>
+        </thead>
+        <tbody>
+                <tr class="active">
+                        <?php
+                            $i=0;
+                            foreach($result_set as $dato)
+                            {
+                                ?>
+                                <tr>
+                                <td><?php echo $dato["nombre_farmaco"] ?></td>
+                                <td><?php echo $dato["nombre_fabricante"] ?></td>
+                                <td><?php echo $dato["presentacion_farmaco"] ?></td>
+                                <td><?php echo $dato["tipo_administracion"] ?></td>
+                                <td>
+                                    <a href="<?php echo Yii::app()->request->baseUrl; ?>/farmacos/index" class="btn btn-block btn-xs btn-primary">
+                                        <img src="<?php echo Yii::app()->request->baseUrl; ?>/img/AddFarmacosIcon.png">
+                                        Añadir a Mis Fármacos
+                                    </a>
+                                </td>
+                                </tr>
+                                <?php 
+                            }
                             ?>
-                            <tr>
-                            <td><?php echo $dato["nombre_farmaco"] ?></td>
-                            <td><?php echo $dato["nombre_fabricante"] ?></td>
-                            <td><?php echo $dato["presentacion_farmaco"] ?></td>
-                            <td><?php echo $dato["tipo_administracion"] ?></td>
-                            <td>
-                                <button name="Add" type="submit" value="AddMisFarmacos" style="background: transparent; border: transparent; margin: 0 40%;">
-                                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/img/AddFarmacosIcon.png">
-                                </button>
-                            </td>
-                            </tr>
-                            <?php 
-                        }
-                        ?>
-            </tr>
-    </tbody>
-    </table>
+                </tr>
+        </tbody>
+        </table>
+</div>
     <ul class="pagination pagination-sm">
             <li>
                     <a href="#">Prev</a>

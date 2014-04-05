@@ -28,7 +28,7 @@
         <div class="col-lg-5 col-md-2">
             <h4>Crea un fármaco</h4>
             <p>Puedes añadir un fármaco a tu base de datos personalizada. </p> <p>Haz click aquí para acceder al formulario.</p>
-            <a class="btn btn-primary" href="#">Crear fármaco <span class="glyphicon glyphicon-chevron-right"></span></a>
+            <a class="btn btn-primary" href="<?php echo Yii::app()->request->baseUrl; ?>/farmacos/insertar">Crear fármaco <span class="glyphicon glyphicon-chevron-right"></span></a>
         </div>
     </div>
 </div>
