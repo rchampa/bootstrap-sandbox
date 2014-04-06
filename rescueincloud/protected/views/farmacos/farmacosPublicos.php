@@ -26,6 +26,9 @@
         else if($this->accion==="farmacosPublicos"){
             $this->renderPartial('farmacosPublicos_ajaxContent', array('result_set'=>$result_set)); 
         }
+        else if($this->accion==="insertar"){
+            $this->renderPartial('insertar_ajaxContent');
+        }
         ?>
     </div>
 </div>
