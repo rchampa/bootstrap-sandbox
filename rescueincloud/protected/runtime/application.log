@@ -17,3 +17,397 @@ Stack trace:
 #12 {main}
 REQUEST_URI=/yii/ejemplomvc/usuarios/view
 ---
+2014/04/04 18:14:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "eliminar".' in C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(270): CController->missingAction('eliminar')
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(282): CController->run('eliminar')
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController('protocolos/elim...')
+#3 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/protocolos/eliminar?_=1396628016245
+HTTP_REFERER=http://localhost/GitHub/bootstrap-sandbox/rescueincloud/protocolos
+---
+2014/04/04 18:32:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "addFarmaco/UpdateAjax".' in C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController('addFarmaco/Upda...')
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/addFarmaco/UpdateAjax?_=1396629161315
+HTTP_REFERER=http://localhost/GitHub/bootstrap-sandbox/rescueincloud/farmacos/farmacosPublicos
+---
+2014/04/04 18:33:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "addFarmaco/UpdateAjax".' in C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController('addFarmaco/Upda...')
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/addFarmaco/UpdateAjax?_=1396629161316
+HTTP_REFERER=http://localhost/GitHub/bootstrap-sandbox/rescueincloud/farmacos/farmacosPublicos
+---
+2014/04/04 18:35:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "actualizar".' in C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(270): CController->missingAction('actualizar')
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(282): CController->run('actualizar')
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController('farmacos/actual...')
+#3 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/farmacos/actualizar?_=1396629326575
+HTTP_REFERER=http://localhost/GitHub/bootstrap-sandbox/rescueincloud/farmacos/farmacosPublicos
+---
+2014/04/04 18:41:54 [error] [php] Invalid argument supplied for foreach() (C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\protected\views\farmacos\farmacosPublicos_ajaxContent.php:36)
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(869): FarmacosController->renderFile()
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\protected\views\farmacos\actualizar.php(5): FarmacosController->renderPartial()
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CBaseController.php(126): require()
+#3 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CBaseController.php(95): FarmacosController->renderInternal()
+#4 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(869): FarmacosController->renderFile()
+#5 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(782): FarmacosController->renderPartial()
+#6 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\protected\controllers\FarmacosController.php(37): FarmacosController->render()
+#7 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\actions\CInlineAction.php(49): FarmacosController->actionActualizar()
+#8 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(308): CInlineAction->runWithParams()
+#9 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(286): FarmacosController->runAction()
+#10 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(265): FarmacosController->runActionWithFilters()
+#11 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(282): FarmacosController->run()
+#12 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CWebApplication->run()
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/farmacos/actualizar?_=1396629712330
+in C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\protected\views\farmacos\farmacosPublicos_ajaxContent.php (36)
+in C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\protected\views\farmacos\actualizar.php (5)
+in C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\protected\controllers\FarmacosController.php (37)
+2014/04/04 18:43:38 [error] [php] Invalid argument supplied for foreach() (C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\protected\views\farmacos\farmacosPublicos_ajaxContent.php:36)
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(869): FarmacosController->renderFile()
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\protected\views\farmacos\actualizar.php(5): FarmacosController->renderPartial()
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CBaseController.php(126): require()
+#3 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CBaseController.php(95): FarmacosController->renderInternal()
+#4 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(869): FarmacosController->renderFile()
+#5 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(782): FarmacosController->renderPartial()
+#6 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\protected\controllers\FarmacosController.php(37): FarmacosController->render()
+#7 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\actions\CInlineAction.php(49): FarmacosController->actionActualizar()
+#8 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(308): CInlineAction->runWithParams()
+#9 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(286): FarmacosController->runAction()
+#10 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(265): FarmacosController->runActionWithFilters()
+#11 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(282): FarmacosController->run()
+#12 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CWebApplication->run()
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/farmacos/actualizar?_=1396629815559
+in C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\protected\views\farmacos\farmacosPublicos_ajaxContent.php (36)
+in C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\protected\views\farmacos\actualizar.php (5)
+in C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\protected\controllers\FarmacosController.php (37)
+2014/04/04 18:54:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "view".' in C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(270): CController->missingAction('view')
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(282): CController->run('view')
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController('farmacos/view')
+#3 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/farmacos/0?_=1396630473892
+HTTP_REFERER=http://localhost/GitHub/bootstrap-sandbox/rescueincloud/farmacos/farmacosPublicos
+---
+2014/04/04 18:54:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "view".' in C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(270): CController->missingAction('view')
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(282): CController->run('view')
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController('farmacos/view')
+#3 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/farmacos/0?_=1396630473893
+HTTP_REFERER=http://localhost/GitHub/bootstrap-sandbox/rescueincloud/farmacos/farmacosPublicos
+---
+2014/04/04 19:00:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "UpdateAjax".' in C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(270): CController->missingAction('UpdateAjax')
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(282): CController->run('UpdateAjax')
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController('farmacos/Update...')
+#3 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/farmacos/UpdateAjax?_=1396630837965
+HTTP_REFERER=http://localhost/GitHub/bootstrap-sandbox/rescueincloud/farmacos/farmacosPublicos
+---
+2014/04/04 19:01:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "actualizar".' in C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(270): CController->missingAction('actualizar')
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(282): CController->run('actualizar')
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController('farmacos/actual...')
+#3 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/farmacos/actualizar?_=1396630859973
+HTTP_REFERER=http://localhost/GitHub/bootstrap-sandbox/rescueincloud/farmacos/farmacosPublicos
+---
+2014/04/04 19:01:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "jquery.min.map".' in C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(270): CController->missingAction('jquery.min.map')
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(282): CController->run('jquery.min.map')
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController('farmacos/jquery...')
+#3 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/farmacos/jquery.min.map
+HTTP_REFERER=http://localhost/GitHub/bootstrap-sandbox/rescueincloud/farmacos/farmacosPublicos
+---
+2014/04/04 19:02:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "jquery.min.map".' in C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(270): CController->missingAction('jquery.min.map')
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(282): CController->run('jquery.min.map')
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController('farmacos/jquery...')
+#3 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/farmacos/jquery.min.map
+HTTP_REFERER=http://localhost/GitHub/bootstrap-sandbox/rescueincloud/farmacos/farmacosPublicos
+---
+2014/04/04 19:04:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "farmacosPublicos_ajaxContent".' in C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(270): CController->missingAction('farmacosPublico...')
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(282): CController->run('farmacosPublico...')
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController('farmacos/farmac...')
+#3 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/farmacos/farmacosPublicos_ajaxContent?_=1396631067615
+HTTP_REFERER=http://localhost/GitHub/bootstrap-sandbox/rescueincloud/farmacos/farmacosPublicos
+---
+2014/04/04 19:28:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "farmacosPublicos_ajaxContent".' in C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(270): CController->missingAction('farmacosPublico...')
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(282): CController->run('farmacosPublico...')
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController('farmacos/farmac...')
+#3 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/farmacos/farmacosPublicos_ajaxContent?_=1396632486739
+HTTP_REFERER=http://localhost/GitHub/bootstrap-sandbox/rescueincloud/farmacos/farmacosPublicos
+---
+2014/04/05 12:55:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/ico/favicon.ico".' in C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/ico/favi...')
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/assets/ico/favicon.ico
+---
+2014/04/05 12:55:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/favicon.ico".' in C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController('img/favicon.ico')
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/img/favicon.ico
+---
+2014/04/05 12:55:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "img".' in C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController('home/img/favico...')
+#3 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/home/img/favicon.png
+---
+2014/04/05 12:56:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "img".' in C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController('farmacos/img/fa...')
+#3 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/farmacos/img/favicon.png
+---
+2014/04/05 13:31:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "jquery.min.map".' in C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(270): CController->missingAction('jquery.min.map')
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(282): CController->run('jquery.min.map')
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController('farmacos/jquery...')
+#3 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/farmacos/jquery.min.map
+HTTP_REFERER=http://localhost/GitHub/bootstrap-sandbox/rescueincloud/farmacos/farmacosPublicos
+---
+2014/04/05 13:32:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "farmacosPublicos_ajaxContent".' in C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(270): CController->missingAction('farmacosPublico...')
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(282): CController->run('farmacosPublico...')
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController('farmacos/farmac...')
+#3 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/farmacos/farmacosPublicos_ajaxContent
+HTTP_REFERER=http://localhost/GitHub/bootstrap-sandbox/rescueincloud/farmacos/farmacosPublicos
+---
+2014/04/05 13:33:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "farmacosPublicos_ajaxContent".' in C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(270): CController->missingAction('farmacosPublico...')
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(282): CController->run('farmacosPublico...')
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController('farmacos/farmac...')
+#3 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/farmacos/farmacosPublicos_ajaxContent
+HTTP_REFERER=http://localhost/GitHub/bootstrap-sandbox/rescueincloud/farmacos/farmacosPublicos
+---
+2014/04/05 13:33:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "farmacosPublicos_ajaxContent".' in C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(270): CController->missingAction('farmacosPublico...')
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(282): CController->run('farmacosPublico...')
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController('farmacos/farmac...')
+#3 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/farmacos/farmacosPublicos_ajaxContent
+HTTP_REFERER=http://localhost/GitHub/bootstrap-sandbox/rescueincloud/farmacos/farmacosPublicos
+---
+2014/04/05 13:35:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "farmacosPublicos_ajaxContent".' in C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(270): CController->missingAction('farmacosPublico...')
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(282): CController->run('farmacosPublico...')
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController('farmacos/farmac...')
+#3 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/farmacos/farmacosPublicos_ajaxContent
+HTTP_REFERER=http://localhost/GitHub/bootstrap-sandbox/rescueincloud/farmacos/farmacosPublicos
+---
+2014/04/05 14:04:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "usuarios".' in C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController('usuarios')
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/usuarios
+---
+2014/04/05 14:04:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "eliminar".' in C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(270): CController->missingAction('eliminar')
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(282): CController->run('eliminar')
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController('protocolos/elim...')
+#3 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/protocolos/eliminar?_=1396699466402
+HTTP_REFERER=http://localhost/GitHub/bootstrap-sandbox/rescueincloud/protocolos
+---
+2014/04/06 18:46:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "insertar".' in C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(270): CController->missingAction('insertar')
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(282): CController->run('insertar')
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController('farmacos/insert...')
+#3 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/farmacos/insertar
+HTTP_REFERER=http://localhost/GitHub/bootstrap-sandbox/rescueincloud/farmacos/crear
+---
+2014/04/06 18:57:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "insertarFarmacos".' in C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(270): CController->missingAction('insertarFarmaco...')
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(282): CController->run('insertarFarmaco...')
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController('farmacos/insert...')
+#3 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/farmacos/insertarFarmacos
+---
+2014/04/06 19:11:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/ico/favicon.ico".' in C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/ico/favi...')
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/assets/ico/favicon.ico
+---
+2014/04/06 19:11:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/favicon.ico".' in C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController('img/favicon.ico')
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/img/favicon.ico
+---
+2014/04/06 19:12:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "img".' in C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController('home/img/favico...')
+#3 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/home/img/favicon.png
+---
+2014/04/06 19:12:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "img".' in C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController('farmacos/img/fa...')
+#3 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/farmacos/img/favicon.png
+---
+2014/04/07 17:33:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/ico/favicon.ico".' in C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController('assets/ico/favi...')
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/assets/ico/favicon.ico
+---
+2014/04/07 17:33:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/favicon.ico".' in C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController('img/favicon.ico')
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/img/favicon.ico
+---
+2014/04/07 17:33:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "img".' in C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController('home/img/favico...')
+#3 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/home/img/favicon.png
+---
+2014/04/07 17:33:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "img".' in C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController('farmacos/img/fa...')
+#3 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/farmacos/img/favicon.png
+---
+2014/04/07 17:53:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "img".' in C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController('protocolos/img/...')
+#3 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/protocolos/img/favicon.png
+---
+2014/04/07 17:53:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "eliminar".' in C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CController.php(270): CController->missingAction('eliminar')
+#1 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(282): CController->run('eliminar')
+#2 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\web\CWebApplication.php(141): CWebApplication->runController('protocolos/elim...')
+#3 C:\xampp\htdocs\GitHub\bootstrap-sandbox\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\GitHub\bootstrap-sandbox\rescueincloud\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/GitHub/bootstrap-sandbox/rescueincloud/protocolos/eliminar?_=1396885987024
+HTTP_REFERER=http://localhost/GitHub/bootstrap-sandbox/rescueincloud/protocolos/index
+---

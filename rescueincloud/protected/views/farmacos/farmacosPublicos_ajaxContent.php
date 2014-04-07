@@ -1,4 +1,4 @@
-
+<div id="partial">
 <div style="height:20px; background: transparent;">
     <hr style="display:none;" />
 </div>
@@ -8,7 +8,7 @@
 <div style="height:10px; background: transparent;">
     <hr style="display:none;" />
 </div>
-<div id="data">
+
     <table class="table table-hover table-bordered">
         <thead>
                 <tr>
@@ -30,31 +30,43 @@
                 </tr>
         </thead>
         <tbody>
-                <tr class="active">
-                        <?php
-                            $i=0;
-                            foreach($result_set as $dato)
-                            {
-                                ?>
-                                <tr>
-                                <td><?php echo $dato["nombre_farmaco"] ?></td>
-                                <td><?php echo $dato["nombre_fabricante"] ?></td>
-                                <td><?php echo $dato["presentacion_farmaco"] ?></td>
-                                <td><?php echo $dato["tipo_administracion"] ?></td>
-                                <td>
-                                    <a href="<?php echo Yii::app()->request->baseUrl; ?>/farmacos/index" class="btn btn-block btn-xs btn-primary">
-                                        <img src="<?php echo Yii::app()->request->baseUrl; ?>/img/AddFarmacosIcon.png">
-                                        Añadir a Mis Fármacos
-                                    </a>
-                                </td>
-                                </tr>
-                                <?php 
-                            }
+                
+                <?php
+                    $i=0;
+                    foreach($result_set as $dato)
+                    {
+                        ?>
+                        <tr>
+                        <td><?php echo $dato["nombre_farmaco"] ?></td>
+                        <td><?php echo $dato["nombre_fabricante"] ?></td>
+                        <td><?php echo $dato["presentacion_farmaco"] ?></td>
+                        <td><?php echo $dato["tipo_administracion"] ?></td>
+                        <td>
+                            <!--
+                            <a href="<?php// echo Yii::app()->request->baseUrl; ?>/farmacos/index" class="btn btn-block btn-xs btn-primary">
+                                <img src="<?php// echo Yii::app()->request->baseUrl; ?>/img/AddFarmacosIcon.png">
+                                Añadir a Mis Fármacos
+                            </a>
+                            -->
+                            <?php 
+                                echo CHtml::ajaxLink(
+                                        '<i class="glyphicon glyphicon-user"></i> Listar protocolos', // The text for the anchor tag
+                                        Yii::app()->createUrl('/farmacos/actualizar'), // The url for the ajax request
+                                        array( // The ajaxOptions (jQuery stuff)
+                                                'data' => $dato["id_farmaco"],
+                                                'update' => '#partial'
+                                        )
+                                );
                             ?>
-                </tr>
+                        </td>
+                        </tr>
+                        <?php 
+                    }
+                    ?>
+                
         </tbody>
         </table>
-</div>
+
     <ul class="pagination pagination-sm">
             <li>
                     <a href="#">Prev</a>
@@ -78,3 +90,4 @@
                     <a href="#">Next</a>
             </li>
     </ul>
+</div>
