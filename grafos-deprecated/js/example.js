@@ -112,4 +112,3 @@ window.onload = function() {
     };
     //    console.log(g.nodes["kiwi"]);
 };
-

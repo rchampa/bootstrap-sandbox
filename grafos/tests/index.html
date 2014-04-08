@@ -1,0 +1,92 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js-graph.it homepage</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="js-graph-it.js"></script>
+<link rel="stylesheet" type="text/css" href="js-graph-it.css" />
+<link rel="stylesheet" type="text/css" href="sf-homepage.css" />
+<style>
+	
+</style>
+<script>
+	<!--
+		function onLoad()
+		{
+			resizeCanvas();
+			initPageObjects();
+		}
+		
+		/**
+		 * Resizes the main canvas to the maximum visible height.
+		 */
+		function resizeCanvas()
+		{
+			var divElement = document.getElementById("mainCanvas");
+			var screenHeight = window.innerHeight || document.body.offsetHeight;
+			divElement.style.height = (screenHeight - 16) + "px";
+		}
+	
+		
+		/**
+		 * Strips the file extension and everything after from a url
+		 */
+		function stripExtension(url)
+		{
+			var lastDotPos = url.lastIndexOf('.');
+			if(lastDotPos > 0)
+				return url.substring(0, lastDotPos - 1);
+			else
+				return url;
+		}
+		
+	//-->
+</script>
+</head>
+<body onload="onLoad();">
+
+				<input id="connect" name="connect" type="button" value="nuevo"/>
+				<div id="mainCanvas" class="canvas" style="width: 100%; height: 500px;">
+			
+				
+				<h1 id="title_block" class="block draggable" style="left: 30px; top: 30px;">Protocolo llamado bla</h1>
+				
+				<div class="connector title_block description1_block down_start">
+					<img class="connector-end" src="arrow.gif">
+					<label class="middle-label">SI</label>
+				</div>		
+				
+				<div class="connector title_block description2_block down_start">
+					<img class="connector-end" src="arrow.gif">
+					<label class="middle-label">NO</label>
+				</div>
+
+				
+				<p id="description1_block" class="block draggable" style="left: 40px; top: 250px;">
+					Una respuesta y otra pregunta más 11
+				</p>
+				
+				<p id="description2_block" class="block draggable" style="left: 300px; top: 250px;">
+					Una respuesta y otra pregunta más 12
+				</p>
+				
+				<div class="connector description2_block d22 down_start">
+					<img class="connector-end" src="arrow.gif">
+					<label class="middle-label">SI</label>
+				</div>
+				
+				<div class="connector description1_block d22 down_start">
+					<img class="connector-end" src="arrow.gif">
+					<label class="middle-label">SI</label>
+				</div>
+				
+				<p id="d22" class="block draggable" style="left: 300px; top: 450px;">
+					Una respuesta y otra pregunta más 12
+				</p>
+					
+				
+				</div>
+		
+	</body>
+</html>

@@ -1,0 +1,51 @@
+{
+  "name": "flare",
+  "children": [
+    {
+      "name": "animate",
+      "children": [
+        {
+          "name": "Easing",
+          "size": 17010
+        },
+        {
+          "name": "Parallel",
+          "size": 5176
+        },
+        {
+          "name": "Pause",
+          "size": 449
+        },
+        {
+          "name": "DirtySprite",
+          "size": 8833
+        },
+        {
+          "name": "Tween",
+          "size": 6006
+        }
+      ]
+    },
+    {
+      "name": "display",
+      "children": [
+        {
+          "name": "DirtySprite",
+          "size": 8833
+        },
+        {
+          "name": "LineSprite",
+          "size": 1732
+        },
+        {
+          "name": "RectSprite",
+          "size": 3623
+        },
+        {
+          "name": "TextSprite",
+          "size": 10066
+        }
+      ]
+    }
+  ]
+}

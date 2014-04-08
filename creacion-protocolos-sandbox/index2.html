@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>flowchart.js · Playground</title>
+        <script src="js/libs/raphael-min.js"></script>
+        <script src="js/libs/flowchart-latest.js"></script>
+        <script>
+        
+			function Protocolo(){
+		
+				var generadorID;
+				var lista_cajas;
+		
+				this.init = function(){
+					this.reset();
+				}
+				this.reset = function(){
+					generadorID = crearGenerador();
+					lista_cajas = new Array();
+				}
+			
+				this.crearCaja = function(tipo_caja,padre_id,tipoRelacion,contenido_caja){
+			
+					var nuevo_id = generadorID();
+					var caja = {
+							id			:	nuevo_id,
+							padre		:	padre_id,
+							tipo		:	tipo_caja,
+							contenido	:	contenido_caja,
+							relacion	:	tipoRelacion
+						};
+					
+					lista_cajas.push(caja);
+					
+					return nuevo_id;
+				}	
+				
+				this.imprimirConsola = function(){
+
+					var texto='';
+					for (var i=0; i<lista_cajas.length; i++) {
+						texto+= lista_cajas[i].id+"-"+lista_cajas[i].padre+"-"+lista_cajas[i].contenido+"-"+lista_cajas[i].relacion+"\n";
+					}
+					
+					console.log(texto);
+				}
+				
+				this.getListaCajas = function(){
+					return lista_cajas;
+				}
+			
+				var crearGenerador = function () {
+				   var cuenta, f;
+				   cuenta = -1;
+				   f = function () {
+					   cuenta = cuenta + 1;
+					   return cuenta;
+				   };
+				   return f;
+				};
+					
+
+			}
+        	
+        	var chartR;
+        	var Estados = { LIMPIO: 1, INIT: 2, EDICION: 3};
+        	var estadoActual;
+        	var codigo;
+        	var protocolo;
+        	
+        	var configuracion =  {
+                      'line-width': 3,
+                      'line-length': 50,
+                      'text-margin': 10,
+                      'font-size': 14,
+                      'font': 'normal',
+                      'font-family': 'Helvetica',
+                      'font-weight': 'normal',
+                      'font-color': 'black',
+                      'line-color': 'black',
+                      'element-color': 'black',
+                      'fill': 'white',
+                      'yes-text': 'yes',
+                      'no-text': 'no',
+                      'arrow-end': 'block',
+                      'symbols': {
+                        'start': {
+                          'font-color': 'red',
+                          'element-color': 'green',
+                          'fill': 'yellow'
+                        }
+                      }
+                    };
+        	
+        	function mostrarDemo(){
+        			
+                    var code = 'st=>start: Un protocolo llamado bla\n'+
+					'e=>end: Fin del protocolo\n'+
+					'\n'+
+					'op_si1=>operation: Otra caja más\n'+
+					'op_no1=>operation: Otra caja negativa 1\n'+
+					'cond1=>condition: yes or no?\n'+
+					'\n'+
+					'\n'+
+					'op_si0=>operation: Otra caja positiva\n'+
+					'op_no0=>operation: Otra caja negativa\n'+
+					'cond0=>condition: Esta es una \n'+
+					'caja de decisión\n'+
+					'si o no?\n'+
+					'\n'+
+					'st->cond0\n'+
+					'cond0(yes, right)->op_si0->op_si1\n'+
+					'cond0(no)->cond1\n'+
+					'cond1(yes, right)->op_si1\n'+
+					'cond1(no)->op_no1->e\n';
+
+                    if (chartR && estadoActual!==Estados.LIMPIO) {
+                    	chartR.clean();
+                    }
+
+                    chartR = flowchart.parse(code);
+                    chartR.drawSVG('canvas', configuracion);
+                    
+                    estadoActual = Estados.EDICION;
+                
+        	}
+        	
+        	function pintarCanvas(){
+        	
+        		if (chartR && estadoActual!==Estados.LIMPIO) {
+					chartR.clean();
+				}
+
+				chartR = flowchart.parse(codigo);
+				chartR.drawSVG('canvas', configuracion);
+                    
+				estadoActual = Estados.EDICION;
+        	}
+        
+        	function reset(){
+				if (chartR && estadoActual!==Estados.LIMPIO) {
+					chartR.clean();
+					estadoActual = Estados.LIMPIO;
+					codigo = '';
+				}
+        	}
+        	
+        	function empezar(){
+        	
+        		var nombre_protocolo = document.getElementById("texto").value;
+        		codigo = 'st=>start: '+nombre_protocolo+'\n'+
+					'e=>end: Fin del protocolo\n'+
+					'\n'+
+					'st->';
+					
+				if (chartR && estadoActual!==Estados.LIMPIO) {
+					chartR.clean();
+				}
+
+				chartR = flowchart.parse(codigo);
+				chartR.drawSVG('canvas', configuracion);
+				
+				estadoActual = Estados.EDICION;
+				//en el caso de la raíz, se tiene el id=0 así que el resto de atributos
+				//se desprecierán(salvo el contenido, o en este caso el nombre del protocolo)
+        		protocolo.crearCaja(0,0,0,nombre_protocolo);
+        		
+        		actualizarLista();
+        		
+        	}
+        	
+        	function actualizarLista(){
+        		var lista = protocolo.getListaCajas();
+        		var selectList = document.getElementById("padres");
+        		selectList.options.length = 0;
+        		
+        		var option = document.createElement("option");
+					option.text = '--- Es hijo de ---';
+					option.value = '-1';
+					selectList.add(option);
+        		
+        		for (var i=0; i<lista.length; i++) {
+					var option = document.createElement("option");
+					option.text = lista[i].contenido;
+					option.value = lista[i].id;
+					selectList.add(option);
+				}
+        		
+        		//protocolo.imprimirConsola();
+        	}
+        	
+        	function crearCaja(){
+        	
+        		var contenido = document.getElementById('contenido').value;
+        		
+        		var selectTipoCaja = document.getElementById('tipo_caja');
+				var tipoCaja = selectTipoCaja.options[selectTipoCaja.selectedIndex].value;
+				
+				var selectPadres = document.getElementById('padres');
+				var id_padre = selectPadres.options[selectPadres.selectedIndex].value;
+				
+				var selectDecision = document.getElementById('tipo_decision');
+				var tipoRelacion = selectDecision.options[selectDecision.selectedIndex].value;
+				
+				
+				var id = protocolo.crearCaja(tipoCaja,id_padre,0,contenido);
+				actualizarLista();
+				protocolo.imprimirConsola();
+				
+				//pintar nuevos cambios
+				pintarNuevaCaja(id,tipoCaja,id_padre,tipoRelacion,contenido);
+				
+        	}
+        	
+        	function pintarNuevaCaja(id,tipoCaja,id_padre,tipoRelacion,contenido){
+        	
+        		if(tipoCaja==0){//normal
+        		
+        			if(tipoRelacion==2){//nada
+						var nuevo_texto = 
+						//'\n'+
+						id+'=>operation: '+contenido+'\n';
+						codigo = nuevo_texto + codigo;
+						if(id_padre==0){
+							codigo = codigo +''+id+'\n';
+						}
+						else{
+							codigo = codigo + id_padre+'->'+id+'\n';
+						}
+					}
+					else if(tipoRelacion==0){//Sí
+						var nuevo_texto = 
+						id+'=>operation: '+contenido+'\n';
+						codigo = nuevo_texto + codigo;
+						codigo = codigo +'cond'+id_padre+'(yes, right)->'+id+'\n';
+						
+					}
+					else{//tipoRelacion==1 No
+						var nuevo_texto = 
+						id+'=>operation: '+contenido+'\n';
+						codigo = nuevo_texto + codigo;
+						codigo = codigo +'cond'+id_padre+'(no)->'+id+'\n';
+					}
+        		}
+        		else{//tipoCaja==1 decisión
+        		
+        			if(tipoRelacion==2){//nada
+						var nuevo_texto = 
+						'cond'+id+'=>condition: '+contenido+'\n';
+						codigo = nuevo_texto + codigo;
+						
+						if(id_padre==0){
+							codigo = codigo +'cond'+id+'\n';
+						}
+						else{
+							codigo = codigo + id_padre+'->cond'+id+'\n';
+						}
+					}
+					else if(tipoRelacion==0){//Sí
+						var nuevo_texto = 
+						'cond'+id+'=>condition: '+contenido+'\n';
+						codigo = nuevo_texto + codigo;
+						codigo = codigo +'cond'+id_padre+'(yes, right)->cond'+id+'\n';
+						
+					}
+					else{//tipoRelacion==1 No
+						var nuevo_texto = 
+						'cond'+id+'=>condition: '+contenido+'\n';
+						codigo = nuevo_texto + codigo;
+						codigo = codigo +'cond'+id_padre+'(no)->cond'+id+'\n';
+					}
+					
+        			
+					
+        		}
+        		console.log(codigo);
+        		pintarCanvas();
+        		
+        		
+        	}
+
+            window.onload = function () {
+            	estadoActual = Estados.LIMPIO;
+            	codigo = '';
+            	protocolo = new Protocolo();
+            	protocolo.init();
+            	document.getElementById("empezar").onclick=empezar;
+		  		document.getElementById("reset").onclick=reset;
+		  		document.getElementById("demo").onclick=mostrarDemo;
+		  		document.getElementById("crear").onclick=crearCaja;
+
+            };
+        </script>
+    </head>
+    <body>
+    	<input id="demo" type="button" value="Mostrar demo" />
+		<button id="reset" type="button">Reset</button>
+		<hr>
+        <input id="texto" type="text" placeholder="Nombre del protocolo" />
+        <input id="empezar" type="button" value="empezar" />
+        <textarea id="contenido" style="width: 100%;" rows="4" placeholder="Introduce el texto del nuevo nodo"></textarea>
+        <select id="tipo_caja" name="tipo_caja" >
+        	<option selected value="-1">--- Elige tipo de caja ---</option>
+			<option value="0">Normal</option>
+			<option value="1">Decisión</option>
+		</select>
+		<select id="tipo_decision" >
+        	<option selected value="-1">--- Elige tipo de decisión ---</option>
+			<option value="0">Si</option>
+			<option value="1">No</option>
+			<option value="2">Nada</option>
+		</select>
+		<select id="padres" >
+        	<option selected value="-1">--- Es hijo de ---</option>
+		</select>
+		<button id="crear" type="button">Crear caja</button>
+		<hr>
+		<select id="rel_padres" >
+        	<option selected value="-1">--- Padres ---</option>
+		</select>
+		<select id="rel_hijos" >
+        	<option selected value="-1">--- Hijos ---</option>
+		</select>
+		<button id="crear_relacion" type="button">Crear nueva relación</button>
+        <div id="canvas"></div>
+    </body>
+</html>
