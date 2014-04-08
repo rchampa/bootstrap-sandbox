@@ -139,11 +139,21 @@
         	}
         
         	function reset(){
+				
 				if (chartR && estadoActual!==Estados.LIMPIO) {
 					chartR.clean();
 					estadoActual = Estados.LIMPIO;
 					codigo = '';
 				}
+				protocolo.reset();
+				var lista = protocolo.getListaCajas();
+        		var selectList = document.getElementById("padres");
+        		selectList.options.length = 0;
+        		
+        		var option = document.createElement("option");
+					option.text = '--- Es hijo de ---';
+					option.value = '-1';
+					selectList.add(option);
         	}
         	
         	function empezar(){
@@ -166,28 +176,43 @@
 				//se desprecierán(salvo el contenido, o en este caso el nombre del protocolo)
         		protocolo.crearCaja(0,0,0,nombre_protocolo);
         		
-        		actualizarLista();
+        		actualizarLista(0,nombre_protocolo);
         		
         	}
         	
-        	function actualizarLista(){
-        		var lista = protocolo.getListaCajas();
+        	function actualizarLista(id,contenido){
+
+        		actualizarPadres(id,contenido);
+        		actualizarRelPadres(id,contenido);
+        		actualizarRelHijos(id,contenido);
+        	}
+        	
+        	function actualizarPadres(id,contenido){
+        	
         		var selectList = document.getElementById("padres");
-        		selectList.options.length = 0;
-        		
-        		var option = document.createElement("option");
-					option.text = '--- Es hijo de ---';
-					option.value = '-1';
-					selectList.add(option);
-        		
-        		for (var i=0; i<lista.length; i++) {
-					var option = document.createElement("option");
-					option.text = lista[i].contenido;
-					option.value = lista[i].id;
-					selectList.add(option);
-				}
-        		
-        		//protocolo.imprimirConsola();
+
+				var option = document.createElement("option");
+				option.text = contenido;
+				option.value = id;
+				selectList.add(option);
+        	}
+        	
+        	function actualizarRelPadres(id,contenido){
+        		var selectList = document.getElementById("rel_padres");
+
+				var option = document.createElement("option");
+				option.text = contenido;
+				option.value = id;
+				selectList.add(option);
+        	}
+        	
+        	function actualizarRelHijos(id,contenido){
+        		var selectList = document.getElementById("rel_hijos");
+
+				var option = document.createElement("option");
+				option.text = contenido;
+				option.value = id;
+				selectList.add(option);
         	}
         	
         	function crearCaja(){
@@ -205,7 +230,7 @@
 				
 				
 				var id = protocolo.crearCaja(tipoCaja,id_padre,0,contenido);
-				actualizarLista();
+				actualizarLista(id,contenido);
 				protocolo.imprimirConsola();
 				
 				//pintar nuevos cambios
@@ -305,15 +330,18 @@
 			<option value="0">Normal</option>
 			<option value="1">Decisión</option>
 		</select>
+		
+		<select id="padres" >
+        	<option selected value="-1">--- Es hijo de ---</option>
+		</select>
+		
 		<select id="tipo_decision" >
         	<option selected value="-1">--- Elige tipo de decisión ---</option>
 			<option value="0">Si</option>
 			<option value="1">No</option>
 			<option value="2">Nada</option>
 		</select>
-		<select id="padres" >
-        	<option selected value="-1">--- Es hijo de ---</option>
-		</select>
+		
 		<button id="crear" type="button">Crear caja</button>
 		<hr>
 		<select id="rel_padres" >
