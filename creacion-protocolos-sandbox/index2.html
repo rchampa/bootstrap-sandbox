@@ -5,64 +5,9 @@
         <title>flowchart.js · Playground</title>
         <script src="js/libs/raphael-min.js"></script>
         <script src="js/libs/flowchart-latest.js"></script>
+        <script src="js/protocolo.js"></script>
         <script>
         
-			function Protocolo(){
-		
-				var generadorID;
-				var lista_cajas;
-		
-				this.init = function(){
-					this.reset();
-				}
-				this.reset = function(){
-					generadorID = crearGenerador();
-					lista_cajas = new Array();
-				}
-			
-				this.crearCaja = function(tipo_caja,padre_id,tipoRelacion,contenido_caja){
-			
-					var nuevo_id = generadorID();
-					var caja = {
-							id			:	nuevo_id,
-							padre		:	padre_id,
-							tipo		:	tipo_caja,
-							contenido	:	contenido_caja,
-							relacion	:	tipoRelacion
-						};
-					
-					lista_cajas.push(caja);
-					
-					return nuevo_id;
-				}	
-				
-				this.imprimirConsola = function(){
-
-					var texto='';
-					for (var i=0; i<lista_cajas.length; i++) {
-						texto+= lista_cajas[i].id+"-"+lista_cajas[i].padre+"-"+lista_cajas[i].contenido+"-"+lista_cajas[i].relacion+"\n";
-					}
-					
-					console.log(texto);
-				}
-				
-				this.getListaCajas = function(){
-					return lista_cajas;
-				}
-			
-				var crearGenerador = function () {
-				   var cuenta, f;
-				   cuenta = -1;
-				   f = function () {
-					   cuenta = cuenta + 1;
-					   return cuenta;
-				   };
-				   return f;
-				};
-					
-
-			}
-        	
         	var chartR;
         	var Estados = { LIMPIO: 1, INIT: 2, EDICION: 3};
         	var estadoActual;
@@ -228,6 +173,10 @@
 				var selectDecision = document.getElementById('tipo_decision');
 				var tipoRelacion = selectDecision.options[selectDecision.selectedIndex].value;
 				
+				if(tipoCaja==-1 || id_padre==-1 || tipoRelacion==-1){
+					alert('Debes seleccionar una opción válida');
+					return;
+				}
 				
 				var id = protocolo.crearCaja(tipoCaja,id_padre,0,contenido);
 				actualizarLista(id,contenido);
@@ -238,15 +187,31 @@
 				
         	}
         	
+        	function crearRelacion(){
+        	
+        		var selectRelPadres = document.getElementById('rel_padres');
+				var relPadre = selectRelPadres.options[selectRelPadres.selectedIndex].value;
+				
+				var selectRelHijos = document.getElementById('rel_hijos');
+				var relHijo = selectRelHijos.options[selectRelHijos.selectedIndex].value;
+				
+				if(relPadre==-1 || relHijo==-1){
+					alert('Debes seleccionar una opción válida');
+					return;
+				}
+        		
+        	}
+        	
         	function pintarNuevaCaja(id,tipoCaja,id_padre,tipoRelacion,contenido){
         	
         		if(tipoCaja==0){//normal
         		
+        			var nuevo_texto = 
+					id+'=>operation: '+contenido+'\n';
+					codigo = nuevo_texto + codigo;
+        		
         			if(tipoRelacion==2){//nada
-						var nuevo_texto = 
-						//'\n'+
-						id+'=>operation: '+contenido+'\n';
-						codigo = nuevo_texto + codigo;
+						
 						if(id_padre==0){
 							codigo = codigo +''+id+'\n';
 						}
@@ -255,25 +220,20 @@
 						}
 					}
 					else if(tipoRelacion==0){//Sí
-						var nuevo_texto = 
-						id+'=>operation: '+contenido+'\n';
-						codigo = nuevo_texto + codigo;
 						codigo = codigo +'cond'+id_padre+'(yes, right)->'+id+'\n';
-						
 					}
 					else{//tipoRelacion==1 No
-						var nuevo_texto = 
-						id+'=>operation: '+contenido+'\n';
-						codigo = nuevo_texto + codigo;
+						
 						codigo = codigo +'cond'+id_padre+'(no)->'+id+'\n';
 					}
         		}
         		else{//tipoCaja==1 decisión
         		
+        			var nuevo_texto = 
+					'cond'+id+'=>condition: '+contenido+'\n';
+					codigo = nuevo_texto + codigo;
+						
         			if(tipoRelacion==2){//nada
-						var nuevo_texto = 
-						'cond'+id+'=>condition: '+contenido+'\n';
-						codigo = nuevo_texto + codigo;
 						
 						if(id_padre==0){
 							codigo = codigo +'cond'+id+'\n';
@@ -283,16 +243,9 @@
 						}
 					}
 					else if(tipoRelacion==0){//Sí
-						var nuevo_texto = 
-						'cond'+id+'=>condition: '+contenido+'\n';
-						codigo = nuevo_texto + codigo;
 						codigo = codigo +'cond'+id_padre+'(yes, right)->cond'+id+'\n';
-						
 					}
 					else{//tipoRelacion==1 No
-						var nuevo_texto = 
-						'cond'+id+'=>condition: '+contenido+'\n';
-						codigo = nuevo_texto + codigo;
 						codigo = codigo +'cond'+id_padre+'(no)->cond'+id+'\n';
 					}
 					
@@ -314,7 +267,7 @@
 		  		document.getElementById("reset").onclick=reset;
 		  		document.getElementById("demo").onclick=mostrarDemo;
 		  		document.getElementById("crear").onclick=crearCaja;
-
+				document.getElementById("crear_relacion").onclick=crearRelacion;
             };
         </script>
     </head>
