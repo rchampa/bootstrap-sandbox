@@ -1,21 +1,37 @@
-<div class="col-md-2 column">
-    
-            <div class="form-group">
-                <label for="exampleInputEmail1">Caja de texto</label><input type="text" class="form-control" placeholder="Nombre" id="cajatexto">
-            </div>
-            <?php echo CHtml::ajaxButton ("Crear nuevo protocolo",
-                              CController::createUrl('helloWorld/UpdateAjax'), 
-                              array('update' => '#data'),
-                              array('class'=>'btn btn-default'));
-            ?>
-    
-</div>
+<?php
+    //echo "<script type='text/javascript' src='".Yii::app()->baseUrl."/js/graph/cajas.js'></script>";
 
-<div class="col-md-10 column">
-       
-    <div id="canvas"></div>
-    <button id="redraw" onclick="redraw();">redraw</button>
-    <button id="dibu" onclick="dibujar();">dibujar</button>
-    <button id="hide_penguin" onclick="hide('penguin');">hide penguin (beta)</button>
-    <button id="hide_penguin" onclick="show('penguin');">show penguin (beta)</button>
-</div>
+?>
+<input id="demo" type="button" onclick="mostrarDemo();"value="Mostrar demo" />
+<button id="reset" type="button" onclick="reset();">Reset</button>
+<hr>
+<input id="texto" type="text" placeholder="Nombre del protocolo" />
+<input id="empezar" type="button" onclick="empezar();" value="empezar" />
+<textarea id="contenido" style="width: 100%;" rows="4" placeholder="Introduce el texto del nuevo nodo"></textarea>
+<select id="tipo_caja" name="tipo_caja" >
+<option selected value="-1">--- Elige tipo de caja ---</option>
+    <option value="0">Normal</option>
+    <option value="1">Decisión</option>
+</select>
+
+<select id="padres" >
+    <option selected value="-1">--- Es hijo de ---</option>
+</select>
+
+<select id="tipo_decision" >
+<option selected value="-1">--- Elige tipo de decisión ---</option>
+    <option value="0">Si</option>
+    <option value="1">No</option>
+    <option value="2">Nada</option>
+</select>
+
+<button id="crear" type="button" onclick="crearCaja();">Crear caja</button>
+<hr>
+<select id="rel_padres" >
+    <option selected value="-1">--- Padres ---</option>
+</select>
+<select id="rel_hijos" >
+    <option selected value="-1">--- Hijos ---</option>
+</select>
+<button id="crear_relacion" type="button" onclick="crearRelacion();">Crear nueva relación</button>
+<div id="canvas"></div>

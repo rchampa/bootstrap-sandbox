@@ -29,6 +29,8 @@ class ProtocolosController extends ControllerAuth
     { 
        $this->accion = "crear";
        $result_set = "";
+       //echo "<script type='text/javascript' src='".Yii::app()->baseUrl."/js/graph/cajas.js'></script>";
+       //Yii::app()->clientscript->scriptMap["/graph/cajas.js"] = false;
        $this->renderPartial('crear_ajaxContent', compact("result_set"));
     }
     
