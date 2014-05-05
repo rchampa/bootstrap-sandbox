@@ -1,13 +1,7 @@
-<?php
-    //echo "<script type='text/javascript' src='".Yii::app()->baseUrl."/js/graph/cajas.js'></script>";
 
-?>
-<input id="demo" type="button" onclick="mostrarDemo();"value="Mostrar demo" />
-<button id="reset" type="button" onclick="reset();">Reset</button>
-<hr>
 <input id="texto" type="text" placeholder="Nombre del protocolo" />
 <input id="empezar" type="button" onclick="empezar();" value="empezar" />
-<textarea id="contenido" style="width: 100%;" rows="4" placeholder="Introduce el texto del nuevo nodo"></textarea>
+<textarea id="contenido" style="width: 100%;" rows="4" placeholder="Introduce el texto de la nueva caja"></textarea>
 <select id="tipo_caja" name="tipo_caja" >
 <option selected value="-1">--- Elige tipo de caja ---</option>
     <option value="0">Normal</option>
@@ -26,7 +20,7 @@
 </select>
 
 <button id="crear" type="button" onclick="crearCaja();">Crear caja</button>
-<hr>
+<div>
 <select id="rel_padres" >
     <option selected value="-1">--- Padres ---</option>
 </select>
@@ -34,4 +28,5 @@
     <option selected value="-1">--- Hijos ---</option>
 </select>
 <button id="crear_relacion" type="button" onclick="crearRelacion();">Crear nueva relación</button>
+</div>
 <div id="canvas"></div>

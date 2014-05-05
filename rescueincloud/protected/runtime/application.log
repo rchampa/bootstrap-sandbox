@@ -734,3 +734,121 @@ Stack trace:
 REQUEST_URI=/git/bootstrap-sandbox/rescueincloud/protocolos/eliminar?_=1399152967220
 HTTP_REFERER=http://localhost/git/bootstrap-sandbox/rescueincloud/protocolos/
 ---
+2014/05/05 13:58:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/ico/favicon.ico".' in /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CWebApplication.php(141): CWebApplication->runController('assets/ico/favi...')
+#1 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/rescueincloud/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/git/bootstrap-sandbox/rescueincloud/assets/ico/favicon.ico
+---
+2014/05/05 13:58:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "img/favicon.ico".' in /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CWebApplication.php(141): CWebApplication->runController('img/favicon.ico')
+#1 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/rescueincloud/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/git/bootstrap-sandbox/rescueincloud/img/favicon.ico
+---
+2014/05/05 13:58:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "img".' in /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CController.php(270): CController->missingAction('img')
+#1 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CWebApplication.php(282): CController->run('img')
+#2 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CWebApplication.php(141): CWebApplication->runController('home/img/favico...')
+#3 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/rescueincloud/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/git/bootstrap-sandbox/rescueincloud/home/img/favicon.png
+---
+2014/05/05 13:58:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "img".' in /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CController.php(270): CController->missingAction('img')
+#1 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CWebApplication.php(282): CController->run('img')
+#2 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CWebApplication.php(141): CWebApplication->runController('farmacos/img/fa...')
+#3 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/rescueincloud/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/git/bootstrap-sandbox/rescueincloud/farmacos/img/favicon.png
+---
+2014/05/05 13:58:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "img".' in /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CController.php(270): CController->missingAction('img')
+#1 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CWebApplication.php(282): CController->run('img')
+#2 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CWebApplication.php(141): CWebApplication->runController('protocolos/img/...')
+#3 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/rescueincloud/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/git/bootstrap-sandbox/rescueincloud/protocolos/img/favicon.png
+---
+2014/05/05 15:33:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "notas/index".' in /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CWebApplication.php(141): CWebApplication->runController('notas/index')
+#1 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/rescueincloud/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/git/bootstrap-sandbox/rescueincloud/notas/index
+HTTP_REFERER=http://localhost/git/bootstrap-sandbox/rescueincloud/home/index
+---
+2014/05/05 15:33:32 [error] [php] Use of undefined constant php - assumed 'php' (/Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/rescueincloud/protected/views/farmacos/farmacosPublicos_ajaxContent.php:46)
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CController.php(869): FarmacosController->renderFile()
+#1 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/rescueincloud/protected/views/farmacos/farmacosPublicos.php(27): FarmacosController->renderPartial()
+#2 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CBaseController.php(126): require()
+#3 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CBaseController.php(95): FarmacosController->renderInternal()
+#4 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CController.php(869): FarmacosController->renderFile()
+#5 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CController.php(782): FarmacosController->renderPartial()
+#6 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/rescueincloud/protected/controllers/FarmacosController.php(30): FarmacosController->render()
+#7 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/actions/CInlineAction.php(49): FarmacosController->actionFarmacosPublicos()
+#8 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CController.php(308): CInlineAction->runWithParams()
+#9 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CController.php(286): FarmacosController->runAction()
+#10 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CController.php(265): FarmacosController->runActionWithFilters()
+#11 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CWebApplication.php(282): FarmacosController->run()
+#12 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#13 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/rescueincloud/index.php(13): CWebApplication->run()
+REQUEST_URI=/git/bootstrap-sandbox/rescueincloud/farmacos/farmacosPublicos
+in /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/rescueincloud/protected/views/farmacos/farmacosPublicos_ajaxContent.php (46)
+in /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/rescueincloud/protected/views/farmacos/farmacosPublicos.php (27)
+in /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/rescueincloud/protected/controllers/FarmacosController.php (30)
+2014/05/05 15:36:10 [error] [php] Use of undefined constant php - assumed 'php' (/Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/rescueincloud/protected/views/farmacos/farmacosPublicos_ajaxContent.php:46)
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CController.php(869): FarmacosController->renderFile()
+#1 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/rescueincloud/protected/views/farmacos/farmacosPublicos.php(27): FarmacosController->renderPartial()
+#2 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CBaseController.php(126): require()
+#3 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CBaseController.php(95): FarmacosController->renderInternal()
+#4 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CController.php(869): FarmacosController->renderFile()
+#5 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CController.php(782): FarmacosController->renderPartial()
+#6 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/rescueincloud/protected/controllers/FarmacosController.php(30): FarmacosController->render()
+#7 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/actions/CInlineAction.php(49): FarmacosController->actionFarmacosPublicos()
+#8 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CController.php(308): CInlineAction->runWithParams()
+#9 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CController.php(286): FarmacosController->runAction()
+#10 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CController.php(265): FarmacosController->runActionWithFilters()
+#11 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CWebApplication.php(282): FarmacosController->run()
+#12 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#13 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/rescueincloud/index.php(13): CWebApplication->run()
+REQUEST_URI=/git/bootstrap-sandbox/rescueincloud/farmacos/farmacosPublicos
+in /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/rescueincloud/protected/views/farmacos/farmacosPublicos_ajaxContent.php (46)
+in /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/rescueincloud/protected/views/farmacos/farmacosPublicos.php (27)
+in /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/rescueincloud/protected/controllers/FarmacosController.php (30)
+2014/05/05 15:37:54 [error] [php] Use of undefined constant php - assumed 'php' (/Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/rescueincloud/protected/views/farmacos/farmacosPublicos_ajaxContent.php:46)
+Stack trace:
+#0 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CController.php(869): FarmacosController->renderFile()
+#1 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/rescueincloud/protected/views/farmacos/farmacosPublicos.php(27): FarmacosController->renderPartial()
+#2 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CBaseController.php(126): require()
+#3 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CBaseController.php(95): FarmacosController->renderInternal()
+#4 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CController.php(869): FarmacosController->renderFile()
+#5 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CController.php(782): FarmacosController->renderPartial()
+#6 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/rescueincloud/protected/controllers/FarmacosController.php(30): FarmacosController->render()
+#7 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/actions/CInlineAction.php(49): FarmacosController->actionFarmacosPublicos()
+#8 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CController.php(308): CInlineAction->runWithParams()
+#9 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CController.php(286): FarmacosController->runAction()
+#10 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CController.php(265): FarmacosController->runActionWithFilters()
+#11 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CWebApplication.php(282): FarmacosController->run()
+#12 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#13 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/rescueincloud/index.php(13): CWebApplication->run()
+REQUEST_URI=/git/bootstrap-sandbox/rescueincloud/farmacos/farmacosPublicos
+in /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/rescueincloud/protected/views/farmacos/farmacosPublicos_ajaxContent.php (46)
+in /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/rescueincloud/protected/views/farmacos/farmacosPublicos.php (27)
+in /Applications/XAMPP/xamppfiles/htdocs/git/bootstrap-sandbox/rescueincloud/protected/controllers/FarmacosController.php (30)
