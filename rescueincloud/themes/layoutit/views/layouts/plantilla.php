@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Rescue in cloud</title>
+  <title>MS in cloud</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
   <meta name="author" content="">
@@ -38,7 +38,7 @@
 		<div class="col-md-12 column">
 			<div class="page-header">
 				<h1>
-					Rescue in cloud <small>Servicio de emergencia</small>
+					Medical service in cloud <small>Servicio de emergencia</small>
 				</h1>
 			</div>
 			<div class="tabbable" id="tabs-152783">
@@ -78,7 +78,7 @@
 
 	<hr class="featurette-divider">
 	<footer>
-        <p>&copy; Rescue in Cloud Company 2013-2014</p>
+        <p>&copy; Medical service in cloud Company 2013-2014</p>
     </footer>
 </div>
 </body>
