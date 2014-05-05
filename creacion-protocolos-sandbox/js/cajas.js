@@ -154,6 +154,11 @@ function crearCaja(){
 
 	var contenido = document.getElementById('contenido').value;
 	
+	if(!contenido || contenido.length===0){
+		alert("No puedes dejar el contenido de la caja vacía.");
+		return false;
+	}
+
 	var selectTipoCaja = document.getElementById('tipo_caja');
 	var tipoCaja = selectTipoCaja.options[selectTipoCaja.selectedIndex].value;
 	
@@ -168,27 +173,64 @@ function crearCaja(){
 		return;
 	}
 	
-	var id = protocolo.crearCaja(tipoCaja,id_padre,0,contenido);
+	var id = protocolo.crearCaja(tipoCaja,id_padre,tipoRelacion,contenido);
+	var caja_padre = protocolo.getCaja(id_padre);
+	
+	if(caja_padre.tipo==0){//normal
+		caja_padre.completo = true;
+	}
+	else{//1 decision
+		if(tipoRelacion==0){//hijo sí
+			caja_padre.hi = id;
+		}
+		else{//hijo no
+			caja_padre.hd = id;
+		}
+
+		if(caja_padre.hi != -1 && caja_padre.hd != -1){
+			caja_padre.completo = true;
+		}
+
+	}
+
 	actualizarLista(id,contenido);
 	protocolo.imprimirConsola();
 	
 	//pintar nuevos cambios
 	pintarNuevaCaja(id,tipoCaja,id_padre,tipoRelacion,contenido);
+
+	document.getElementById('contenido').value='';
 	
 }
 
 function crearRelacion(){
 
 	var selectRelPadres = document.getElementById('rel_padres');
-	var relPadre = selectRelPadres.options[selectRelPadres.selectedIndex].value;
+	var id_padre = selectRelPadres.options[selectRelPadres.selectedIndex].value;
 	
 	var selectRelHijos = document.getElementById('rel_hijos');
-	var relHijo = selectRelHijos.options[selectRelHijos.selectedIndex].value;
+	var id_hijo = selectRelHijos.options[selectRelHijos.selectedIndex].value;
 	
-	if(relPadre==-1 || relHijo==-1){
+	if(id_padre==-1 || id_hijo==-1){
 		alert('Debes seleccionar una opción válida');
 		return;
 	}
+
+	var caja_padre = protocolo.getCaja(id_padre);
+
+	if(caja_padre.completo==true){
+		alert(caja_padre.contenido_caja+' ya no puede tener más hijos.');
+		return;
+	}
+	else{
+		var caja_hijo = protocolo.getCaja(id_hijo);		
+		caja_hijo.padres.push(id_padre);
+	}
+
+	pintarNuevaRelacion(id_padre,id_hijo);
+	console.log(codigo);
+	pintarCanvas();
+
 	
 }
 
@@ -248,14 +290,50 @@ function pintarNuevaCaja(id,tipoCaja,id_padre,tipoRelacion,contenido){
 	
 }
 
+function pintarNuevaRelacion(id_padre, id_hijo){
+
+	codigo = codigo +id_padre+'->'+id_hijo+'\n';
+}
+
+function padre_elegido(){
+
+	var selectPadres = document.getElementById('padres');
+	var id_padre = selectPadres.options[selectPadres.selectedIndex].value;
+
+	if(id_padre != -1){
+		var caja = protocolo.getCaja(id_padre);
+		var selectList = document.getElementById('tipo_decision');
+		selectList.options.length = 0;
+		if(caja.tipo==0){//caja normal
+			var option = document.createElement('option');
+			option.text = "Directa";
+			option.value = "2";
+			selectList.add(option);
+		}
+		else{
+			var option0 = document.createElement('option');
+		
+			option0.text = "Sí";
+			option0.value = "0";
+			selectList.add(option0);
+
+			var option1 = document.createElement('option');
+			option1.text = "No";
+			option1.value = "1";
+			selectList.add(option1);
+		}
+	}
+
+}
+
 window.onload = function () {
 	estadoActual = Estados.LIMPIO;
 	codigo = '';
 	protocolo = new Protocolo();
 	protocolo.init();
-	document.getElementById('empezar').onclick=empezar;
+	/*document.getElementById('empezar').onclick=empezar;
 	document.getElementById('reset').onclick=reset;
 	document.getElementById('demo').onclick=mostrarDemo;
 	document.getElementById('crear').onclick=crearCaja;
-	document.getElementById('crear_relacion').onclick=crearRelacion;
+	document.getElementById('crear_relacion').onclick=crearRelacion;*/
 };

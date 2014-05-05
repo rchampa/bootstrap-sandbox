@@ -18,10 +18,13 @@ function Protocolo(){
 					var nuevo_id = generadorID();
 					var caja = {
 							id			:	nuevo_id,
-							padre		:	padre_id,
+							padres		:	[padre_id],
 							tipo		:	tipo_caja,
 							contenido	:	contenido_caja,
-							relacion	:	tipoRelacion
+							relacion	:	tipoRelacion,
+							hi			: 	-1,
+							hd			: 	-1,
+							completo	: 	false
 						};
 					
 					lista_cajas.push(caja);
@@ -33,7 +36,8 @@ function Protocolo(){
 
 					var texto='';
 					for (var i=0; i<lista_cajas.length; i++) {
-						texto+= lista_cajas[i].id+"-"+lista_cajas[i].padre+"-"+lista_cajas[i].contenido+"-"+lista_cajas[i].relacion+"\n";
+						texto+= lista_cajas[i].id+"-"+lista_cajas[i].padres+"-"+lista_cajas[i].contenido+"-"+lista_cajas[i].relacion+
+						"-"+lista_cajas[i].hi+"-"+lista_cajas[i].hd+"-"+lista_cajas[i].completo+"\n";
 					}
 					
 					console.log(texto);
@@ -41,6 +45,14 @@ function Protocolo(){
 				
 				this.getListaCajas = function(){
 					return lista_cajas;
+				}
+
+				this.getCaja = function(id){
+					for (var i=0; i<lista_cajas.length; i++) {
+						if(lista_cajas[i].id==id){
+							return lista_cajas[i];
+						}
+					}
 				}
 			
 				var crearGenerador = function () {

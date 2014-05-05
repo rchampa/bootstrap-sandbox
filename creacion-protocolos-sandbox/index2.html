@@ -9,20 +9,22 @@
         <script src="js/cajas.js"></script>
     </head>
     <body>
-    	<input id="demo" type="button" value="Mostrar demo" />
-		<button id="reset" type="button">Reset</button>
-		<hr>
+    	<div>
         <input id="texto" type="text" placeholder="Nombre del protocolo" />
-        <input id="empezar" type="button" value="empezar" />
-        <textarea id="contenido" style="width: 100%;" rows="4" placeholder="Introduce el texto del nuevo nodo"></textarea>
+        <button id="empezar" type="button" onclick="empezar()">Crear protocolo</button>
+        <button id="reset" type="button" onclick="reset()">Reset</button>
+        <button id="demo" type="button" onclick="mostrarDemo()">Mostrar demo</button>
+        </div>
+        <hr>
+        <div>
         <select id="tipo_caja" name="tipo_caja" >
         	<option selected value="-1">--- Elige tipo de caja ---</option>
 			<option value="0">Normal</option>
 			<option value="1">Decisión</option>
 		</select>
 		
-		<select id="padres" >
-        	<option selected value="-1">--- Es hijo de ---</option>
+		<select id="padres" onchange="padre_elegido()" >
+        	<option selected value="-1" >--- Es hijo de ---</option>
 		</select>
 		
 		<select id="tipo_decision" >
@@ -32,7 +34,9 @@
 			<option value="2">Nada</option>
 		</select>
 		
-		<button id="crear" type="button">Crear caja</button>
+		<button id="crear" type="button" onclick="crearCaja()">Crear caja</button>
+		</div>
+		<textarea id="contenido" style="width: 60%;" rows="4" placeholder="Introduce el texto de la nueva caja"></textarea>
 		<hr>
 		<select id="rel_padres" >
         	<option selected value="-1">--- Padres ---</option>
@@ -40,7 +44,7 @@
 		<select id="rel_hijos" >
         	<option selected value="-1">--- Hijos ---</option>
 		</select>
-		<button id="crear_relacion" type="button">Crear nueva relación</button>
+		<button id="crear_relacion" type="button" onclick="crearRelacion()">Crear nueva relación</button>
         <div id="canvas"></div>
     </body>
 </html>
