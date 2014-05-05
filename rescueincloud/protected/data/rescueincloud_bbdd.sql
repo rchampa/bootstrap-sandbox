@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.6
+-- version 4.1.12
 -- http://www.phpmyadmin.net
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 01-04-2014 a las 01:11:54
+-- Servidor: localhost
+-- Tiempo de generación: 05-05-2014 a las 19:53:14
 -- Versión del servidor: 5.5.36
--- Versión de PHP: 5.4.25
+-- Versión de PHP: 5.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -27,14 +27,26 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `cajatexto` (
-  `id_caja_texto` int(3) NOT NULL AUTO_INCREMENT,
-  `tipo` TINYINT(2) NOT NULL,
+  `id_caja_texto` int(3) NOT NULL,
+  `tipo` tinyint(2) NOT NULL,
   `contenido` varchar(320) NOT NULL,
   `id_protocolo` int(11) NOT NULL,
   PRIMARY KEY (`id_caja_texto`,`id_protocolo`),
   KEY `fk_CajaTexto_Protocolos` (`id_protocolo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `cajatexto`
+--
+
+INSERT INTO `cajatexto` (`id_caja_texto`, `tipo`, `contenido`, `id_protocolo`) VALUES
+(0, 0, 'Nombre del protocolo', 1),
+(1, 1, '¿Una decisión de texto?', 1),
+(2, 1, 'una decision de con el número 5', 1),
+(3, 0, 'la respuesta al la decision con el id 2, la caja anterior', 1),
+(4, 0, 'una respuesta de 25kg', 1),
+(5, 0, 'una respuesta de 30 mg de peso', 1),
+(6, 0, 'un último texto', 1);
 
 -- --------------------------------------------------------
 
@@ -47,11 +59,23 @@ CREATE TABLE IF NOT EXISTS `cajatexto_hijos` (
   `id_protocolo` int(11) NOT NULL,
   `id_hijo` int(3) NOT NULL,
   `id_padre` int(3) NOT NULL,
-  `relacion` TINYINT(2) NOT NULL,
+  `relacion` tinyint(2) NOT NULL,
   PRIMARY KEY (`id`,`id_protocolo`),
   KEY `fk_CajaTexto_has_CajaTexto1_CajaTexto1` (`id_protocolo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
+--
+-- Volcado de datos para la tabla `cajatexto_hijos`
+--
+
+INSERT INTO `cajatexto_hijos` (`id`, `id_protocolo`, `id_hijo`, `id_padre`, `relacion`) VALUES
+(1, 1, 1, 0, 2),
+(2, 1, 2, 1, 0),
+(3, 1, 5, 1, 1),
+(4, 1, 3, 2, 0),
+(5, 1, 4, 2, 1),
+(6, 1, 6, 5, 2),
+(7, 1, 6, 4, 2);
 
 -- --------------------------------------------------------
 
@@ -134,7 +158,7 @@ CREATE TABLE IF NOT EXISTS `notas` (
   `borrado` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_nota`,`email_usuario`),
   KEY `notas_ibfk_1` (`email_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -148,15 +172,15 @@ CREATE TABLE IF NOT EXISTS `protocolos` (
   `email_usuario` varchar(45) NOT NULL,
   `creado_en` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_protocolo`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `protocolos`
 --
 
-INSERT INTO `protocolos` (`nombre_protocolo`, `email_usuario`, `creado_en`) VALUES
-('manejo de la hipotermia accidental severa', '', '2014-03-19 09:01:45'),
-('p', 'user@miuser.com', '2012-12-12 10:12:12');
+INSERT INTO `protocolos` (`id_protocolo`, `nombre_protocolo`, `email_usuario`, `creado_en`) VALUES
+(1, 'manejo de la hipotermia accidental severa', 'ricardocb48@gmail.com', '2014-05-05 17:52:11'),
+(2, 'p', 'user@miuser.com', '2012-12-12 10:12:12');
 
 -- --------------------------------------------------------
 
@@ -242,7 +266,7 @@ ALTER TABLE `cajatexto`
   ADD CONSTRAINT `fk_CajaTexto_Protocolos` FOREIGN KEY (`id_protocolo`) REFERENCES `protocolos` (`id_protocolo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `cajatexto_has_hijo`
+-- Filtros para la tabla `cajatexto_hijos`
 --
 ALTER TABLE `cajatexto_hijos`
   ADD CONSTRAINT `fk_CajaTexto_has_CajaTexto1_CajaTexto1` FOREIGN KEY (`id_protocolo`) REFERENCES `cajatexto` (`id_protocolo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
