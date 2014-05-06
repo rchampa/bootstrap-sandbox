@@ -80,15 +80,20 @@ function reset(){
 		estadoActual = Estados.LIMPIO;
 		codigo = '';
 	}
-	protocolo.reset();
+
+	if(protocolo)
+		protocolo.reset();
+	else
+		protocolo = new Protocolo();
+
 	var lista = protocolo.getListaCajas();
 	var selectList = document.getElementById('padres');
 	selectList.options.length = 0;
 	
 	var option = document.createElement('option');
-		option.text = '--- Es hijo de ---';
-		option.value = '-1';
-		selectList.add(option);
+	option.text = '--- Es hijo de ---';
+	option.value = '-1';
+	selectList.add(option);
 }
 
 function empezar(){
@@ -178,17 +183,19 @@ function crearCaja(){
 	
 	if(caja_padre.tipo==0){//normal
 		caja_padre.completo = true;
+		eliminarPadreDeLista(id_padre);
 	}
 	else{//1 decision
 		if(tipoRelacion==0){//hijo sí
-			caja_padre.hi = id;
+			caja_padre.hijo_si = id;
 		}
 		else{//hijo no
-			caja_padre.hd = id;
+			caja_padre.hijo_no = id;
 		}
 
-		if(caja_padre.hi != -1 && caja_padre.hd != -1){
+		if(caja_padre.hijo_si != -1 && caja_padre.hijo_no != -1){
 			caja_padre.completo = true;
+			eliminarPadreDeLista(id_padre);
 		}
 
 	}
@@ -200,7 +207,20 @@ function crearCaja(){
 	pintarNuevaCaja(id,tipoCaja,id_padre,tipoRelacion,contenido);
 
 	document.getElementById('contenido').value='';
+	document.getElementById('tipo_caja').value = '-1';
+	document.getElementById('padres').value = '-1';
 	
+}
+
+function eliminarPadreDeLista(id_padre){
+	var padres = document.getElementById('padres');
+	var i;
+	for (i = padres.length - 1; i>=0; i--) {
+		if (padres.options[i].value==id_padre) {
+			padres.remove(i);
+			break;//Es importante no seguir iterando cuando se elimina un elemento
+		}
+	}
 }
 
 function crearRelacion(){
@@ -310,17 +330,21 @@ function padre_elegido(){
 			option.value = "2";
 			selectList.add(option);
 		}
-		else{
-			var option0 = document.createElement('option');
-		
-			option0.text = "Sí";
-			option0.value = "0";
-			selectList.add(option0);
+		else{//caja decisión
 
-			var option1 = document.createElement('option');
-			option1.text = "No";
-			option1.value = "1";
-			selectList.add(option1);
+			if(caja.hijo_si == -1){
+				var option0 = document.createElement('option');
+				option0.text = "Sí";
+				option0.value = "0";
+				selectList.add(option0);
+			}
+
+			if(caja.hijo_no == -1){
+				var option1 = document.createElement('option');
+				option1.text = "No";
+				option1.value = "1";
+				selectList.add(option1);
+			}
 		}
 	}
 
