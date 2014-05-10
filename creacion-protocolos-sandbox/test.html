@@ -1,0 +1,67 @@
+<html>
+<script type="text/javascript">
+
+	function formatear(){
+		var contenido = document.getElementById('contenido').value;
+		var formateado = formatearString(contenido);
+		document.getElementById('contenido_formateado').value = formateado;
+	}
+
+	formatearString = function(contenido){
+
+		var lista = [];
+		var tam = contenido.length;
+		
+		var i=0;
+		var desplazamiento = 0;
+		while (i<tam) {
+			
+			if (i+30-1<tam){
+				
+				desplazamiento = nextWhiteSpace(contenido.substring(i+30,tam));
+				lista.push(contenido.substring(i,i+30+desplazamiento));
+
+			}
+			else{
+				var sub_string = contenido.substring(i,tam);
+				desplazamiento=0;
+				lista.push(sub_string);
+			}
+
+			i=i+30+desplazamiento;
+		}
+
+		var contenido_formateado = '';
+		for (var i=0; i<lista.length; i++) {
+			contenido_formateado = contenido_formateado + lista[i].trim() + '\n';
+		}
+		
+		if(contenido_formateado.length>0){
+			return contenido_formateado.substring(0,contenido_formateado.length-1);
+		}
+		else{
+			return contenido_formateado;
+		}
+
+	}
+
+	function nextWhiteSpace(contenido){
+
+		var i=0;
+		for(; i<contenido.length; i++){
+			if (contenido[i]==' ') {
+				return i;
+			}
+		}
+
+		return i;
+	}
+
+</script>
+<body>
+	<textarea id="contenido" rows="4" cols="50">At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies. In the other hand we have to think about the sun, sun goes down, very down.</textarea>
+	<button onclick="formatear()">Formatear</button>
+
+	<textarea id="contenido_formateado" rows="4" cols="50"></textarea>
+</body>
+</html>

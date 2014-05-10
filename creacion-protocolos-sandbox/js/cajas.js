@@ -116,16 +116,16 @@ function empezar(){
 	//se desprecierán(salvo el contenido, o en este caso el nombre del protocolo)
 	protocolo.crearCaja(0,0,0,nombre_protocolo);
 	
-	actualizarLista(0,nombre_protocolo);
+	actualizarPadres(0,protocolo.recortarString(nombre_protocolo));
 	
 }
-
+/*
 function actualizarLista(id,contenido){
 
 	actualizarPadres(id,contenido);
 	actualizarRelPadres(id,contenido);
 	actualizarRelHijos(id,contenido);
-}
+}*/
 
 function actualizarPadres(id,contenido){
 
@@ -158,6 +158,8 @@ function actualizarRelHijos(id,contenido){
 function crearCaja(){
 
 	var contenido = document.getElementById('contenido').value;
+	contenido = protocolo.formatearString(contenido);
+	 
 	
 	if(!contenido || contenido.length===0){
 		alert("No puedes dejar el contenido de la caja vacía.");
@@ -178,12 +180,13 @@ function crearCaja(){
 		return;
 	}
 	
+	//actualizando al padre
 	var id = protocolo.crearCaja(tipoCaja,id_padre,tipoRelacion,contenido);
 	var caja_padre = protocolo.getCaja(id_padre);
 	
 	if(caja_padre.tipo==0){//normal
 		caja_padre.completo = true;
-		eliminarPadreDeLista(id_padre);
+		eliminarPadreComoElegible(id_padre);
 	}
 	else{//1 decision
 		if(tipoRelacion==0){//hijo sí
@@ -195,12 +198,20 @@ function crearCaja(){
 
 		if(caja_padre.hijo_si != -1 && caja_padre.hijo_no != -1){
 			caja_padre.completo = true;
-			eliminarPadreDeLista(id_padre);
+			eliminarPadreComoElegible(id_padre);
 		}
 
 	}
 
-	actualizarLista(id,contenido);
+	//actualizarLista(id,contenido);
+	var contenido_recortado = protocolo.recortarString(contenido);
+	actualizarPadres(id,contenido_recortado);
+	actualizarRelHijos(id,contenido_recortado);
+	if (tipoCaja==0) {//Sólo si la caja es NORMAL
+		actualizarRelPadres(id,contenido_recortado);
+	}
+	
+
 	protocolo.imprimirConsola();
 	
 	//pintar nuevos cambios
@@ -210,17 +221,6 @@ function crearCaja(){
 	document.getElementById('tipo_caja').value = '-1';
 	document.getElementById('padres').value = '-1';
 	
-}
-
-function eliminarPadreDeLista(id_padre){
-	var padres = document.getElementById('padres');
-	var i;
-	for (i = padres.length - 1; i>=0; i--) {
-		if (padres.options[i].value==id_padre) {
-			padres.remove(i);
-			break;//Es importante no seguir iterando cuando se elimina un elemento
-		}
-	}
 }
 
 function crearRelacion(){
@@ -236,15 +236,23 @@ function crearRelacion(){
 		return;
 	}
 
+	if(id_padre==id_hijo){
+		alert('Debes seleccionar una opción válida');
+		return;
+	}
+
 	var caja_padre = protocolo.getCaja(id_padre);
 
 	if(caja_padre.completo==true){
 		alert(caja_padre.contenido_caja+' ya no puede tener más hijos.');
+		eliminarPadreComoElegible(caja_padre.id);
 		return;
 	}
 	else{
 		var caja_hijo = protocolo.getCaja(id_hijo);		
 		caja_hijo.padres.push(id_padre);
+		caja_padre.completo=true;
+		eliminarPadreComoElegible(caja_padre.id);
 	}
 
 	pintarNuevaRelacion(id_padre,id_hijo);
@@ -252,6 +260,27 @@ function crearRelacion(){
 	pintarCanvas();
 
 	
+}
+
+
+function eliminarPadreComoElegible(id_padre){
+	var padres = document.getElementById('padres');
+	var i;
+	for (i = padres.length - 1; i>=0; i--) {
+		if (padres.options[i].value==id_padre) {
+			padres.remove(i);
+			break;//Es importante no seguir iterando cuando se elimina un elemento
+		}
+	}
+
+	var rel_padres = document.getElementById('rel_padres');
+	var i;
+	for (i = rel_padres.length - 1; i>=0; i--) {
+		if (rel_padres.options[i].value==id_padre) {
+			rel_padres.remove(i);
+			break;//Es importante no seguir iterando cuando se elimina un elemento
+		}
+	}
 }
 
 function pintarNuevaCaja(id,tipoCaja,id_padre,tipoRelacion,contenido){
@@ -312,7 +341,11 @@ function pintarNuevaCaja(id,tipoCaja,id_padre,tipoRelacion,contenido){
 
 function pintarNuevaRelacion(id_padre, id_hijo){
 
-	codigo = codigo +id_padre+'->'+id_hijo+'\n';
+	var caja_hijo = protocolo.getCaja(id_hijo);
+	if(caja_hijo.tipo==0)
+		codigo = codigo +id_padre+'->'+id_hijo+'\n';
+	else
+		codigo = codigo +id_padre+'->cond'+id_hijo+'\n';
 }
 
 function padre_elegido(){
