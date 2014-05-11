@@ -1,7 +1,20 @@
 //javascript
 
 function Protocolo(){
-		
+
+	this.TIPO_CAJA_NORMAL = "0";
+	this.TIPO_CAJA_DECISION = "1";
+	this.TIPO_DECISION_SI = "0";
+	this.TIPO_DECISION_NO = "1";
+	this.TIPO_DECISION_DIRECTA = "2";
+	
+	this.TYPE_NORMAL_BOX = "0";	
+	this.TYPE_DECISION_BOX = "1";
+	this.TYPE_YES_DECISION = "0";
+	this.TYPE_NO_DECISION = "1";
+	this.TYPE_DIRECT_DECISION = "2";
+
+
 	var generadorID;
 	var lista_cajas;
 

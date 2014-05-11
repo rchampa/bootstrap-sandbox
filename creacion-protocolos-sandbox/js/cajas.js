@@ -184,12 +184,12 @@ function crearCaja(){
 	var id = protocolo.crearCaja(tipoCaja,id_padre,tipoRelacion,contenido);
 	var caja_padre = protocolo.getCaja(id_padre);
 	
-	if(caja_padre.tipo==0){//normal
+	if(caja_padre.tipo==protocolo.TYPE_NORMAL_BOX){//normal
 		caja_padre.completo = true;
 		eliminarPadreComoElegible(id_padre);
 	}
 	else{//1 decision
-		if(tipoRelacion==0){//hijo sí
+		if(tipoRelacion==protocolo.TYPE_YES_DECISION){//hijo sí
 			caja_padre.hijo_si = id;
 		}
 		else{//hijo no
@@ -207,7 +207,7 @@ function crearCaja(){
 	var contenido_recortado = protocolo.recortarString(contenido);
 	actualizarPadres(id,contenido_recortado);
 	actualizarRelHijos(id,contenido_recortado);
-	if (tipoCaja==0) {//Sólo si la caja es NORMAL
+	if (tipoCaja==protocolo.TYPE_NORMAL_BOX) {//Sólo si la caja es NORMAL
 		actualizarRelPadres(id,contenido_recortado);
 	}
 	
@@ -285,7 +285,7 @@ function eliminarPadreComoElegible(id_padre){
 
 function pintarNuevaCaja(id,tipoCaja,id_padre,tipoRelacion,contenido){
 
-	if(tipoCaja==0){//normal
+	if(tipoCaja==protocolo.TYPE_NORMAL_BOX){//normal
 	
 		var nuevo_texto = 
 		id+'=>operation: '+contenido+'\n';
@@ -300,7 +300,7 @@ function pintarNuevaCaja(id,tipoCaja,id_padre,tipoRelacion,contenido){
 				codigo = codigo + id_padre+'->'+id+'\n';
 			}
 		}
-		else if(tipoRelacion==0){//Sí
+		else if(tipoRelacion==protocolo.TYPE_YES_DECISION){//Sí
 			codigo = codigo +'cond'+id_padre+'(yes, right)->'+id+'\n';
 		}
 		else{//tipoRelacion==1 No
@@ -314,7 +314,7 @@ function pintarNuevaCaja(id,tipoCaja,id_padre,tipoRelacion,contenido){
 		'cond'+id+'=>condition: '+contenido+'\n';
 		codigo = nuevo_texto + codigo;
 			
-		if(tipoRelacion==2){//nada
+		if(tipoRelacion==protocolo.TYPE_DIRECT_DECISION){//directa
 			
 			if(id_padre==0){
 				codigo = codigo +'cond'+id+'\n';
@@ -323,7 +323,7 @@ function pintarNuevaCaja(id,tipoCaja,id_padre,tipoRelacion,contenido){
 				codigo = codigo + id_padre+'->cond'+id+'\n';
 			}
 		}
-		else if(tipoRelacion==0){//Sí
+		else if(tipoRelacion==protocolo.TYPE_YES_DECISION){//Sí
 			codigo = codigo +'cond'+id_padre+'(yes, right)->cond'+id+'\n';
 		}
 		else{//tipoRelacion==1 No
@@ -357,10 +357,16 @@ function padre_elegido(){
 		var caja = protocolo.getCaja(id_padre);
 		var selectList = document.getElementById('tipo_decision');
 		selectList.options.length = 0;
-		if(caja.tipo==0){//caja normal
+
+		var opt = document.createElement('option');
+		opt.text = "--- Elige tipo de decisión ---";
+		opt.value = "-1";
+		selectList.add(opt);
+
+		if(caja.tipo==protocolo.TYPE_NORMAL_BOX){//caja normal
 			var option = document.createElement('option');
 			option.text = "Directa";
-			option.value = "2";
+			option.value = protocolo.TYPE_DIRECT_DECISION;
 			selectList.add(option);
 		}
 		else{//caja decisión
@@ -368,14 +374,14 @@ function padre_elegido(){
 			if(caja.hijo_si == -1){
 				var option0 = document.createElement('option');
 				option0.text = "Sí";
-				option0.value = "0";
+				option0.value = protocolo.TYPE_YES_DECISION;
 				selectList.add(option0);
 			}
 
 			if(caja.hijo_no == -1){
 				var option1 = document.createElement('option');
 				option1.text = "No";
-				option1.value = "1";
+				option1.value = protocolo.TYPE_NO_DECISION;
 				selectList.add(option1);
 			}
 		}
