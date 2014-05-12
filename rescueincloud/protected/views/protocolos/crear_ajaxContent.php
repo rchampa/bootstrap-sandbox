@@ -95,14 +95,14 @@
                 <div id="canvas"></div>
 
                 <div class="control-group">
-                        <label></label>
-                        <div class="controls">
-                        <form action="<?php echo Yii::app()->createUrl('/protocolos/alta') ?>" method="post" onsubmit="sendToServer()">
+                    <label></label>
+                    <div class="controls">
+                    <form action="<?php echo Yii::app()->createUrl('/protocolos/alta') ?>" method="post" onsubmit="sendToServer()">
                         <input type="hidden" name="json_info" id="json_info">
-                        <?php //echo CHtml::submitButton('Terminar',array("class"=>"btn btn-primary")); ?>
+                        <input type="hidden" name="code" id="code">
                         <button type="submit" class="btn btn-primary">Terminar</button>
-                        </form>
-                        </div>
+                    </form>
+                    </div>
 
                 </div>
 

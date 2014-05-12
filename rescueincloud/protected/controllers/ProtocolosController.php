@@ -38,7 +38,11 @@ class ProtocolosController extends ControllerAuth
     {
 
        $json_info = $_POST['json_info'];
-       $this->render('alta');
+       $parser_code = $_POST['code'];
+
+
+
+       $this->redirect(Yii::app()->user->returnUrl."protocolos");
     }
 
 

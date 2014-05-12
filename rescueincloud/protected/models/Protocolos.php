@@ -18,7 +18,16 @@ class Protocolos {
         
         return $result_rows;
     }
-    
+
+    public function crear_protocolo($json_info, $parser_code){
+
+        $sql="SELECT * FROM protocolos where 1=1 and ";
+        $sql.= "email_usuario='".$email_usuario."' ";
+        $sql.=" LIMIT ".$ini.", ".$lenght;
+        $result_rows=$this->connection->createCommand($sql)->queryAll();
+
+        return $result_rows;
+    }
 }
 
 ?>

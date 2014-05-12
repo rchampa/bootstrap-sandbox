@@ -16,20 +16,30 @@ var configuracion =  {
           'line-color': 'black',
           'element-color': 'black',
           'fill': 'white',
-          'yes-text': 'yes',
+          'yes-text': 'si',
           'no-text': 'no',
           'arrow-end': 'block',
           'symbols': {
             'start': {
-              'font-color': 'red',
-              'element-color': 'green',
-              'fill': 'yellow'
+              'font-color': 'black',
+              'element-color': 'black',
+              'fill': '#FF5555'
+            },
+            'condition': {
+              'font-color': 'black',
+              'element-color': 'black',
+              'fill': '#FAEA59'
+            },
+            'operation': {
+              'font-color': 'black',
+              'element-color': 'black',
+              'fill': '#4AAF46'
             }
           }
         };
 
 function mostrarDemo(){
-		
+
         var code = 'st=>start: Un protocolo llamado bla\n'+
 		'e=>end: Fin del protocolo\n'+
 		'\n'+
@@ -56,9 +66,9 @@ function mostrarDemo(){
 
         chartR = flowchart.parse(code);
         chartR.drawSVG('canvas', configuracion);
-        
+
         estadoActual = Estados.EDICION;
-    
+
 }
 
 function pintarCanvas(){
@@ -69,12 +79,12 @@ function pintarCanvas(){
 
 	chartR = flowchart.parse(codigo);
 	chartR.drawSVG('canvas', configuracion);
-        
+
 	estadoActual = Estados.EDICION;
 }
 
 function reset(){
-	
+
 	if (chartR && estadoActual!==Estados.LIMPIO) {
 		chartR.clean();
 		estadoActual = Estados.LIMPIO;
@@ -89,7 +99,7 @@ function reset(){
 	var lista = protocolo.getListaCajas();
 	var selectList = document.getElementById('padres');
 	selectList.options.length = 0;
-	
+
 	var option = document.createElement('option');
 	option.text = '--- Es hijo de ---';
 	option.value = '-1';
@@ -103,21 +113,21 @@ function empezar(){
 		'e=>end: Fin del protocolo\n'+
 		'\n'+
 		'st->';
-		
+
 	if (chartR && estadoActual!==Estados.LIMPIO) {
 		chartR.clean();
 	}
 
 	chartR = flowchart.parse(codigo);
 	chartR.drawSVG('canvas', configuracion);
-	
+
 	estadoActual = Estados.EDICION;
 	//en el caso de la raíz, se tiene el id=0 así que el resto de atributos
 	//se desprecierán(salvo el contenido, o en este caso el nombre del protocolo)
 	protocolo.crearCaja(0,0,0,nombre_protocolo);
-	
+
 	actualizarPadres(0,protocolo.recortarString(nombre_protocolo));
-	
+
 }
 /*
 function actualizarLista(id,contenido){
@@ -159,8 +169,8 @@ function crearCaja(){
 
 	var contenido = document.getElementById('contenido').value;
 	contenido = protocolo.formatearString(contenido);
-	 
-	
+
+
 	if(!contenido || contenido.length===0){
 		alert("No puedes dejar el contenido de la caja vacía.");
 		return false;
@@ -168,22 +178,22 @@ function crearCaja(){
 
 	var selectTipoCaja = document.getElementById('tipo_caja');
 	var tipoCaja = selectTipoCaja.options[selectTipoCaja.selectedIndex].value;
-	
+
 	var selectPadres = document.getElementById('padres');
 	var id_padre = selectPadres.options[selectPadres.selectedIndex].value;
-	
+
 	var selectDecision = document.getElementById('tipo_decision');
 	var tipoRelacion = selectDecision.options[selectDecision.selectedIndex].value;
-	
+
 	if(tipoCaja==-1 || id_padre==-1 || tipoRelacion==-1){
 		alert('Debes seleccionar una opción válida');
 		return;
 	}
-	
+
 	//actualizando al padre
 	var id = protocolo.crearCaja(tipoCaja,id_padre,tipoRelacion,contenido);
 	var caja_padre = protocolo.getCaja(id_padre);
-	
+
 	if(caja_padre.tipo==protocolo.TYPE_NORMAL_BOX){//normal
 		caja_padre.completo = true;
 		eliminarPadreComoElegible(id_padre);
@@ -210,27 +220,27 @@ function crearCaja(){
 	if (tipoCaja==protocolo.TYPE_NORMAL_BOX) {//Sólo si la caja es NORMAL
 		actualizarRelPadres(id,contenido_recortado);
 	}
-	
+
 
 	protocolo.imprimirConsola();
-	
+
 	//pintar nuevos cambios
 	pintarNuevaCaja(id,tipoCaja,id_padre,tipoRelacion,contenido);
 
 	document.getElementById('contenido').value='';
 	document.getElementById('tipo_caja').value = '-1';
 	document.getElementById('padres').value = '-1';
-	
+
 }
 
 function crearRelacion(){
 
 	var selectRelPadres = document.getElementById('rel_padres');
 	var id_padre = selectRelPadres.options[selectRelPadres.selectedIndex].value;
-	
+
 	var selectRelHijos = document.getElementById('rel_hijos');
 	var id_hijo = selectRelHijos.options[selectRelHijos.selectedIndex].value;
-	
+
 	if(id_padre==-1 || id_hijo==-1){
 		alert('Debes seleccionar una opción válida');
 		return;
@@ -249,7 +259,7 @@ function crearRelacion(){
 		return;
 	}
 	else{
-		var caja_hijo = protocolo.getCaja(id_hijo);		
+		var caja_hijo = protocolo.getCaja(id_hijo);
 		caja_hijo.padres.push(id_padre);
 		caja_padre.completo=true;
 		eliminarPadreComoElegible(caja_padre.id);
@@ -259,7 +269,7 @@ function crearRelacion(){
 	console.log(codigo);
 	pintarCanvas();
 
-	
+
 }
 
 
@@ -286,13 +296,13 @@ function eliminarPadreComoElegible(id_padre){
 function pintarNuevaCaja(id,tipoCaja,id_padre,tipoRelacion,contenido){
 
 	if(tipoCaja==protocolo.TYPE_NORMAL_BOX){//normal
-	
-		var nuevo_texto = 
+
+		var nuevo_texto =
 		id+'=>operation: '+contenido+'\n';
 		codigo = nuevo_texto + codigo;
-	
+
 		if(tipoRelacion==2){//nada
-			
+
 			if(id_padre==0){
 				codigo = codigo +''+id+'\n';
 			}
@@ -304,18 +314,18 @@ function pintarNuevaCaja(id,tipoCaja,id_padre,tipoRelacion,contenido){
 			codigo = codigo +'cond'+id_padre+'(yes, right)->'+id+'\n';
 		}
 		else{//tipoRelacion==1 No
-			
+
 			codigo = codigo +'cond'+id_padre+'(no)->'+id+'\n';
 		}
 	}
 	else{//tipoCaja==1 decisión
-	
-		var nuevo_texto = 
+
+		var nuevo_texto =
 		'cond'+id+'=>condition: '+contenido+'\n';
 		codigo = nuevo_texto + codigo;
-			
+
 		if(tipoRelacion==protocolo.TYPE_DIRECT_DECISION){//directa
-			
+
 			if(id_padre==0){
 				codigo = codigo +'cond'+id+'\n';
 			}
@@ -329,14 +339,14 @@ function pintarNuevaCaja(id,tipoCaja,id_padre,tipoRelacion,contenido){
 		else{//tipoRelacion==1 No
 			codigo = codigo +'cond'+id_padre+'(no)->cond'+id+'\n';
 		}
-		
-		
-		
+
+
+
 	}
 	console.log(codigo);
 	pintarCanvas();
-	
-	
+
+
 }
 
 function pintarNuevaRelacion(id_padre, id_hijo){
@@ -392,8 +402,12 @@ function padre_elegido(){
 function sendToServer(){
 	var cajas = protocolo.getListaCajas();
 	var cajasJSON = JSON.stringify(cajas);
+
         var json_info = document.getElementById('json_info');
         json_info.value = cajasJSON;
+
+        var code = document.getElementById('code');
+        code.value = codigo;
 
 }
 
