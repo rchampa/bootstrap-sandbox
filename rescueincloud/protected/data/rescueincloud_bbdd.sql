@@ -170,7 +170,9 @@ CREATE TABLE IF NOT EXISTS `protocolos` (
   `id_protocolo` int(11) NOT NULL AUTO_INCREMENT,
   `nombre_protocolo` varchar(45) NOT NULL,
   `email_usuario` varchar(45) NOT NULL,
-  `creado_en` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `codigo_parseado` TEXT NOT NULL,
+  `creado_en` timestamp NOT NULL DEFAULT 0,
+  `actualizado_en` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_protocolo`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
@@ -180,7 +182,7 @@ CREATE TABLE IF NOT EXISTS `protocolos` (
 
 INSERT INTO `protocolos` (`id_protocolo`, `nombre_protocolo`, `email_usuario`, `creado_en`) VALUES
 (1, 'manejo de la hipotermia accidental severa', 'ricardocb48@gmail.com', '2014-05-05 17:52:11'),
-(2, 'p', 'user@miuser.com', '2012-12-12 10:12:12');
+(2, 'p', 'user@miuser.com', null);
 
 -- --------------------------------------------------------
 
