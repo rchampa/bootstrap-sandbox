@@ -33,7 +33,15 @@ class ProtocolosController extends ControllerAuth
        //Yii::app()->clientscript->scriptMap["/graph/cajas.js"] = false;
        $this->renderPartial('crear_ajaxContent', compact("result_set"));
     }
-    
+
+    public function actionAlta()
+    {
+
+       $json_info = $_POST['json_info'];
+       $this->render('alta');
+    }
+
+
     public function actionGrafo()
     { 
       $this->render('grafo');  
