@@ -39,8 +39,10 @@ class ProtocolosController extends ControllerAuth
 
        $json_info = $_POST['json_info'];
        $parser_code = $_POST['code'];
+       $email_usuario = Yii::app()->user->getName();
 
-
+       $model = new Protocolos();
+       $model->crear_protocolo($json_info, $parser_code, $email_usuario);
 
        $this->redirect(Yii::app()->user->returnUrl."protocolos");
     }
