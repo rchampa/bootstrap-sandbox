@@ -271,7 +271,7 @@ ALTER TABLE `cajatexto`
 -- Filtros para la tabla `cajatexto_hijos`
 --
 ALTER TABLE `cajatexto_hijos`
-  ADD CONSTRAINT `fk_CajaTexto_has_CajaTexto1_CajaTexto1` FOREIGN KEY (`id_protocolo`) REFERENCES `cajatexto` (`id_protocolo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_CajaTexto_has_CajaTexto1_CajaTexto1` FOREIGN KEY (`id_protocolo`) REFERENCES `protocolos` (`id_protocolo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `notas`
