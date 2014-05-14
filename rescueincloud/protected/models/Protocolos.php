@@ -24,20 +24,27 @@ class Protocolos {
         $transaction=$this->connection->beginTransaction();
         try
         {
-
-            $sql = "SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'rescueincloud' AND TABLE_NAME = 'protocolos'";
-            $next_protocolo_id = $this->connection->createCommand($sql)->queryRow();
-            $next_protocolo_id = $next_protocolo_id['AUTO_INCREMENT'];
-
             $data = json_decode($json_info);
-
             $nombre_protocolo= $data[0]->contenido;
 
             $sql="INSERT INTO protocolos (nombre_protocolo, email_usuario, codigo_parseado, creado_en) ";
             $sql.="VALUES ('".$nombre_protocolo."','".$email_usuario."','".$parser_code."',null)";
 
-            $row_count = $this->connection->createCommand($sql)->execute();
+            $db = $this->connection->createCommand($sql);
+            $row_count = $db->execute();
+            $next_protocolo_id = $this->connection->getLastInsertID();
+            
+//            $sql = "SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'rescueincloud' AND TABLE_NAME = 'protocolos'";
+//            $next_protocolo_id = $this->connection->createCommand($sql)->queryRow();
+//            $next_protocolo_id = $next_protocolo_id['AUTO_INCREMENT'];
+//
+//            $sql = "SELECT LAST_INSERT_ID()";
+//            $next_protocolo_id = $this->connection->createCommand($sql)->queryRow();
+//            $next_protocolo_id = $next_protocolo_id['AUTO_INCREMENT'];
 
+
+
+            
 
             /*
             "INSERT INTO `cajatexto` (`id_caja_texto`, `tipo`, `contenido`, `id_protocolo`) VALUES
