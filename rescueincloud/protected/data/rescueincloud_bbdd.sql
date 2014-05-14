@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 05-05-2014 a las 19:53:14
+-- Tiempo de generación: 14-05-2014 a las 00:36:10
 -- Versión del servidor: 5.5.36
 -- Versión de PHP: 5.4.27
 
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de datos: `rescueincloud`
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `cajatexto` (
   `id_protocolo` int(11) NOT NULL,
   PRIMARY KEY (`id_caja_texto`,`id_protocolo`),
   KEY `fk_CajaTexto_Protocolos` (`id_protocolo`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `cajatexto`
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `cajatexto_hijos` (
   `relacion` tinyint(2) NOT NULL,
   PRIMARY KEY (`id`,`id_protocolo`),
   KEY `fk_CajaTexto_has_CajaTexto1_CajaTexto1` (`id_protocolo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=8 ;
 
 --
 -- Volcado de datos para la tabla `cajatexto_hijos`
@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `farmacos_propios` (
   PRIMARY KEY (`id_farmaco`),
   UNIQUE KEY `id_farmaco` (`id_farmaco`),
   UNIQUE KEY `nombre_farmaco` (`nombre_farmaco`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=5 ;
 
 --
 -- Volcado de datos para la tabla `farmacos_propios`
@@ -127,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `farmacos_publicos` (
   PRIMARY KEY (`id_farmaco`),
   UNIQUE KEY `id_farmaco` (`id_farmaco`),
   UNIQUE KEY `nombre_farmaco` (`nombre_farmaco`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=8 ;
 
 --
 -- Volcado de datos para la tabla `farmacos_publicos`
@@ -154,11 +154,22 @@ CREATE TABLE IF NOT EXISTS `notas` (
   `email_usuario` varchar(100) NOT NULL,
   `descripcion` text NOT NULL,
   `nota_creada_en` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `nota_modificada_en` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `nota_modificada_en` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `borrado` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_nota`,`email_usuario`),
   KEY `notas_ibfk_1` (`email_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=6 ;
+
+--
+-- Volcado de datos para la tabla `notas`
+--
+
+INSERT INTO `notas` (`id_nota`, `nombre_nota`, `email_usuario`, `descripcion`, `nota_creada_en`, `nota_modificada_en`, `borrado`) VALUES
+(1, 'Nota1 de esta sólido', 'ricardocb48@gmail.com', 'Esta es una descripción 1', '2014-05-13 13:07:27', '2014-05-13 13:24:31', 0),
+(2, 'Nota2', 'ricardocb48@gmail.com', 'Esta es una descripción 2', '2014-05-13 13:08:24', '2014-05-13 13:08:24', 0),
+(3, 'Nota3', 'ricardocb48@gmail.com', 'Esta es una descripción 3', '2014-05-13 13:08:24', '2014-05-13 13:08:24', 0),
+(4, 'Nota4', 'ricardocb48@gmail.com', 'Esta es una descripción 4', '2014-05-13 13:08:24', '2014-05-13 13:08:24', 0),
+(5, 'Nota5', 'ricardocb48@gmail.com', 'Esta es una descripción 5', '2014-05-13 13:08:24', '2014-05-13 13:08:24', 0);
 
 -- --------------------------------------------------------
 
@@ -170,19 +181,19 @@ CREATE TABLE IF NOT EXISTS `protocolos` (
   `id_protocolo` int(11) NOT NULL AUTO_INCREMENT,
   `nombre_protocolo` varchar(45) NOT NULL,
   `email_usuario` varchar(45) NOT NULL,
-  `codigo_parseado` TEXT NOT NULL,
-  `creado_en` timestamp NOT NULL DEFAULT 0,
+  `codigo_parseado` text NOT NULL,
+  `creado_en` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `actualizado_en` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_protocolo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `protocolos`
 --
 
-INSERT INTO `protocolos` (`id_protocolo`, `nombre_protocolo`, `email_usuario`, `creado_en`) VALUES
-(1, 'manejo de la hipotermia accidental severa', 'ricardocb48@gmail.com', '2014-05-05 17:52:11'),
-(2, 'p', 'user@miuser.com', null);
+INSERT INTO `protocolos` (`id_protocolo`, `nombre_protocolo`, `email_usuario`, `codigo_parseado`, `creado_en`, `actualizado_en`) VALUES
+(1, 'manejo de la hipotermia accidental severa', 'ricardocb48@gmail.com', '', '2014-05-05 17:52:11', '2014-05-13 13:04:58'),
+(2, 'p', 'user@miuser.com', '', '2014-05-13 13:04:58', '2014-05-13 13:04:58');
 
 -- --------------------------------------------------------
 
@@ -197,7 +208,7 @@ CREATE TABLE IF NOT EXISTS `rel1n_farmacos_propios_usuarios` (
   `rel_actualizada_en` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`email_usuario`,`id_farmaco`),
   KEY `id_farmaco` (`id_farmaco`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `rel1n_farmacos_propios_usuarios`
@@ -219,7 +230,7 @@ CREATE TABLE IF NOT EXISTS `relnm_farmacos_publicos_usuarios` (
   `rel_actualizada_en` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`email_usuario`,`id_farmaco`),
   KEY `id_farmaco` (`id_farmaco`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `relnm_farmacos_publicos_usuarios`
@@ -237,7 +248,6 @@ INSERT INTO `relnm_farmacos_publicos_usuarios` (`email_usuario`, `id_farmaco`, `
 
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `email_usuario` varchar(100) NOT NULL,
-  `dni` varchar(9) NOT NULL,
   `nombre` varchar(30) NOT NULL,
   `apellidos` varchar(30) NOT NULL,
   `genero` tinyint(1) NOT NULL,
@@ -247,15 +257,15 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `usuario_actualizado_en` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `borrado` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`email_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`email_usuario`, `dni`, `nombre`, `apellidos`, `genero`, `fecha_nacimiento`, `centro_trabajo`, `usuario_creado_en`, `usuario_actualizado_en`, `borrado`) VALUES
-('ale7jandra.89@gmail.com', '09135127X', 'Alejandra', 'González ', 2, '1989-08-03', 'Bayes', '2013-11-17 23:00:00', '0000-00-00 00:00:00', 0),
-('ricardocb48@gmail.com', '51716889Ñ', 'Ricardo', 'Champa', 1, '1988-04-04', 'REDK', '2013-11-15 15:02:18', '0000-00-00 00:00:00', 0);
+INSERT INTO `usuarios` (`email_usuario`, `nombre`, `apellidos`, `genero`, `fecha_nacimiento`, `centro_trabajo`, `usuario_creado_en`, `usuario_actualizado_en`, `borrado`) VALUES
+('ale7jandra.89@gmail.com', 'Alejandra', 'González ', 2, '1989-08-03', 'Bayes', '2013-11-17 23:00:00', '0000-00-00 00:00:00', 0),
+('ricardocb48@gmail.com', 'Ricardo', 'Champa', 1, '1988-04-04', 'REDK', '2013-11-15 15:02:18', '0000-00-00 00:00:00', 0);
 
 --
 -- Restricciones para tablas volcadas
