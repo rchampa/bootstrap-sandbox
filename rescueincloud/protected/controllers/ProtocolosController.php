@@ -1,5 +1,5 @@
 <?php
-
+header("Content-Type: text/html;charset=utf-8");
 class ProtocolosController extends ControllerAuth
 {
     //public $layout = 'webroot.themes.layoutit.views.layouts.plantilla';

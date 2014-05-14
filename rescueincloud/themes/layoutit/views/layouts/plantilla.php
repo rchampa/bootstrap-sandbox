@@ -1,7 +1,8 @@
+<?php header("Content-type: text/html; charset=utf-8");?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
   <title>MS in cloud</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
