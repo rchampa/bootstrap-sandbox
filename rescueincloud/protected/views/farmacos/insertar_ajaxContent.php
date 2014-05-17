@@ -12,26 +12,32 @@
           <div class="form-group">
             <label for="InputNombre">Nombre Fármaco:</label>
             <div class="input-group">
-              <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Introduce aquí el nombre del fármaco" required>
+              <input type="text" class="form-control" name="InputNombre" id="InputNombre" placeholder="Introduce aquí el nombre del fármaco" required>
               <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span></div>
           </div>
           <div class="form-group">
             <label for="InputFabricante">Nombre Fabricante:</label>
             <div class="input-group">
-              <input type="text" class="form-control" id="InputEmail" name="InputFabricante" placeholder="Introduce aquí el nombre del fabricante" required  >
+              <input type="text" class="form-control" id="InputFabricante" name="InputFabricante" placeholder="Introduce aquí el nombre del fabricante" required  >
               <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span></div>
           </div>
           <div class="form-group">
-            <label for="InputMessage">Message</label>
+            <label for="InputPresentacion">Formato en el que se presenta el fármaco:</label>
             <div class="input-group">
-              <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" ></textarea>
+              <input type="text" class="form-control" id="InputPresentacion" name="InputPresentacion" placeholder="Introduce aquí la presentación del fármaco" required  >
+              <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span></div>
+          </div>
+          <div class="form-group">
+            <label for="InputPresentacion">Tipo de administración del fármaco:</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="InputAdministracion" name="InputAdministracion" placeholder="Introduce aquí el tipo de administración fármaco" required  >
+              <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span></div>
+          </div>
+          <div class="form-group">
+            <label for="InputMessage">Descripción Fármaco</label>
+            <div class="input-group">
+                <textarea name="InputMessage" id="InputMessage" class="form-control" rows="4" cols="76" ></textarea>
               <span class="input-group"></span></div>
-          </div>
-          <div class="form-group">
-            <label for="InputReal">What is 4+3? (Simple Spam Checker)</label>
-            <div class="input-group">
-              <input type="text" class="form-control" name="InputReal" id="InputReal" required>
-              <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span></div>
           </div>
           <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
         </div>

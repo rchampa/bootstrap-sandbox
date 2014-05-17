@@ -35,6 +35,10 @@ class Farmacos {
         return $result_rows;
     }
     
+    public function add_farmacos_propios($data,$email_usuario){
+        
+        return 999;
+    }
 }
 
 ?>

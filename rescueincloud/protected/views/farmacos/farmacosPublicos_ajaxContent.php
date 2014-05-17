@@ -50,7 +50,7 @@
                             -->
                             <?php 
                                 echo CHtml::ajaxLink(
-                                        '<i class="glyphicon glyphicon-user"></i> Listar protocolos', // The text for the anchor tag
+                                        '<i class="glyphicon glyphicon-user"></i> Añadir a Mis Fármacos', // The text for the anchor tag
                                         Yii::app()->createUrl('/farmacos/actualizar'), // The url for the ajax request
                                         array( // The ajaxOptions (jQuery stuff)
                                                 'data' => $dato["id_farmaco"],

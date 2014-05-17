@@ -45,8 +45,14 @@ class FarmacosController extends Controller
         //bbdd borras fila segun id
         $email_usuario = Yii::app()->user->getName();
         $model = new Farmacos();
-        $result_set = $model->listar_farmacos_propios(0, 3, $email_usuario);
-        $this->renderPartial('farmacosPublicos_ajaxContent', compact("result_set"), false, true);
+        $result_ins = $model->add_farmacos_propios($data,$email_usuario);
+        if ($result_ins == 999) {
+            die(MAAAAAAAAAAAAAAAL);
+        }
+        else {
+         $result_set = $model->listar_farmacos_propios(0, 3, $email_usuario);
+         $this->renderPartial('farmacosPublicos_ajaxContent', compact("result_set"), false, true);
+        } 
     }
 }
 
