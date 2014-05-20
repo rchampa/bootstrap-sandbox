@@ -1,7 +1,4 @@
-<div style="height:20px; background: transparent;">
-    <hr style="display:none;" />
-</div>
-<div style="height:10px; background: transparent;">
+<div style="height:30px; background: transparent;">
     <hr style="display:none;" />
 </div>
 <div class="container">
@@ -34,28 +31,15 @@
               <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span></div>
           </div>
           <div class="form-group">
-            <label for="InputMessage">Descripción Fármaco</label>
+            <label for="InputDescripcion">Descripción Fármaco</label>
             <div class="input-group">
-                <textarea name="InputMessage" id="InputMessage" class="form-control" rows="4" cols="76" ></textarea>
+                <textarea name="InputDescripcion" id="InputDescripcion" class="form-control" rows="4" cols="76" ></textarea>
               <span class="input-group"></span></div>
           </div>
 
-          <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
-          <!--
-          <div class="control-group">
-                    <label></label>
-                    <div class="controls">
-                    <form action="<?php echo Yii::app()->createUrl('/farmacos/AltaFarmaco') ?>" method="post" onsubmit="sendToServer()">
-                        <input type="hidden" name="json_info" id="json_info">
-                        <button type="submit" class="btn btn-primary pull-right">Insertar</button>
-                    </form>
-                    </div>
-          </div>
-          -->
-          
+          <input type="submit" name="Insertar" id="Insertar" value="Insertar" class="btn btn-primary pull-right">
           
         </div>
       </form>
       <hr class="featurette-divider hidden-lg">
-    </div>
 </div>

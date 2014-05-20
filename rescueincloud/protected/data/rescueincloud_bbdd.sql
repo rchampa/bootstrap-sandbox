@@ -293,14 +293,12 @@ ALTER TABLE `notas`
 -- Filtros para la tabla `rel1n_farmacos_propios_usuarios`
 --
 ALTER TABLE `rel1n_farmacos_propios_usuarios`
-  ADD CONSTRAINT `rel1M_farmacos_propios_usuarios` FOREIGN KEY (`id_farmaco`) REFERENCES `farmacos_propios` (`id_farmaco`),
   ADD CONSTRAINT `rel1M_farmacos_propios_usuarios_ibfk_1` FOREIGN KEY (`email_usuario`) REFERENCES `usuarios` (`email_usuario`);
 
 --
 -- Filtros para la tabla `relnm_farmacos_publicos_usuarios`
 --
 ALTER TABLE `relnm_farmacos_publicos_usuarios`
-  ADD CONSTRAINT `relNM_farmacos_publicos_usuarios` FOREIGN KEY (`id_farmaco`) REFERENCES `farmacos_publicos` (`id_farmaco`),
   ADD CONSTRAINT `relNM_farmacos_publicos_usuarios_ibfk_1` FOREIGN KEY (`email_usuario`) REFERENCES `usuarios` (`email_usuario`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

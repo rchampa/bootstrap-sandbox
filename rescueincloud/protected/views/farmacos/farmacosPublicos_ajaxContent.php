@@ -49,14 +49,27 @@
                             </a>
                             -->
                             <?php 
-                                echo CHtml::ajaxLink(
+                                /*echo CHtml::ajaxLink(
                                         '<i class="glyphicon glyphicon-user"></i> Añadir a Mis Fármacos', // The text for the anchor tag
                                         Yii::app()->createUrl('/farmacos/actualizar'), // The url for the ajax request
                                         array( // The ajaxOptions (jQuery stuff)
                                                 'data' => $dato["id_farmaco"],
                                                 'update' => '#partial'
                                         )
-                                );
+                                );*/
+                            echo CHtml::ajaxLink(
+                                    '<i class="glyphicon glyphicon-user"></i> Añadir a Mis Fármacos',
+                                    Yii::app()->createUrl('/farmacos/actualizar'),
+                                    array( // ajaxOptions
+                                      'type' => 'POST',
+                                      'data' => array( 'id_farmaco' =>  $dato["id_farmaco"] )
+                                    )/*,
+                                    array( //htmlOptions
+                                      'href' => Yii::app()->createUrl('/farmacos/farmacosPublicos')
+                                    )*/
+                                  );    
+                                
+                            
                             ?>
                         </td>
                         </tr>
