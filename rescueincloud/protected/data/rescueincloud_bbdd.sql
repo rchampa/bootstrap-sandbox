@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Base de datos: `rescueincloud`
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `cajatexto` (
   `id_protocolo` int(11) NOT NULL,
   PRIMARY KEY (`id_caja_texto`,`id_protocolo`),
   KEY `fk_CajaTexto_Protocolos` (`id_protocolo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `cajatexto`
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `cajatexto_hijos` (
   `relacion` tinyint(2) NOT NULL,
   PRIMARY KEY (`id`,`id_protocolo`),
   KEY `fk_CajaTexto_has_CajaTexto1_CajaTexto1` (`id_protocolo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Volcado de datos para la tabla `cajatexto_hijos`
@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `farmacos_propios` (
   PRIMARY KEY (`id_farmaco`),
   UNIQUE KEY `id_farmaco` (`id_farmaco`),
   UNIQUE KEY `nombre_farmaco` (`nombre_farmaco`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Volcado de datos para la tabla `farmacos_propios`
@@ -127,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `farmacos_publicos` (
   PRIMARY KEY (`id_farmaco`),
   UNIQUE KEY `id_farmaco` (`id_farmaco`),
   UNIQUE KEY `nombre_farmaco` (`nombre_farmaco`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Volcado de datos para la tabla `farmacos_publicos`
@@ -158,7 +158,7 @@ CREATE TABLE IF NOT EXISTS `notas` (
   `borrado` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_nota`,`email_usuario`),
   KEY `notas_ibfk_1` (`email_usuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Volcado de datos para la tabla `notas`
@@ -185,7 +185,7 @@ CREATE TABLE IF NOT EXISTS `protocolos` (
   `creado_en` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `actualizado_en` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_protocolo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `protocolos`
@@ -208,7 +208,7 @@ CREATE TABLE IF NOT EXISTS `rel1n_farmacos_propios_usuarios` (
   `rel_actualizada_en` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`email_usuario`,`id_farmaco`),
   KEY `id_farmaco` (`id_farmaco`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `rel1n_farmacos_propios_usuarios`
@@ -230,7 +230,7 @@ CREATE TABLE IF NOT EXISTS `relnm_farmacos_publicos_usuarios` (
   `rel_actualizada_en` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`email_usuario`,`id_farmaco`),
   KEY `id_farmaco` (`id_farmaco`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `relnm_farmacos_publicos_usuarios`
@@ -257,7 +257,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `usuario_actualizado_en` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `borrado` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`email_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuarios`
