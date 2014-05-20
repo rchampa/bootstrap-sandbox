@@ -411,9 +411,26 @@ function sendToServer(){
 
 }
 
-function loadFromServer(codigo,lista){
-    alert(codigo);
-    alert(lista)
+function loadFromServer(codigo_parseado,lista){
+    
+    mostrarDemo();
+    
+    /*
+    if(codigo_parseado){
+        
+        if (chartR && estadoActual!==Estados.LIMPIO) {
+            chartR.clean();
+        }
+
+        codigo = codigo_parseado;
+        chartR = flowchart.parse(codigo);
+        chartR.drawSVG('canvas', configuracion);
+
+        estadoActual = Estados.EDICION;
+        //alert(lista);
+        //console.log(codigo);
+    }
+    */
 }
 
 function completo(){

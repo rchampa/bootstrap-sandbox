@@ -1,17 +1,3 @@
-<?php
-     
-    $codigo = json_encode($protocolo->getCodigo());
-    $lista_cajas =  json_encode($protocolo->getLista_cajas()); 
-   
-?>
-<script type="text/javascript">
-    
-    var codigo = <?php echo $codigo; ?>;
-    var lista = <?php echo $lista_cajas; ?>;
-    
-    loadFromServer(codigo,lista);
-    
-</script>
 
 <div class="row clearfix">
         <div class="col-md-12 column">
@@ -81,7 +67,7 @@
 
                 </div>
                 <label></label>
-                <div id="canvas"></div>
+                
                 <label></label>
                 <div class="row clearfix">
                   <div class="col-md-4 column">
@@ -130,6 +116,23 @@
                 </div>
 
           </div><!--/panel content-->
+          <div id="canvas"></div>
         </div><!--/panel-->
+        
         </div>
 </div>
+
+<?php
+     
+    $codigo = json_encode($protocolo->getCodigo());
+    $lista_cajas =  json_encode($protocolo->getLista_cajas()); 
+   
+?>
+<script type="text/javascript">
+    
+    var codigo = <?php echo $codigo; ?>;
+    var lista = <?php echo $lista_cajas; ?>;
+    
+    loadFromServer(codigo,lista);
+    
+</script>

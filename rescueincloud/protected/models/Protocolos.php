@@ -57,20 +57,22 @@ class Protocolos {
         $result_ch = $this->connection->createCommand($query_ch)->query();
         foreach($result_ch as $fila) {
             $id_hijo = $fila['id_hijo'];
-            $id_padre = $fila['id_padre'];
-            $relacion = $fila['relacion'];
-            $caja_hijo = $this->buscarCaja($lista_cajas, $id_hijo);
-            $caja_hijo->setRelacion($relacion);
-            $caja_padre = $this->buscarCaja($lista_cajas, $id_padre);
-            $caja_hijo->addPadre($id_padre);
-            if($relacion==0){//Si
-                $caja_padre->setHijoSi($id_hijo);
-            }
-            else if($relacion==1){//No
-                $caja_padre->setHijoNo($id_hijo);
-            }
-            else{//Directa
-                //nothing to do
+            if($id_hijo!=0){
+                $id_padre = $fila['id_padre'];
+                $relacion = $fila['relacion'];
+                $caja_hijo = $this->buscarCaja($lista_cajas, $id_hijo);
+                $caja_hijo->setRelacion($relacion);
+                $caja_padre = $this->buscarCaja($lista_cajas, $id_padre);
+                $caja_hijo->addPadre($id_padre);
+                if($relacion==0){//Si
+                    $caja_padre->setHijoSi($id_hijo);
+                }
+                else if($relacion==1){//No
+                    $caja_padre->setHijoNo($id_hijo);
+                }
+                else{//Directa
+                    //nothing to do
+                }
             }
             
         }
