@@ -411,6 +411,11 @@ function sendToServer(){
 
 }
 
+function loadFromServer(codigo,lista){
+    alert(codigo);
+    alert(lista)
+}
+
 function completo(){
 	alert("Completado");
 }
