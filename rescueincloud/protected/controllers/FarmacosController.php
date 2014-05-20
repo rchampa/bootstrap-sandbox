@@ -41,11 +41,16 @@ class FarmacosController extends Controller
         
     public function actionAltaFarmaco()
     { 
-        $nombre = $_POST['InputNombre'];
+        $nombre_farmaco = $_POST['InputNombre'];
+        $nombre_fabricante = $_POST['InputFabricante'];
+        $presentacion_farmaco = $_POST['InputPresentacion'];
+        $tipo_administracion = $_POST['InputPresentacion'];
+        $descripcion_farmaco = $_POST['InputDescripcion'];
+        
         $email_usuario = Yii::app()->user->getName();
         
         $model = new Farmacos();
-       // $model->insertar_farmaco($json_info, $email_usuario);
+        $model->insertar_farmaco_propio($nombre_farmaco, $nombre_fabricante, $presentacion_farmaco, $tipo_administracion, $descripcion_farmaco, $email_usuario);
         
         $this->redirect(Yii::app()->user->returnUrl."farmacos");
         
@@ -59,15 +64,12 @@ class FarmacosController extends Controller
     { 
         //bbdd borras fila segun id
         $email_usuario = Yii::app()->user->getName();
+        $id_farmaco =  $_POST['id_farmaco'];
         $model = new Farmacos();
-        $result_ins = $model->add_farmacos_propios($data,$email_usuario);
-        if ($result_ins == 999) {
-            die(MAAAAAAAAAAAAAAAL);
-        }
-        else {
-         $result_set = $model->listar_farmacos_propios(0, 3, $email_usuario);
-         $this->renderPartial('farmacosPublicos_ajaxContent', compact("result_set"), false, true);
-        } 
+        $result_ins = $model->add_farmacos_propios($id_farmaco, $email_usuario);
+        
+        $result_set = $model->listar_farmacos_publicos(0, 3);
+        $this->render('farmacosPublicos',compact("result_set"));
     }
 }
 
