@@ -94,8 +94,7 @@ CREATE TABLE IF NOT EXISTS `farmacos_propios` (
   `descripcion_farmaco` varchar(500) NOT NULL,
   `borrado` tinyint(4) NOT NULL,
   PRIMARY KEY (`id_farmaco`),
-  UNIQUE KEY `id_farmaco` (`id_farmaco`),
-  UNIQUE KEY `nombre_farmaco` (`nombre_farmaco`)
+  UNIQUE KEY `id_farmaco` (`id_farmaco`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
@@ -125,8 +124,7 @@ CREATE TABLE IF NOT EXISTS `farmacos_publicos` (
   `descripcion_farmaco` varchar(500) NOT NULL,
   `borrado` tinyint(4) NOT NULL,
   PRIMARY KEY (`id_farmaco`),
-  UNIQUE KEY `id_farmaco` (`id_farmaco`),
-  UNIQUE KEY `nombre_farmaco` (`nombre_farmaco`)
+  UNIQUE KEY `id_farmaco` (`id_farmaco`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --

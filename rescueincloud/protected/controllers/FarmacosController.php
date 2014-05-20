@@ -11,7 +11,7 @@ class FarmacosController extends Controller
         $this->accion = "index";
         $email_usuario = Yii::app()->user->getName();
         $model = new Farmacos();
-        $result_set = $model->listar_farmacos_propios(0, 3, $email_usuario);
+        $result_set = $model->listar_farmacos_propios(0, 5, $email_usuario);
         $this->render('index',compact("result_set"));
     }
        
@@ -25,8 +25,9 @@ class FarmacosController extends Controller
     public function actionFarmacosPublicos()
     { 
         $this->accion = "farmacosPublicos";
+        $email_usuario = Yii::app()->user->getName();
         $model = new Farmacos();
-        $result_set = $model->listar_farmacos_publicos(0, 3);
+        $result_set = $model->listar_farmacos_publicos(0, 5 , $email_usuario);
         $this->render('farmacosPublicos',compact("result_set"));
     }
     
@@ -38,7 +39,8 @@ class FarmacosController extends Controller
         //$this->renderPartial('insertar_ajaxContent', compact("result_set"));
         $this->render('insertar');
     }
-        
+    
+    /* actionAltaFarmaco: Da de alta un fármaco propio. */
     public function actionAltaFarmaco()
     { 
         $nombre_farmaco = $_POST['InputNombre'];
@@ -55,21 +57,25 @@ class FarmacosController extends Controller
         $this->redirect(Yii::app()->user->returnUrl."farmacos");
         
     }   
-        
-
-    /**
-     * Lo que hace este action es crear relacion muahahahah
-     */
+    
+    /* actionActualizar: Da de alta un fármaco propio. */
     public function actionActualizar()
     { 
+        //$this->accion = "farmacosPublicos";
         //bbdd borras fila segun id
         $email_usuario = Yii::app()->user->getName();
         $id_farmaco =  $_POST['id_farmaco'];
-        $model = new Farmacos();
-        $result_ins = $model->add_farmacos_propios($id_farmaco, $email_usuario);
+        $no_farmaco = $_POST['nombre_farmaco'];
+        $no_fabricante = $_POST['nombre_fabricante'];
+        $presentacion = $_POST['presentacion_farmaco'];
+        $tipo_admin = $_POST['tipo_administracion'];
+        $des_farmaco = $_POST['descripcion_farmaco'];
         
-        $result_set = $model->listar_farmacos_publicos(0, 3);
-        $this->render('farmacosPublicos',compact("result_set"));
+        $model = new Farmacos();
+        $result_ins = $model->add_rel_farmacos_propios($id_farmaco, $no_farmaco, $no_fabricante, $presentacion, $tipo_admin, $des_farmaco, $email_usuario);
+           
+        $this->redirect(Yii::app()->user->returnUrl."farmacos");
+        //$this->render('farmacosPublicos',compact("result_set"));
     }
 }
 

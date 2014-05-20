@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
 
-    <title>Rescue in cloud</title>
+    <title>Emergency Medical Service</title>
 
     <!-- Bootstrap core CSS -->
    	<link href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap.min.css" rel="stylesheet">
@@ -42,7 +42,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#">Rescue in cloud</a>
+              <a class="navbar-brand" href="#">Emergency Medical Service</a>
             </div>
             
           </div>
@@ -63,17 +63,17 @@
       </ol>
       <div class="carousel-inner">
         <div class="item active">
-          <img data-src="holder.js/900x500/auto/#777:#7a7a7a/text:First slide" alt="First slide">
+          <img data-src="holder.js/900x500/auto/#777:#7a7a7a/text:EMS" alt="First slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Rescue In Cloud</h1>
+              <h1>Emergency Medical Service</h1>
               <p>Accede a una herramineta creada para servicios médicos de emergencia.</p>
               <p><a class="btn btn-lg btn-primary" href="<?php echo Yii::app()->request->baseUrl; ?>/init/login" role="button">Sign up today</a></p>
             </div>
           </div>
         </div>
         <div class="item">
-          <img data-src="holder.js/900x500/auto/#666:#6a6a6a/text:Second slide" alt="Second slide">
+          <img data-src="holder.js/900x500/auto/#666:#6a6a6a/text:EMS" alt="Second slide">
           <div class="container">
             <div class="carousel-caption">
               <h1>Fármacos</h1>
@@ -83,7 +83,7 @@
           </div>
         </div>
         <div class="item">
-          <img data-src="holder.js/900x500/auto/#555:#5a5a5a/text:Third slide" alt="Third slide">
+          <img data-src="holder.js/900x500/auto/#555:#5a5a5a/text:EMS" alt="Third slide">
           <div class="container">
             <div class="carousel-caption">
               <h1>Protocolos</h1>
@@ -110,19 +110,19 @@
         <div class="col-lg-4">
           <img class="img-circle" data-src="holder.js/140x140" alt="Generic placeholder image">
           <h2>Fármacos</h2>
-          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+          <p>EMS te permite crear, añadir y editar fármacos.</p>
           <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
           <img class="img-circle" data-src="holder.js/140x140" alt="Generic placeholder image">
           <h2>Protocolos</h2>
-          <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+          <p>Prueba la herramienta que EMS ofrece para la creación de protocolos de actuación.</p>
           <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
           <img class="img-circle" data-src="holder.js/140x140" alt="Generic placeholder image">
           <h2>Notas de intervención</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p>Utiliza esta herramienta para visualizar las notas que efectúas en una intervención mediante tu aplicación Android.</p>
           <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
       </div><!-- /.row -->

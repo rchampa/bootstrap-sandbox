@@ -39,7 +39,7 @@
 		<div class="col-md-12 column">
 			<div class="page-header">
 				<h1>
-					Medical service in cloud <small>Servicio de emergencia</small>
+					Emergency Medical Service in cloud <small>Servicio de emergencia</small>
 				</h1>
 			</div>
 			<div class="tabbable" id="tabs-152783">
@@ -79,7 +79,7 @@
 
 	<hr class="featurette-divider">
 	<footer>
-        <p>&copy; Medical service in cloud Company 2013-2014</p>
+        <p>&copy; Emergency Medical Service in cloud Company 2013-2014</p>
     </footer>
 </div>
 </body>

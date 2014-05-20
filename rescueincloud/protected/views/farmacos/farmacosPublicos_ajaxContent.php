@@ -62,11 +62,17 @@
                                     Yii::app()->createUrl('/farmacos/actualizar'),
                                     array( // ajaxOptions
                                       'type' => 'POST',
-                                      'data' => array( 'id_farmaco' =>  $dato["id_farmaco"] )
-                                    )/*,
+                                      'data' => array( 'id_farmaco' =>  $dato["id_farmaco"],
+                                                       'nombre_farmaco' =>  $dato["nombre_farmaco"],
+                                                       'nombre_fabricante' =>  $dato["nombre_fabricante"],
+                                                       'presentacion_farmaco' =>  $dato["presentacion_farmaco"],
+                                                       'tipo_administracion' =>  $dato["tipo_administracion"],
+                                                       'descripcion_farmaco' =>  $dato["descripcion_farmaco"]
+                                                     )
+                                    ),
                                     array( //htmlOptions
                                       'href' => Yii::app()->createUrl('/farmacos/farmacosPublicos')
-                                    )*/
+                                    )
                                   );    
                                 
                             

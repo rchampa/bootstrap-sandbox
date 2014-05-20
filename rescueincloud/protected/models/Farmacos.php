@@ -22,12 +22,22 @@ class Farmacos {
         return $result_rows;
     }
     
-    public function listar_farmacos_publicos($ini, $lenght){
+    public function listar_farmacos_publicos($ini, $lenght, $email_usuario){
        
         $sql="SELECT pub.* 
               FROM farmacos_publicos pub 
-              LEFT JOIN farmacos_propios pro 
-                     ON pub.id_farmaco = pro.id_farmaco
+              LEFT JOIN 
+                    (
+                      SELECT fpr.* 
+                        FROM rel1n_farmacos_propios_usuarios rel,
+                             farmacos_propios fpr
+                       WHERE fpr.id_farmaco = rel.id_farmaco
+                         AND rel.email_usuario = '".$email_usuario."'
+                    ) pro 
+                     ON pub.nombre_farmaco       = pro.nombre_farmaco
+                    AND pub.nombre_fabricante    = pro.nombre_fabricante
+                    AND pub.presentacion_farmaco = pro.presentacion_farmaco
+                    AND pub.tipo_administracion  = pro.tipo_administracion
               WHERE pro.id_farmaco is NULL";
         $sql.=" LIMIT ".$ini.", ".$lenght;
         $result_rows=$this->connection->createCommand($sql)->queryAll();
@@ -35,21 +45,30 @@ class Farmacos {
         return $result_rows;
     }
     
-    public function add_farmacos_propios($id_farmaco, $email_usuario){
-        
+    
+    public function add_rel_farmacos_publicos($id_farmaco, $no_farmaco, $no_fabricante, $presentacion, $tipo_admin, $des_farmaco, $email_usuario){
         $transaction=$this->connection->beginTransaction();
         try
         {
-            $sqlRel="INSERT INTO rel1n_farmacos_propios_usuarios VALUES ('".$email_usuario."', ".$id_farmaco.", now(), '0000-00-00 00:00:00');";  
+            $sqlRel="INSERT INTO relnm_farmacos_publicos_usuarios VALUES ('".$email_usuario."', ".$id_farmaco.", now(), '0000-00-00 00:00:00');";  
             $commandRel=$this->connection->createCommand($sqlRel);
             $row_countRel = $commandRel->execute();
             
-        }
-        catch(Exception $e) // se arroja una excepción si una consulta falla
+        } catch (Exception $ex) 
         {
             $transaction->rollBack();
         }
     }
+    
+    
+    
+    public function add_rel_farmacos_propios($id_farmaco, $no_farmaco, $no_fabricante, $presentacion, $tipo_admin, $des_farmaco, $email_usuario){
+        
+        $res = $this->insertar_farmaco_propio($no_farmaco, $no_fabricante, $presentacion, $tipo_admin, $des_farmaco, $email_usuario);
+          
+    }
+    
+    
     
     public function insertar_farmaco_propio($nombre_farmaco, $nombre_fabricante, $presentacion_farmaco, $tipo_administracion, $descripcion_farmaco, $email_usuario){
         

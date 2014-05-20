@@ -9,7 +9,7 @@
                                             Protocolos
                                     </h3>
                                     <p>
-                                            Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                                            Prueba la herramienta que EMS ofrece para la creación de protocolos de actuación.
                                     </p>
                                     <p>
                                             <a class="btn btn-primary" href="./protocolos">Ir a protocolos</a>
@@ -25,7 +25,7 @@
                                             Fármacos
                                     </h3>
                                     <p>
-                                            Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                                            EMS te permite crear, añadir y editar fármacos.
                                     </p>
                                     <p>
                                             <a class="btn btn-primary" href="./farmacos">Ir a fármacos</a>
@@ -38,10 +38,10 @@
                             <img style="width: 600px; height: 200px;" src="<?php echo Yii::app()->request->baseUrl; ?>/img/notas.png">
                             <div class="caption">
                                     <h3>
-                                            Notas
+                                            Notas de Intervención
                                     </h3>
                                     <p>
-                                            Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                                            Utiliza esta herramienta para visualizar las notas que efectúas en una intervención mediante tu aplicación Android.
                                     </p>
                                     <p>
                                             <a class="btn btn-primary" href="./notas">Ir a notas</a>
