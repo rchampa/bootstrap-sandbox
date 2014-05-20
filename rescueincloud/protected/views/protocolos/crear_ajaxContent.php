@@ -21,33 +21,29 @@
                <div class="controls">
                   <button id="empezar" type="button" class="btn btn-success" onclick="empezar()" >Empezar nuevo protocolo</button>
                </div>
-
-                
                 <label></label>
                 <div class="control-group">
-                  
+                  <label></label>
+                  <label>Nueva caja</label>
                   <div class="row clearfix">
                         <div class="col-md-4 column">
-                        <label>Nueva caja</label>
-                        <div class="controls">
-                          <select class="form-control" id="padres" onchange="padre_elegido()" >
-                                <option selected value="-1" >--- Es hijo de ---</option>
-                          </select>
-                        </div>
+                            <div class="controls">
+                                <select class="form-control" id="padres" onchange="padre_elegido()" >
+                                      <option selected value="-1" >--- Es hijo de ---</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="col-md-4 column">
-                          <label></label>
-                        <div class="controls">
-                          <select class="form-control" id="tipo_decision" >
-                              <option selected value="-1">--- Elige tipo de decisión ---</option>
-                              <option value="0">Si</option>
-                              <option value="1">No</option>
-                              <option value="2">Directa</option>
-                        </select>
-                        </div>
+                            <div class="controls">
+                                <select class="form-control" id="tipo_decision" >
+                                    <option selected value="-1">--- Elige tipo de decisión ---</option>
+                                    <option value="0">Si</option>
+                                    <option value="1">No</option>
+                                    <option value="2">Directa</option>
+                                </select>
+                            </div>
                         </div>
                       <div class="col-md-4 column">
-                        <label></label>
                         <div class="controls">
                           <select class="form-control" id="tipo_caja" name="tipo_caja" >
                                 <option selected value="-1">--- Elige tipo de caja ---</option>
@@ -69,7 +65,8 @@
                    </div>
 
                 </div>
-
+                <label></label>
+                <div id="canvas"></div>
                 <label></label>
                 <div class="row clearfix">
                   <div class="col-md-4 column">
@@ -83,8 +80,8 @@
                     </div>
                   </div>
                   <div class="col-md-4 column">
-                    <label></label>
-                    <div class="text-center">
+                   <label></label>
+                   <div class="text-center">
                    <div class="controls">
                    <button class="btn btn-success" id="crear_relacion" onclick="crearRelacion()" >Crear Relacion</button>
                    </div>
@@ -103,7 +100,7 @@
                 </div>
 
                 <label></label>
-                <div id="canvas"></div>
+                
 
                 <div class="control-group">
                     <label></label>
