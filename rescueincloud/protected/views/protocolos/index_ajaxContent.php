@@ -18,7 +18,18 @@
                             $id = $dato["id_protocolo"];
                             ?>
                             <tr>
-                                <td><a href="<?php echo Yii::app()->createUrl('/protocolos/editar/'.$id) ?>"><?php echo $id ?></a></td>
+                                <td>
+                                <?php   
+                                    echo CHtml::ajaxLink(
+                                        $id, // The text for the anchor tag
+                                        Yii::app()->createUrl('/protocolos/editar/'.$id), // The url for the ajax request
+                                        array( // The ajaxOptions (jQuery stuff)
+                                                'update' => '#partial' // Page will output json to parse
+                                        )
+                                    );
+                                        
+                                 ?>
+                                </td>
                             <td><?php echo $dato["nombre_protocolo"] ?></td>
                              </tr>
                             <?php 

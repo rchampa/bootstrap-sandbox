@@ -50,9 +50,13 @@ class ProtocolosController extends ControllerAuth
 
     public function actionEditar($id)
     { 
-       $this->accion = "editar";
-       $result_set = "";
-       $this->renderPartial('crear_ajaxContent', compact("result_set"));
+       $email_usuario = Yii::app()->user->getName();
+       $this->accion = "actualizar";
+       $model = new Protocolos();
+       
+       $protocolo = $model->obtener_protocolo($id, $email_usuario);
+       
+       $this->renderPartial('actualizar_ajaxContent', compact("protocolo"));
     }
     
 }

@@ -18,6 +18,79 @@ class Protocolos {
         
         return $result_rows;
     }
+    
+    public function obtener_protocolo($id_protocolo, $email_usuario){
+        
+        $query_protocolo =    "SELECT * FROM protocolos WHERE ".
+                    "id_protocolo=".$id_protocolo." AND ".
+                    "email_usuario='".$email_usuario."'";
+        
+        $result_protocolo= $this->connection->createCommand($query_protocolo)->queryRow();
+        $codigo = $result_protocolo['codigo_parseado'];
+        
+        
+        $query_ct =    "SELECT ct.*
+                    FROM protocolos p
+                    INNER JOIN cajatexto ct ON ct.id_protocolo=p.id_protocolo
+                    WHERE 
+                    p.email_usuario='".$email_usuario."' AND 
+                    p.id_protocolo=".$id_protocolo;
+        
+        $result_ct = $this->connection->createCommand($query_ct)->query();
+        $lista_cajas = array();
+        foreach($result_ct as $fila) {
+            $id = $fila['id_caja_texto'];
+            $tipo = $fila['tipo'];
+            $contenido = $fila['contenido'];
+            $caja = new Caja($id, $tipo, $contenido);
+            array_push($lista_cajas, $caja);
+        }
+        
+       
+        $query_ch =    "SELECT ch.*
+                    FROM protocolos p
+                    INNER JOIN cajatexto_hijos ch ON p.id_protocolo=ch.id_protocolo
+                    WHERE 
+                    p.email_usuario='".$email_usuario."' AND 
+                    p.id_protocolo=".$id_protocolo;
+        
+        $result_ch = $this->connection->createCommand($query_ch)->query();
+        foreach($result_ch as $fila) {
+            $id_hijo = $fila['id_hijo'];
+            $id_padre = $fila['id_padre'];
+            $relacion = $fila['relacion'];
+            $caja_hijo = $this->buscarCaja($lista_cajas, $id_hijo);
+            $caja_hijo->setRelacion($relacion);
+            $caja_padre = $this->buscarCaja($lista_cajas, $id_padre);
+            $caja_hijo->addPadre($id_padre);
+            if($relacion==0){//Si
+                $caja_padre->setHijoSi($id_hijo);
+            }
+            else if($relacion==1){//No
+                $caja_padre->setHijoNo($id_hijo);
+            }
+            else{//Directa
+                //nothing to do
+            }
+            
+        }
+        
+        $protocolo = new ProtocoloVO($lista_cajas, $codigo);
+        
+        return $protocolo;
+        
+    }
+    
+    
+    private function buscarCaja($lista,$id){
+        
+        foreach($lista as $caja) {
+            if($caja->getId()==$id){
+                return $caja;
+            }
+        }
+        return null;
+    }
 
     public function crear_protocolo($json_info, $parser_code, $email_usuario){
 

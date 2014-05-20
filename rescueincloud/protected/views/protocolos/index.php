@@ -95,9 +95,12 @@
             $this->renderPartial('index_ajaxContent', array('result_set'=>$result_set)); 
         }
         else if($this->accion==="crear"){
-            //echo "<script type='text/javascript' src='".Yii::app()->baseUrl."/js/graph/cajas.js'></script>";
             $this->renderPartial('crear_ajaxContent', array('prueba'=>'hola'));
         }
+        else if($this->accion==="actualizar"){
+            $this->renderPartial('actualizar_ajaxContent', array('protocolo'=>$protocolo));
+        }
+        
         ?>
             
         </div>
