@@ -110,7 +110,6 @@ function empezar(){
 
 	var nombre_protocolo = document.getElementById('texto').value;
 	codigo = 'st=>start: '+nombre_protocolo+'\n'+
-		'e=>end: Fin del protocolo\n'+
 		'\n'+
 		'st->';
 
@@ -415,7 +414,7 @@ function loadFromServer(codigo_parseado,lista){
     
     mostrarDemo();
     
-    /*
+    
     if(codigo_parseado){
         
         if (chartR && estadoActual!==Estados.LIMPIO) {
@@ -430,7 +429,7 @@ function loadFromServer(codigo_parseado,lista){
         //alert(lista);
         //console.log(codigo);
     }
-    */
+    
 }
 
 function completo(){
