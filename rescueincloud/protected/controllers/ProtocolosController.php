@@ -48,9 +48,11 @@ class ProtocolosController extends ControllerAuth
     }
 
 
-    public function actionGrafo()
+    public function actionEditar($id)
     { 
-      $this->render('grafo');  
+       $this->accion = "editar";
+       $result_set = "";
+       $this->renderPartial('crear_ajaxContent', compact("result_set"));
     }
     
 }

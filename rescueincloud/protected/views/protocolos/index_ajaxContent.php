@@ -3,27 +3,23 @@
 <table class="table table-hover table-bordered">
             <thead>
                     <tr>
-                            <th>
-                                    ID
-                            </th>
-                            <th>
-                                    Nombre
-                            </th>
-                            <th>
-                                    Descripción
-                            </th>
+                        <th>
+                        ID
+                        </th>
+                        <th>
+                        Nombre del protocolo
+                        </th>
                     </tr>
             </thead>
             <tbody>
                         <?php
-                        $i=0;
                         foreach($result_set as $dato)
                         {
+                            $id = $dato["id_protocolo"];
                             ?>
                             <tr>
-                            <td><?php echo $i++ ?></td>
+                                <td><a href="<?php echo Yii::app()->createUrl('/protocolos/editar/'.$id) ?>"><?php echo $id ?></a></td>
                             <td><?php echo $dato["nombre_protocolo"] ?></td>
-                             <td></td>
                              </tr>
                             <?php 
                         }
