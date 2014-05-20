@@ -6,7 +6,7 @@
 </div>
 <div class="container">
     <div class="row">
-      <form role="form" action="" method="post" >
+      <form role="form" action="<?php echo Yii::app()->createUrl('/farmacos/AltaFarmaco') ?>" method="post" >
         <d1iv class="col-lg-6">
           <div class="well well-sm"><strong><i class="glyphicon glyphicon-ok form-control-feedback"></i> Los campos acompañados de este símbolo son obligatorios.</strong></div>
           <div class="form-group">
@@ -40,7 +40,8 @@
               <span class="input-group"></span></div>
           </div>
 
-          <!--<input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right"> -->
+          <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
+          <!--
           <div class="control-group">
                     <label></label>
                     <div class="controls">
@@ -50,7 +51,7 @@
                     </form>
                     </div>
           </div>
-          
+          -->
           
           
         </div>

@@ -41,11 +41,11 @@ class FarmacosController extends Controller
         
     public function actionAltaFarmaco()
     { 
-        $json_info = $_POST['json_info'];
+        $nombre = $_POST['InputNombre'];
         $email_usuario = Yii::app()->user->getName();
         
         $model = new Farmacos();
-        $model->insertar_farmaco($json_info, $email_usuario);
+       // $model->insertar_farmaco($json_info, $email_usuario);
         
         $this->redirect(Yii::app()->user->returnUrl."farmacos");
         
