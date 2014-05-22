@@ -21,7 +21,7 @@ class ProtocolosController extends ControllerAuth
         $email_usuario = Yii::app()->user->getName();
         $model = new Protocolos();
         $result_set = $model->listar_protocolos(0, 9, $email_usuario);
-        $this->renderPartial('index_ajaxContent', compact("result_set"), false, true);
+        $this->renderPartial('index_ajaxContent', compact("result_set"));
        
     }
     

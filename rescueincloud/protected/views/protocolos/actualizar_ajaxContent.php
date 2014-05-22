@@ -67,7 +67,7 @@
 
                 </div>
                 <label></label>
-                
+                <div id="canvas"></div>
                 <label></label>
                 <div class="row clearfix">
                   <div class="col-md-4 column">
@@ -116,22 +116,41 @@
                 </div>
 
           </div><!--/panel content-->
-          <div id="canvas"></div>
+          
         </div><!--/panel-->
         
         </div>
 </div>
 
 <?php
+
+    function cajaToArray($caja){
+        $json = array(
+            'id' => $caja->getId(),
+            'padres' => $caja->getPadres(),
+            'tipo' => $caja->getTipo(),
+            'contenido' => $caja->getContenido(),
+            'relacion' => $caja->getRelacion(),
+            'hijo_si' => $caja->getHijo_si(),
+            'hijo_no' => $caja->getHijo_no(),
+            'completo' => $caja->getCompleto(),
+        );
+
+        return $json;
+    }
      
     $codigo = json_encode($protocolo->getCodigo());
-    $lista_cajas =  json_encode($protocolo->getLista_cajas()); 
+    $lista_cajas =  array();
+    
+    foreach($protocolo->getLista_cajas() as $caja) {
+        array_push($lista_cajas, cajaToArray($caja));
+    }
    
 ?>
 <script type="text/javascript">
     
     var codigo = <?php echo $codigo; ?>;
-    var lista = <?php echo $lista_cajas; ?>;
+    var lista = <?php echo json_encode($lista_cajas); ?>;
     
     loadFromServer(codigo,lista);
     

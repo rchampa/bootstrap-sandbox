@@ -7,6 +7,8 @@ class Protocolos {
     public function __construct(){
         $this->connection=new CDbConnection(Yii::app()->db->connectionString,Yii::app()->db->username,Yii::app()->db->password);
         $this->connection->active=true;
+//        $this->connection->charset = Yii::app()->db->charset;
+//        $this->connection->initSQLs = Yii::app()->db->initSQLs;
     }
     
     public function listar_protocolos($ini, $lenght, $email_usuario){
@@ -71,7 +73,7 @@ class Protocolos {
                     $caja_padre->setHijoNo($id_hijo);
                 }
                 else{//Directa
-                    //nothing to do
+                    $caja_padre->completar();
                 }
             }
             

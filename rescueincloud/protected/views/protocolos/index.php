@@ -95,7 +95,7 @@
             $this->renderPartial('index_ajaxContent', array('result_set'=>$result_set)); 
         }
         else if($this->accion==="crear"){
-            $this->renderPartial('crear_ajaxContent', array('prueba'=>'hola'));
+            $this->renderPartial('crear_ajaxContent');
         }
         else if($this->accion==="actualizar"){
             $this->renderPartial('actualizar_ajaxContent', array('protocolo'=>$protocolo));

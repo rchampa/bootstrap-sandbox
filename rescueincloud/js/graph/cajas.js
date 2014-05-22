@@ -412,9 +412,6 @@ function sendToServer(){
 
 function loadFromServer(codigo_parseado,lista){
     
-    mostrarDemo();
-    
-    
     if(codigo_parseado){
         
         if (chartR && estadoActual!==Estados.LIMPIO) {
@@ -426,14 +423,26 @@ function loadFromServer(codigo_parseado,lista){
         chartR.drawSVG('canvas', configuracion);
 
         estadoActual = Estados.EDICION;
-        //alert(lista);
+        
         //console.log(codigo);
+        
+        protocolo = new Protocolo();
+	protocolo.init();
+        
+        for(var i=0; i<lista.length; i++){
+            protocolo.cargarCaja(
+                    lista[i].id,
+                    lista[i].padres,
+                    lista[i].tipo,
+                    lista[i].contenido,
+                    lista[i].relacion,
+                    lista[i].hijo_si,
+                    lista[i].hijo_no,
+                    lista[i].completo);
+        }
+        protocolo.imprimirConsola();
     }
     
-}
-
-function completo(){
-	alert("Completado");
 }
 
 window.onload = function () {

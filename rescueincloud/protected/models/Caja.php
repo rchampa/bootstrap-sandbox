@@ -88,10 +88,18 @@ class Caja {
     
     public function setHijoSi($id){
         $this->hijo_si=$id;
+        
+        if($this->hijo_no != -1){
+            $this->completo=true;
+        }
     }
     
     public function setHijoNo($id){
         $this->hijo_no=$id;
+        
+        if($this->hijo_si != -1){
+            $this->completo=true;
+        }
     }
     
     public function addPadre($id){

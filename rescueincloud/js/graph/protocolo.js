@@ -43,7 +43,26 @@ function Protocolo(){
 		lista_cajas.push(caja);
 		
 		return nuevo_id;
-	}	
+	}
+        
+        this.cargarCaja = function(id,padres,tipo_caja,contenido_caja,relacion,hijo_si,hijo_no,completo){
+
+		var nuevo_id = generadorID();
+		var caja = {
+				id		:	id,
+				padres		:	padres,
+				tipo		:	tipo_caja,
+				contenido	:	contenido_caja,
+				relacion	:	relacion,
+				hijo_si		: 	hijo_si,
+				hijo_no		: 	hijo_no,
+				completo	: 	completo
+			};
+		
+		lista_cajas.push(caja);
+		
+		return nuevo_id;
+	}
 	
 	this.imprimirConsola = function(){
 
