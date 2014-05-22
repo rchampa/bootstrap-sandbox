@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 14-05-2014 a las 00:36:10
+-- Tiempo de generación: 23-05-2014 a las 01:15:26
 -- Versión del servidor: 5.5.36
 -- Versión de PHP: 5.4.27
 
@@ -40,13 +40,10 @@ CREATE TABLE IF NOT EXISTS `cajatexto` (
 --
 
 INSERT INTO `cajatexto` (`id_caja_texto`, `tipo`, `contenido`, `id_protocolo`) VALUES
-(0, 0, 'Nombre del protocolo', 1),
-(1, 1, '¿Una decisión de texto?', 1),
-(2, 1, 'una decision de con el número 5', 1),
-(3, 0, 'la respuesta al la decision con el id 2, la caja anterior', 1),
-(4, 0, 'una respuesta de 25kg', 1),
-(5, 0, 'una respuesta de 30 mg de peso', 1),
-(6, 0, 'un último texto', 1);
+(0, 0, 'canción de fuego', 13),
+(0, 0, 'canción de arena', 14),
+(1, 0, 'palabras con tildes: Lucía', 13),
+(1, 0, 'já jaá', 14);
 
 -- --------------------------------------------------------
 
@@ -62,20 +59,17 @@ CREATE TABLE IF NOT EXISTS `cajatexto_hijos` (
   `relacion` tinyint(2) NOT NULL,
   PRIMARY KEY (`id`,`id_protocolo`),
   KEY `fk_CajaTexto_has_CajaTexto1_CajaTexto1` (`id_protocolo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=33 ;
 
 --
 -- Volcado de datos para la tabla `cajatexto_hijos`
 --
 
 INSERT INTO `cajatexto_hijos` (`id`, `id_protocolo`, `id_hijo`, `id_padre`, `relacion`) VALUES
-(1, 1, 1, 0, 2),
-(2, 1, 2, 1, 0),
-(3, 1, 5, 1, 1),
-(4, 1, 3, 2, 0),
-(5, 1, 4, 2, 1),
-(6, 1, 6, 5, 2),
-(7, 1, 6, 4, 2);
+(29, 13, 0, 0, 0),
+(30, 13, 1, 0, 2),
+(31, 14, 0, 0, 0),
+(32, 14, 1, 0, 2);
 
 -- --------------------------------------------------------
 
@@ -94,8 +88,9 @@ CREATE TABLE IF NOT EXISTS `farmacos_propios` (
   `descripcion_farmaco` varchar(500) NOT NULL,
   `borrado` tinyint(4) NOT NULL,
   PRIMARY KEY (`id_farmaco`),
-  UNIQUE KEY `id_farmaco` (`id_farmaco`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+  UNIQUE KEY `id_farmaco` (`id_farmaco`),
+  UNIQUE KEY `nombre_farmaco` (`nombre_farmaco`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Volcado de datos para la tabla `farmacos_propios`
@@ -105,7 +100,8 @@ INSERT INTO `farmacos_propios` (`id_farmaco`, `nombre_farmaco`, `nombre_fabrican
 (1, 'Aspirina', 'Bayer', '500mg', 'comprimidos', '2014-01-13 22:46:18', '0000-00-00 00:00:00', '', 0),
 (2, 'Diazepam', 'Bayer', 'sobres', 'oral', '2014-01-13 23:27:03', '0000-00-00 00:00:00', '', 0),
 (3, 'Paracetamol', 'Cinfa', 'Comprimidos', 'oral', '2014-01-22 22:07:31', '0000-00-00 00:00:00', '', 0),
-(4, 'Gelocatil', 'Bayer', 'Comprimidos', 'oral', '2014-01-22 22:31:51', '0000-00-00 00:00:00', '', 0);
+(4, 'Gelocatil', 'Bayer', 'Comprimidos', 'oral', '2014-01-22 22:31:51', '0000-00-00 00:00:00', '', 0),
+(5, 'prueba', 'canción', 'de una vez y la niñera', 'de una vez y la niñera', '2014-05-22 22:19:28', '0000-00-00 00:00:00', 'pues algo con tildes, canción.\r\n\r\nAlgo con ñ: niño.', 0);
 
 -- --------------------------------------------------------
 
@@ -124,7 +120,8 @@ CREATE TABLE IF NOT EXISTS `farmacos_publicos` (
   `descripcion_farmaco` varchar(500) NOT NULL,
   `borrado` tinyint(4) NOT NULL,
   PRIMARY KEY (`id_farmaco`),
-  UNIQUE KEY `id_farmaco` (`id_farmaco`)
+  UNIQUE KEY `id_farmaco` (`id_farmaco`),
+  UNIQUE KEY `nombre_farmaco` (`nombre_farmaco`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
@@ -156,7 +153,7 @@ CREATE TABLE IF NOT EXISTS `notas` (
   `borrado` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_nota`,`email_usuario`),
   KEY `notas_ibfk_1` (`email_usuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Volcado de datos para la tabla `notas`
@@ -167,7 +164,8 @@ INSERT INTO `notas` (`id_nota`, `nombre_nota`, `email_usuario`, `descripcion`, `
 (2, 'Nota2', 'ricardocb48@gmail.com', 'Esta es una descripción 2', '2014-05-13 13:08:24', '2014-05-13 13:08:24', 0),
 (3, 'Nota3', 'ricardocb48@gmail.com', 'Esta es una descripción 3', '2014-05-13 13:08:24', '2014-05-13 13:08:24', 0),
 (4, 'Nota4', 'ricardocb48@gmail.com', 'Esta es una descripción 4', '2014-05-13 13:08:24', '2014-05-13 13:08:24', 0),
-(5, 'Nota5', 'ricardocb48@gmail.com', 'Esta es una descripción 5', '2014-05-13 13:08:24', '2014-05-13 13:08:24', 0);
+(5, 'Nota5', 'ricardocb48@gmail.com', 'Esta es una descripción 5', '2014-05-13 13:08:24', '2014-05-13 13:08:24', 0),
+(6, 'Canción de fuego', 'ricardocb48@gmail.com', 'pequeña prueba', '0000-00-00 00:00:00', '2014-05-22 21:05:25', 0);
 
 -- --------------------------------------------------------
 
@@ -183,7 +181,7 @@ CREATE TABLE IF NOT EXISTS `protocolos` (
   `creado_en` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `actualizado_en` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_protocolo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
 
 --
 -- Volcado de datos para la tabla `protocolos`
@@ -191,7 +189,8 @@ CREATE TABLE IF NOT EXISTS `protocolos` (
 
 INSERT INTO `protocolos` (`id_protocolo`, `nombre_protocolo`, `email_usuario`, `codigo_parseado`, `creado_en`, `actualizado_en`) VALUES
 (1, 'manejo de la hipotermia accidental severa', 'ricardocb48@gmail.com', '', '2014-05-05 17:52:11', '2014-05-13 13:04:58'),
-(2, 'p', 'user@miuser.com', '', '2014-05-13 13:04:58', '2014-05-13 13:04:58');
+(13, 'canción de fuego', 'ricardocb48@gmail.com', '1=>operation: palabras con tildes: Lucía\r\nst=>start: canción de fuego\r\n\r\nst->1\r\n', '2014-05-22 21:43:55', '2014-05-22 21:43:55'),
+(14, 'canción de arena', 'ricardocb48@gmail.com', '1=>operation: já jaá\r\nst=>start: canción de arena\r\n\r\nst->1\r\n', '2014-05-22 21:48:19', '2014-05-22 21:48:19');
 
 -- --------------------------------------------------------
 
@@ -213,7 +212,8 @@ CREATE TABLE IF NOT EXISTS `rel1n_farmacos_propios_usuarios` (
 --
 
 INSERT INTO `rel1n_farmacos_propios_usuarios` (`email_usuario`, `id_farmaco`, `rel_creada_en`, `rel_actualizada_en`) VALUES
-('ale7jandra.89@gmail.com', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+('ale7jandra.89@gmail.com', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+('ricardocb48@gmail.com', 5, '2014-05-22 22:19:28', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
