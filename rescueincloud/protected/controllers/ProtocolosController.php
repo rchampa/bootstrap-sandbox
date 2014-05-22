@@ -55,8 +55,7 @@ class ProtocolosController extends ControllerAuth
        $model = new Protocolos();
        
        $protocolo = $model->obtener_protocolo($id, $email_usuario);
-       
-       $this->renderPartial('actualizar_ajaxContent', compact("protocolo"));
+       $this->render('index',compact("protocolo"));
     }
     
 }
