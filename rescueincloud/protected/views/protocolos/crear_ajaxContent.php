@@ -20,6 +20,7 @@
                 <label></label>
                <div class="controls">
                   <button id="empezar" type="button" class="btn btn-success" onclick="empezar()" >Empezar nuevo protocolo</button>
+                  <button id="reset" type="button" class="btn btn-success" onclick="reset()" >Reset</button>
                </div>
                 <label></label>
                 <div class="control-group">
@@ -66,7 +67,7 @@
 
                 </div>
                 <label></label>
-                <div id="canvas"></div>
+                <div id="canvas" style="overflow-x: auto;"></div>
                 <label></label>
                 <div class="row clearfix">
                   <div class="col-md-4 column">

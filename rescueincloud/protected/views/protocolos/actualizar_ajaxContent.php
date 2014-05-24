@@ -67,7 +67,7 @@
 
                 </div>
                 <label></label>
-                <div id="canvas"></div>
+                <div id="canvas" style="overflow-x: auto;"></div>
                 <label></label>
                 <div class="row clearfix">
                   <div class="col-md-4 column">
