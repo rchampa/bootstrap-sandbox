@@ -92,7 +92,13 @@
         
         <?php 
         if($this->accion==="index"){
-            $this->renderPartial('index_ajaxContent', array('result_set'=>$result_set)); 
+            $this->renderPartial('index_ajaxContent', array('result_set'=>$result_set,'num_protocolos'=>$num_protocolos)); 
+        }
+        else if($this->accion==="pagina"){
+            $this->renderPartial('index_ajaxContent', 
+            array('result_set'=>$result_set,
+                'num_protocolos'=>$num_protocolos,
+                'num_pagina'=>$num_pagina)); 
         }
         else if($this->accion==="crear"){
             $this->renderPartial('crear_ajaxContent');

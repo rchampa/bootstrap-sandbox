@@ -11,6 +11,15 @@ class Protocolos {
 //        $this->connection->initSQLs = Yii::app()->db->initSQLs;
     }
     
+    public function num_protocolos($email_usuario){
+        
+        $sql="SELECT count(*) FROM protocolos where 1=1 and ";
+        $sql.= "email_usuario='".$email_usuario."' ";
+        $result_rows=$this->connection->createCommand($sql)->queryScalar();
+        
+        return $result_rows;
+    }
+    
     public function listar_protocolos($ini, $lenght, $email_usuario){
         
         $sql="SELECT * FROM protocolos where 1=1 and ";

@@ -33,24 +33,45 @@
     </table>
 <ul class="pagination pagination-sm">
         <li>
-                <a href="#">Prev</a>
+            <a href="#">Anterior</a>
         </li>
+        
+        <?php
+            $num_pag = 1;
+            $num_paginas = ceil($num_protocolos/5);//la funcion ceil redondea hacia arriba
+            
+            $pag_actual = 1;
+            if($this->accion==="pagina"){
+                $pag_actual = $num_pagina;
+            }
+            
+            while($num_pag<=$num_paginas){
+        ?>
+                
+                    <?php
+                    if($num_pag==$pag_actual){
+                    ?>
+                        <li class="active"><a href="#" ><?php echo $num_pag ?></a></li>
+                        
+                    <?php
+                    }
+                    else{
+                        
+                    ?>
+                        <li><a href="<?php echo Yii::app()->createUrl('/protocolos/paginar/'.$num_pag)?>">
+                            <?php echo $num_pag ?>
+                            </a>
+                        </li>
+                    <?php
+                    }
+                    ?>
+                
+        <?php
+                $num_pag = $num_pag +1;
+            }
+        ?>
+                
         <li>
-                <a href="#">1</a>
-        </li>
-        <li>
-                <a href="#">2</a>
-        </li>
-        <li>
-                <a href="#">3</a>
-        </li>
-        <li>
-                <a href="#">4</a>
-        </li>
-        <li>
-                <a href="#">5</a>
-        </li>
-        <li>
-                <a href="#">Next</a>
+            <a href="#">Siguiente</a>
         </li>
 </ul>

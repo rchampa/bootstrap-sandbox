@@ -20,7 +20,7 @@
                 <label></label>
                <div class="controls">
                   <button id="empezar" type="button" class="btn btn-success" onclick="empezar()" >Empezar nuevo protocolo</button>
-                  <button id="reset" type="button" class="btn btn-success" onclick="reset()" >Reset</button>
+                  <button id="reset" type="button" class="btn btn-danger" onclick="reset()" >Reset</button>
                </div>
                 <label></label>
                 <div class="control-group">

@@ -6,13 +6,30 @@ class ProtocolosController extends ControllerAuth
     public $layout = 'plantilla';
     public $accion = "index"; //solo peude tener 4 valores: index, crear, eliminar, buscar
     
+    private $num_protolocos_pagina=5;
+    
     public function actionIndex()
     { 
         $this->accion = "index";
         $email_usuario = Yii::app()->user->getName();
         $model = new Protocolos();
-        $result_set = $model->listar_protocolos(0, 9, $email_usuario);
-        $this->render('index',compact("result_set"));
+        $num_protocolos = $model->num_protocolos($email_usuario);
+        $result_set = $model->listar_protocolos(0, $this->num_protolocos_pagina, $email_usuario);
+        $this->render('index',compact("result_set","num_protocolos"));
+    }
+    
+    public function actionPaginar($id)
+    {         
+        $num_pagina = $id;
+        $this->accion = "pagina";
+        $email_usuario = Yii::app()->user->getName();
+        $model = new Protocolos();
+        $num_protocolos = $model->num_protocolos($email_usuario);
+        $fin = $this->num_protolocos_pagina*$num_pagina;
+        $ini = $fin - $this->num_protolocos_pagina;
+        $result_set = $model->listar_protocolos($ini, $fin, $email_usuario);
+        $this->render('index', compact("result_set","num_protocolos","num_pagina"));
+       
     }
     
     public function actionListar()
@@ -20,8 +37,9 @@ class ProtocolosController extends ControllerAuth
         $this->accion = "index";
         $email_usuario = Yii::app()->user->getName();
         $model = new Protocolos();
-        $result_set = $model->listar_protocolos(0, 9, $email_usuario);
-        $this->renderPartial('index_ajaxContent', compact("result_set"));
+        $num_protocolos = $model->num_protocolos($email_usuario);
+        $result_set = $model->listar_protocolos(0, $this->num_protolocos_pagina, $email_usuario);
+        $this->renderPartial('index_ajaxContent', compact("result_set","num_protocolos"));
        
     }
     
@@ -29,8 +47,6 @@ class ProtocolosController extends ControllerAuth
     { 
        $this->accion = "crear";
        $result_set = "";
-       //echo "<script type='text/javascript' src='".Yii::app()->baseUrl."/js/graph/cajas.js'></script>";
-       //Yii::app()->clientscript->scriptMap["/graph/cajas.js"] = false;
        $this->renderPartial('crear_ajaxContent', compact("result_set"));
     }
 
