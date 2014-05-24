@@ -69,10 +69,10 @@
                                                        'tipo_administracion' =>  $dato["tipo_administracion"],
                                                        'descripcion_farmaco' =>  $dato["descripcion_farmaco"]
                                                      )
-                                    ),
+                                    )/*
                                     array( //htmlOptions
                                       'href' => Yii::app()->createUrl('/farmacos/farmacosPublicos')
-                                    )
+                                    )*/
                                   );    
                                 
                             

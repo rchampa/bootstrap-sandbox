@@ -8,7 +8,7 @@
           <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/farmacos/index"><i class="glyphicon glyphicon-user"></i> Mis Fármacos</a></li>
           
           <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/farmacos/crear"><i class="glyphicon glyphicon-plus"></i> Añadir Fármacos</a></li>
-          <li><a href="#"><i class="glyphicon glyphicon-remove"></i> Eliminar Fármaco</a></li>
+          <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/farmacos/eliminar"><i class="glyphicon glyphicon-remove"></i> Eliminar Fármaco</a></li>
           <li><a href="#"><i class="glyphicon glyphicon-search"></i> Buscar Fármaco</a></li>
         </ul>
 
@@ -26,6 +26,9 @@
         }
         else if($this->accion==="crear"){
            $this->renderPartial('crear_ajaxContent'); 
+        }
+        else if($this->accion==="eliminar"){
+            $this->renderPartial('eliminar_ajaxContent', array('result_set'=>$result_set)); 
         }
         ?>
         

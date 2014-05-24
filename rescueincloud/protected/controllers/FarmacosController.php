@@ -11,7 +11,7 @@ class FarmacosController extends Controller
         $this->accion = "index";
         $email_usuario = Yii::app()->user->getName();
         $model = new Farmacos();
-        $result_set = $model->listar_farmacos_propios(0, 5, $email_usuario);
+        $result_set = $model->listar_farmacos_usuario(0, 5, $email_usuario);
         $this->render('index',compact("result_set"));
     }
        
@@ -20,6 +20,25 @@ class FarmacosController extends Controller
         $this->accion = "crear";
         $model = new Farmacos();
         $this->render('crear');
+    }
+    
+    public function actionEditar($id)
+    { 
+        $this->accion = "actualizar";
+        $email_usuario = Yii::app()->user->getName();
+        $model = new Farmacos();
+       
+        $farmaco = $model->obtener_farmaco($id, $email_usuario);
+        $this->render('index',compact("protocolo"));
+    }
+    
+    public function actionEliminar()
+    { 
+        $this->accion = "eliminar";
+        $email_usuario = Yii::app()->user->getName();
+        $model = new Farmacos();
+        $result_set = $model->listar_farmacos_usuario(0, 5, $email_usuario);
+        $this->render('eliminar',compact("result_set"));
     }
     
     public function actionFarmacosPublicos()
@@ -72,8 +91,8 @@ class FarmacosController extends Controller
         $des_farmaco = $_POST['descripcion_farmaco'];
         
         $model = new Farmacos();
-        $result_ins = $model->add_rel_farmacos_propios($id_farmaco, $no_farmaco, $no_fabricante, $presentacion, $tipo_admin, $des_farmaco, $email_usuario);
-           
+        $result_ins = $model->add_rel_farmacos_publicos($id_farmaco, $no_farmaco, $no_fabricante, $presentacion, $tipo_admin, $des_farmaco, $email_usuario);
+                 
         $this->redirect(Yii::app()->user->returnUrl."farmacos");
         //$this->render('farmacosPublicos',compact("result_set"));
     }

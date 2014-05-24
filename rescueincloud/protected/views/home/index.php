@@ -1,5 +1,8 @@
 <div class="row clearfix">
     <div class="col-md-12 column">
+        <div style="height:10px; background: transparent;">
+            <hr style="display:none;" />
+        </div>
         <div class="row">
             <div class="col-md-4">
                     <div class="thumbnail">
