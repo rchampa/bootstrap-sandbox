@@ -72,7 +72,7 @@ class Farmacos {
         $transaction=$this->connection->beginTransaction();
         try
         {
-            $sqlRel="INSERT INTO relnm_farmacos_publicos_usuarios VALUES ('".$email_usuario."', ".$id_farmaco.", now(), '0000-00-00 00:00:00');";  
+            $sqlRel="INSERT INTO relnm_farmacos_publicos_usuarios VALUES ('".$email_usuario."', ".$id_farmaco.", now(), '0000-00-00 00:00:00', 0);";  
             $commandRel=$this->connection->createCommand($sqlRel);
             $row_countRel = $commandRel->execute();
             
@@ -108,7 +108,7 @@ class Farmacos {
             if ($row_count == 1) {
                 $id_farmaco = $this->connection->getLastInsertID();
                 
-                $sqlRel="INSERT INTO rel1n_farmacos_propios_usuarios VALUES ('".$email_usuario."', ".$id_farmaco.", now(), '0000-00-00 00:00:00');";  
+                $sqlRel="INSERT INTO rel1n_farmacos_propios_usuarios VALUES ('".$email_usuario."', ".$id_farmaco.", now(), '0000-00-00 00:00:00', 0);";  
                 $commandRel=$this->connection->createCommand($sqlRel);
                 $row_countRel = $commandRel->execute();
             }

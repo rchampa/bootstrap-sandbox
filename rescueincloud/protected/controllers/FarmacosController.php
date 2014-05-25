@@ -97,8 +97,9 @@ class FarmacosController extends Controller
         $model = new Farmacos();
         $result_ins = $model->add_rel_farmacos_publicos($id_farmaco, $no_farmaco, $no_fabricante, $presentacion, $tipo_admin, $des_farmaco, $email_usuario);
         
-        $this->redirect(Yii::app()->createUrl('/farmacos'));
-        //$this->redirect(Yii::app()->user->returnUrl."farmacos");
+        /*$this->accion = "index";
+        $result_set = $model->listar_farmacos_usuario(0, 5, $email_usuario);
+        $this->render('index',compact("result_set"));*/
     }
 }
 

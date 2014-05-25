@@ -5,7 +5,10 @@
 <h6>
     <b> · Fármacos públicos encontrados: </b>
 </h6>
-<div style="height:10px; background: transparent;">
+<h6 style="color:#A4A4A4;">
+    Haz click en el botón de la derecha para añadirlo a tus fármacos.
+</h6>
+<div style="height:20px; background: transparent;">
     <hr style="display:none;" />
 </div>
 
@@ -25,7 +28,10 @@
                                 Tipo Administración
                         </th>
                         <th>
-                                
+                                Descripción
+                        </th>
+                        <th>
+                                Opciones
                         </th>
                 </tr>
         </thead>
@@ -41,6 +47,7 @@
                         <td><?php echo $dato["nombre_fabricante"] ?></td>
                         <td><?php echo $dato["presentacion_farmaco"] ?></td>
                         <td><?php echo $dato["tipo_administracion"] ?></td>
+                        <td><?php echo $dato["descripcion_farmaco"] ?></td>
                         <td>
                             <!--
                             <a href="<?php// echo Yii::app()->request->baseUrl; ?>/farmacos/index" class="btn btn-block btn-xs btn-primary">
@@ -49,16 +56,8 @@
                             </a>
                             -->
                             <?php 
-                                /*echo CHtml::ajaxLink(
-                                        '<i class="glyphicon glyphicon-user"></i> Añadir a Mis Fármacos', // The text for the anchor tag
-                                        Yii::app()->createUrl('/farmacos/actualizar'), // The url for the ajax request
-                                        array( // The ajaxOptions (jQuery stuff)
-                                                'data' => $dato["id_farmaco"],
-                                                'update' => '#partial'
-                                        )
-                                );*/
                             echo CHtml::ajaxLink(
-                                    '<i class="glyphicon glyphicon-user"></i> Añadir a Mis Fármacos',
+                                    '<i class="glyphicon glyphicon-saved"></i>',
                                     Yii::app()->createUrl('/farmacos/actualizar'),
                                     array( // ajaxOptions
                                       'type' => 'POST',
@@ -69,9 +68,9 @@
                                                        'tipo_administracion' =>  $dato["tipo_administracion"],
                                                        'descripcion_farmaco' =>  $dato["descripcion_farmaco"]
                                                      )
-                                    )/*
+                                    )/*,
                                     array( //htmlOptions
-                                      'href' => Yii::app()->createUrl('/farmacos/farmacosPublicos')
+                                      'href' => Yii::app()->createUrl('/farmacos/')
                                     )*/
                                   );    
                                 
