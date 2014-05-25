@@ -75,15 +75,19 @@ class Protocolos {
                 $caja_hijo->setRelacion($relacion);
                 $caja_padre = $this->buscarCaja($lista_cajas, $id_padre);
                 $caja_hijo->addPadre($id_padre);
-                if($relacion==0){//Si
-                    $caja_padre->setHijoSi($id_hijo);
+                
+                if($caja_padre->getTipo()==0){//tipo normal
+                     $caja_padre->completar();
                 }
-                else if($relacion==1){//No
-                    $caja_padre->setHijoNo($id_hijo);
+                else{//tipo 1: decision
+                    if($relacion==0){//Si
+                        $caja_padre->setHijoSi($id_hijo);
+                    }
+                    else if($relacion==1){//No
+                        $caja_padre->setHijoNo($id_hijo);
+                    }
                 }
-                else{//Directa
-                    $caja_padre->completar();
-                }
+                
             }
             
         }
