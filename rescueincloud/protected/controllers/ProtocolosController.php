@@ -18,6 +18,7 @@ class ProtocolosController extends ControllerAuth
         $this->render('index',compact("result_set","num_protocolos"));
     }
     
+    //Sólo acepta el nombre de variable id, no me preguntes por qué
     public function actionPaginar($id)
     {         
         $num_pagina = $id;
@@ -70,7 +71,28 @@ class ProtocolosController extends ControllerAuth
        $model = new Protocolos();
        
        $protocolo = $model->obtener_protocolo($id, $email_usuario);
-       $this->render('index',compact("protocolo"));
+       $this->render('index',compact("protocolo","id"));
+    }
+    
+    public function actionActualizar()
+    {
+        
+       if( isset($_POST['json_info']) && isset($_POST['code']) && isset($_POST['id_protocolo'])){
+            $json_info = $_POST['json_info'];
+            $parser_code = $_POST['code'];
+            $email_usuario = Yii::app()->user->getName();
+            $id = $_POST['id_protocolo'];
+            
+            $model = new Protocolos();
+            $model->actualizar_protocolo($id, $json_info, $parser_code, $email_usuario);
+            
+            unset($_POST['json_info']);
+            unset($_POST['code']);
+            $this->redirect(Yii::app()->user->returnUrl."protocolos");
+       }
+       else{
+           $this->redirect(Yii::app()->user->returnUrl."protocolos");
+       }
     }
     
 }

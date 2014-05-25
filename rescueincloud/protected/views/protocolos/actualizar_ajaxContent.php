@@ -109,6 +109,8 @@
                     <form action="<?php echo Yii::app()->createUrl('/protocolos/actualizar') ?>" method="post" onsubmit="sendToServer()">
                         <input type="hidden" name="json_info" id="json_info">
                         <input type="hidden" name="code" id="code">
+                        <input type="hidden" name="is_update" id="is_update">
+                        <input type="hidden" name="id_protocolo" id="id_protocolo" value="<?php echo $id ?>">
                         <button type="submit" class="btn btn-primary">Terminar</button>
                     </form>
                     </div>

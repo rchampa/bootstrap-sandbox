@@ -94,9 +94,11 @@ function reset(){
 	}
 
 	if(protocolo)
-		protocolo.reset();
-	else
-		protocolo = new Protocolo();
+            protocolo.reset();
+	else{
+            protocolo = new Protocolo();
+            protocolo.init();
+        }
 
 	var lista = protocolo.getListaCajas();
 	var selectList = document.getElementById('padres');
@@ -115,7 +117,8 @@ function reset(){
 }
 
 function empezar(){
-
+        protocolo = new Protocolo();
+        protocolo.init();
 	var nombre_protocolo = document.getElementById('texto').value;
 	codigo = 'st=>start: '+nombre_protocolo+'\n'+
 		'\n'+
@@ -418,6 +421,9 @@ function sendToServer(){
 
         var code = document.getElementById('code');
         code.value = codigo;
+        
+        var is_update = document.getElementById('is_update');
+        is_update.value = load_from_server;
 
 }
 
@@ -492,6 +498,7 @@ function loadFromServer(codigo_parseado,lista){
         }
 
         codigo = Utf8.decode(Utf8.encode(codigo_parseado));
+        //codigo = codigo_parseado;
         chartR = flowchart.parse(codigo);
         chartR.drawSVG('canvas', configuracion);
 

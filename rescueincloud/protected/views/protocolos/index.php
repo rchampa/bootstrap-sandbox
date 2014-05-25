@@ -92,7 +92,8 @@
         
         <?php 
         if($this->accion==="index"){
-            $this->renderPartial('index_ajaxContent', array('result_set'=>$result_set,'num_protocolos'=>$num_protocolos)); 
+            $this->renderPartial('index_ajaxContent', 
+            array('result_set'=>$result_set,'num_protocolos'=>$num_protocolos)); 
         }
         else if($this->accion==="pagina"){
             $this->renderPartial('index_ajaxContent', 
@@ -104,7 +105,8 @@
             $this->renderPartial('crear_ajaxContent');
         }
         else if($this->accion==="actualizar"){
-            $this->renderPartial('actualizar_ajaxContent', array('protocolo'=>$protocolo));
+            $this->renderPartial('actualizar_ajaxContent', 
+            array('protocolo'=>$protocolo, 'id'=>$id));
         }
         
         ?>

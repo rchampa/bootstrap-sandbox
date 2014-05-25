@@ -178,6 +178,81 @@ class Protocolos {
             $transaction->rollBack();
         }
     }
+    
+    public function actualizar_protocolo($next_protocolo_id, $json_info, $parser_code, $email_usuario){
+
+        $transaction=$this->connection->beginTransaction();
+        try
+        {
+            $data = json_decode($json_info);
+            $nombre_protocolo= $data[0]->contenido;
+
+            $sql="UPDATE protocolos set ";
+            $sql.="codigo_parseado='".$parser_code."', actualizado_en=null ";
+            $sql.="WHERE email_usuario='".$email_usuario."' AND id_protocolo=".$next_protocolo_id;
+
+            $db = $this->connection->createCommand($sql);
+            $row_count = $db->execute();
+            
+            
+            $sql="DELETE from cajatexto ";
+            $sql.="WHERE id_protocolo=".$next_protocolo_id;
+
+            $db = $this->connection->createCommand($sql);
+            $row_count = $db->execute();
+            
+            $sql="DELETE from cajatexto_hijos ";
+            $sql.="WHERE id_protocolo=".$next_protocolo_id;
+
+            $db = $this->connection->createCommand($sql);
+            $row_count = $db->execute();
+
+            /*
+            "INSERT INTO `cajatexto` (`id_caja_texto`, `tipo`, `contenido`, `id_protocolo`) VALUES
+            (0, 0, 'Nombre del protocolo', 1),
+            (1, 1, '¿Una decisión de texto?', 1),
+            (2, 1, 'una decision de con el número 5', 1),
+            (3, 0, 'la respuesta al la decision con el id 2, la caja anterior', 1),
+            (4, 0, 'una respuesta de 25kg', 1),
+            (5, 0, 'una respuesta de 30 mg de peso', 1),
+            (6, 0, 'un último texto', 1);";*/
+
+            $sql="INSERT INTO cajatexto (id_caja_texto, tipo, contenido, id_protocolo) VALUES ";
+
+            foreach ($data as $id => $caja) {
+
+                $sql.="(".$caja->id.",".$caja->tipo.",'".$caja->contenido."',".$next_protocolo_id."),\n";
+
+                foreach ($caja->padres as $id => $padre) {
+                    $hijo_fila ="INSERT INTO cajatexto_hijos (id_protocolo, id_hijo, id_padre, relacion) VALUES \n";
+                    $hijo_fila.="(".$next_protocolo_id.",".$caja->id.",".$padre.",".$caja->relacion.")";
+                    $this->connection->createCommand($hijo_fila)->execute();
+                }
+            }
+
+            $sql = substr($sql, 0, -2);
+            $row_count = $this->connection->createCommand($sql)->execute();
+
+
+            /**
+             INSERT INTO `cajatexto_hijos` (`id`, `id_protocolo`, `id_hijo`, `id_padre`, `relacion`) VALUES
+            (1, 1, 1, 0, 2),
+            (2, 1, 2, 1, 0),
+            (3, 1, 5, 1, 1),
+            (4, 1, 3, 2, 0),
+            (5, 1, 4, 2, 1),
+            (6, 1, 6, 5, 2),
+            (7, 1, 6, 4, 2);
+
+             */
+            $transaction->commit();
+            
+        }
+        catch(Exception $e) // se arroja una excepción si una consulta falla
+        {
+            $transaction->rollBack();
+        }
+    }
 }
 
 ?>
