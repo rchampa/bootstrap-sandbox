@@ -42,38 +42,28 @@
 					Emergency Medical Service in cloud <small>Servicio de emergencia</small>
 				</h1>
 			</div>
-			<div class="tabbable" id="tabs-152783">
-				<ul class="nav nav-tabs">
-					<li class="active">
-						<a href="#panel-674930" data-toggle="tab">Home</a>
-					</li>
-					<li>
-						<a href="#panel-979243" data-toggle="tab">Perfil</a>
-					</li>
-					<li>
-						<a href="#panel-979244" data-toggle="tab">Preferencias</a>
-					</li>
-                                        <li>
-						<a href="<?php echo Yii::app()->request->baseUrl; ?>/init/logout" >Logout</a>
-					</li>
-				</ul>
-				<div class="tab-content">
-					<div class="tab-pane active" id="panel-674930">
-						<!-- primera pestaña-->
-                                                <?php echo $content; ?>
-					</div>
-					<div class="tab-pane" id="panel-979243">
-						<p>
-							Modificar los datos del perfil de usuario
-						</p>
-					</div>
-					<div class="tab-pane" id="panel-979244">
-						<p>
-							Las preferencias...
-						</p>
-					</div>
-				</div>
-			</div>
+			<div class="col-md-12 column">
+                            <ul class="nav nav-tabs">
+                                    <li class="active">
+                                            <a href="<?php echo Yii::app()->createUrl('/protocolos') ?>">Protocolos</a>
+                                    </li>
+                                    <li>
+                                            <a href="<?php echo Yii::app()->createUrl('/farmacos') ?>">Farmacos</a>
+                                    </li>
+                                    <li>
+                                            <a href="<?php echo Yii::app()->createUrl('/notas') ?>">Informes</a>
+                                    </li>
+                                    <li class="disabled">
+                                            <a href="#">Messages</a>
+                                    </li>
+                                    <li>
+                                            <a href="<?php echo Yii::app()->request->baseUrl; ?>/init/logout">Cerrar sesión</a>
+                                    </li>
+                            </ul>
+                            <div>
+                                <?php echo $content; ?>
+                            </div>
+                        </div>
 		</div>
 	</div>
 
@@ -84,3 +74,5 @@
 </div>
 </body>
 </html>
+
+
