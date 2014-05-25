@@ -2,9 +2,7 @@
 <div style="height:20px; background: transparent;">
     <hr style="display:none;" />
 </div>
-<h6>
-    <b> · Lista de Mis fármacos: </b>
-</h6>
+
 <div style="height:10px; background: transparent;">
     <hr style="display:none;" />
 </div>
@@ -47,8 +45,8 @@
                                 <td><?php echo $dato["descripcion_farmaco"] ?></td>
                                 <td>
                                     <?php $id=$dato["id_farmaco"] ?>
-                                    <a href="<?php echo Yii::app()->createUrl('/farmacos/editar/'.$id)?>">
-                                       <i class="glyphicon glyphicon-edit"></i>
+                                    <a href="<?php echo Yii::app()->createUrl('/farmacos/eliminar/'.$id)?>">
+                                       <i class="glyphicon glyphicon-remove-circle"></i>
                                     </a>
                                 </td>
                             </tr>

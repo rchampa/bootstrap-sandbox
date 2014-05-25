@@ -108,22 +108,22 @@
       <!-- Three columns of text below the carousel -->
       <div class="row">
         <div class="col-lg-4">
-          <img class="img-circle" data-src="holder.js/140x140" alt="Generic placeholder image">
+          <img class="img-circle" src="<?php echo Yii::app()->request->baseUrl; ?>/img/farmacos_v2_140x140.png" alt="">
           <h2>Fármacos</h2>
           <p>EMS te permite crear, añadir y editar fármacos.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <p><a class="btn btn-default" href="#" role="button">Ver detalles &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <img class="img-circle" data-src="holder.js/140x140" alt="Generic placeholder image">
+          <img class="img-circle" src="<?php echo Yii::app()->request->baseUrl; ?>/img/protocolos140x140.png" alt="">
           <h2>Protocolos</h2>
           <p>Prueba la herramienta que EMS ofrece para la creación de protocolos de actuación.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <p><a class="btn btn-default" href="#" role="button">Ver detalles &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <img class="img-circle" data-src="holder.js/140x140" alt="Generic placeholder image">
+          <img class="img-circle" src="<?php echo Yii::app()->request->baseUrl; ?>/img/notas140x140.png" alt="">
           <h2>Notas de intervención</h2>
           <p>Utiliza esta herramienta para visualizar las notas que efectúas en una intervención mediante tu aplicación Android.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <p><a class="btn btn-default" href="#" role="button">Ver detalles &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
       </div><!-- /.row -->
 

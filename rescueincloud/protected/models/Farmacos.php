@@ -9,13 +9,21 @@ class Farmacos {
         $this->connection->active=true;
     }
     
-    public function listar_farmacos_propios($ini, $lenght, $email_usuario){
+    public function listar_farmacos_usuario($ini, $lenght, $email_usuario){
        
-        $sql="SELECT fpr.* 
-              FROM rel1n_farmacos_propios_usuarios rel,
-                   farmacos_propios fpr
-              WHERE fpr.id_farmaco = rel.id_farmaco
-                AND rel.email_usuario = '".$email_usuario."'";
+        $sql="SELECT Pro.*
+              FROM farmacos_propios                Pro,
+                   rel1n_farmacos_propios_usuarios PrU
+              WHERE Pro.id_farmaco    = PrU.id_farmaco
+                AND PrU.email_usuario = '".$email_usuario."'
+
+              UNION 
+
+              SELECT Pub.*
+              FROM farmacos_publicos                Pub,
+                   relnm_farmacos_publicos_usuarios PuU
+              WHERE Pub.id_farmaco = PuU.id_farmaco
+                AND PuU.email_usuario = '".$email_usuario."'";
         $sql.=" LIMIT ".$ini.", ".$lenght;
         $result_rows=$this->connection->createCommand($sql)->queryAll();
         
@@ -24,21 +32,29 @@ class Farmacos {
     
     public function listar_farmacos_publicos($ini, $lenght, $email_usuario){
        
-        $sql="SELECT pub.* 
-              FROM farmacos_publicos pub 
-              LEFT JOIN 
-                    (
-                      SELECT fpr.* 
-                        FROM rel1n_farmacos_propios_usuarios rel,
-                             farmacos_propios fpr
-                       WHERE fpr.id_farmaco = rel.id_farmaco
-                         AND rel.email_usuario = '".$email_usuario."'
-                    ) pro 
-                     ON pub.nombre_farmaco       = pro.nombre_farmaco
-                    AND pub.nombre_fabricante    = pro.nombre_fabricante
-                    AND pub.presentacion_farmaco = pro.presentacion_farmaco
-                    AND pub.tipo_administracion  = pro.tipo_administracion
-              WHERE pro.id_farmaco is NULL";
+        $sql="SELECT NEW.*
+              FROM 
+              farmacos_publicos NEW,
+              ( 
+                SELECT Pro.*
+                FROM farmacos_propios                Pro,
+                     rel1n_farmacos_propios_usuarios PrU
+                WHERE Pro.id_farmaco    = PrU.id_farmaco
+                  AND PrU.email_usuario = '".$email_usuario."'
+
+                UNION 
+
+                SELECT Pub.*
+                FROM farmacos_publicos                Pub,
+                     relnm_farmacos_publicos_usuarios PuU
+                WHERE Pub.id_farmaco = PuU.id_farmaco
+                  AND PuU.email_usuario = '".$email_usuario."'
+              )NotNEW
+              WHERE NEW.id_farmaco           <> NotNEW.id_farmaco
+                AND NEW.nombre_farmaco       <> NotNEW.nombre_farmaco
+                AND NEW.nombre_fabricante    <> NotNEW.nombre_fabricante
+                AND NEW.presentacion_farmaco <> NotNEW.presentacion_farmaco
+                AND NEW.tipo_administracion  <> NotNEW.tipo_administracion";
         $sql.=" LIMIT ".$ini.", ".$lenght;
         $result_rows=$this->connection->createCommand($sql)->queryAll();
         
