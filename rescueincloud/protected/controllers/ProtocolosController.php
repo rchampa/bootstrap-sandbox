@@ -25,9 +25,8 @@ class ProtocolosController extends ControllerAuth
         $email_usuario = Yii::app()->user->getName();
         $model = new Protocolos();
         $num_protocolos = $model->num_protocolos($email_usuario);
-        $fin = $this->num_protolocos_pagina*$num_pagina;
-        $ini = $fin - $this->num_protolocos_pagina;
-        $result_set = $model->listar_protocolos($ini, $fin, $email_usuario);
+        $ini = $this->num_protolocos_pagina*($num_pagina-1);
+        $result_set = $model->listar_protocolos($ini, $this->num_protolocos_pagina, $email_usuario);
         $this->render('index', compact("result_set","num_protocolos","num_pagina"));
        
     }

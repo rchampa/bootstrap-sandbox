@@ -3,6 +3,7 @@ var Estados = { LIMPIO: 1, INIT: 2, EDICION: 3};
 var estadoActual;
 var codigo;
 var protocolo;
+var load_from_server = false;
 
 
 var configuracion =  {

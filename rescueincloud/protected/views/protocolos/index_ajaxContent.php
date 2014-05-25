@@ -32,9 +32,6 @@
             </tbody>
     </table>
 <ul class="pagination pagination-sm">
-        <li>
-            <a href="#">Anterior</a>
-        </li>
         
         <?php
             $num_pag = 1;
@@ -43,6 +40,12 @@
             $pag_actual = 1;
             if($this->accion==="pagina"){
                 $pag_actual = $num_pagina;
+            }
+            
+            if($pag_actual!=1){
+        ?>
+                <li><a href="<?php echo Yii::app()->createUrl('/protocolos/paginar/'.($pag_actual-1))?>">Anterior</a></li>
+        <?php
             }
             
             while($num_pag<=$num_paginas){
@@ -69,9 +72,11 @@
         <?php
                 $num_pag = $num_pag +1;
             }
+            
+            if($pag_actual!=$num_paginas){
         ?>
-                
-        <li>
-            <a href="#">Siguiente</a>
-        </li>
+                <li><a href="<?php echo Yii::app()->createUrl('/protocolos/paginar/'.($pag_actual+1))?>">Siguiente</a></li>
+        <?php
+            }
+        ?>
 </ul>
