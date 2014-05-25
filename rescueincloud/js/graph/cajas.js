@@ -4,6 +4,7 @@ var estadoActual;
 var codigo;
 var protocolo;
 
+
 var configuracion =  {
           'line-width': 3,
           'line-length': 50,
@@ -108,6 +109,8 @@ function reset(){
         var texto = document.getElementById('texto');
         texto.disabled = false;
         texto.value="";
+        
+        document.getElementById('empezar').disabled = false;
 }
 
 function empezar(){
@@ -132,6 +135,7 @@ function empezar(){
 	actualizarPadres(0,protocolo.recortarString(nombre_protocolo));
         
         document.getElementById('texto').disabled = true;
+        document.getElementById('empezar').disabled = true;
 
 }
 /*
@@ -508,16 +512,46 @@ function loadFromServer(codigo_parseado,lista){
                     lista[i].hijo_no,
                     lista[i].completo);
         }
+        
+        
+        var titulo_texto = document.getElementById('texto');
+        titulo_texto.value = lista[0].contenido;
+        titulo_texto.disabled = true;
+        document.getElementById('empezar').disabled = true;
+        
+        var selectPadres = document.getElementById('padres');
+        selectPadres.options.length = 0;
+        var opt = document.createElement('option');
+        opt.text = "--- Elige tipo de decisión ---";
+        opt.value = "-1";
+        selectPadres.add(opt);
+        
+        for(var i=1; i<lista.length; i++){
+            if(lista[i].completo==false){
+                var opt = document.createElement('option');
+                opt.text = lista[i].contenido;
+                opt.value = lista[i].id;
+                selectPadres.add(opt);
+            }       
+        }
+        
         protocolo.imprimirConsola();
+        
+        load_from_server = true;
+        
     }
     
 }
 
 window.onload = function () {
-	estadoActual = Estados.LIMPIO;
-	codigo = '';
-	protocolo = new Protocolo();
-	protocolo.init();
+	
+        if(!load_from_server){
+            estadoActual = Estados.LIMPIO;
+            codigo = '';
+            protocolo = new Protocolo();
+            protocolo.init();
+        }
+            
 	/*document.getElementById('empezar').onclick=empezar;
 	document.getElementById('reset').onclick=reset;
 	document.getElementById('demo').onclick=mostrarDemo;
