@@ -527,6 +527,8 @@ function loadFromServer(codigo_parseado,lista){
         titulo_texto.disabled = true;
         document.getElementById('empezar').disabled = true;
         
+        
+        //actualizar dropdownlist PADRES
         var selectPadres = document.getElementById('padres');
         selectPadres.options.length = 0;
         var opt = document.createElement('option');
@@ -536,7 +538,7 @@ function loadFromServer(codigo_parseado,lista){
         
         for(var i=1; i<lista.length; i++){
             if(lista[i].completo==false){
-                var opt = document.createElement('option');
+                opt = document.createElement('option');
                 opt.text = lista[i].contenido;
                 opt.value = lista[i].id;
                 selectPadres.add(opt);
@@ -544,6 +546,40 @@ function loadFromServer(codigo_parseado,lista){
         }
         
         protocolo.imprimirConsola();
+        
+        
+        //se actualizan las dropdownlist de RELACIONES
+        var selectRelPadres = document.getElementById('rel_padres');
+        selectRelPadres.options.length = 0;
+        opt = document.createElement('option');
+        opt.text = "--- Padres ---";
+        opt.value = "-1";
+        selectRelPadres.add(opt);
+        
+        for(var i=1; i<lista.length; i++){
+            if(lista[i].completo==false && lista[i].tipo==protocolo.TYPE_NORMAL_BOX){
+                opt = document.createElement('option');
+                opt.text = lista[i].contenido;
+                opt.value = lista[i].id;
+                selectRelPadres.add(opt);
+            }       
+        }
+	
+
+	var selectRelHijos = document.getElementById('rel_hijos');
+	selectRelHijos.options.length = 0;
+        opt = document.createElement('option');
+        opt.text = "--- Hijos ---";
+        opt.value = "-1";
+        selectRelHijos.add(opt);
+        
+        for(var i=1; i<lista.length; i++){
+            opt = document.createElement('option');
+            opt.text = lista[i].contenido;
+            opt.value = lista[i].id;
+            selectRelHijos.add(opt);
+        }
+        
         
         load_from_server = true;
         
