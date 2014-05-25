@@ -114,3 +114,7 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+  seleccionarProtocolos();
+</script>

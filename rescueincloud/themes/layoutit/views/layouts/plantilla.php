@@ -44,17 +44,20 @@
 			</div>
 			<div class="col-md-12 column">
                             <ul class="nav nav-tabs">
-                                    <li class="active">
-                                            <a href="<?php echo Yii::app()->createUrl('/protocolos') ?>">Protocolos</a>
+                                    <li id="enlace_home">
+                                        <a href="<?php echo Yii::app()->createUrl('/home') ?>">Home</a>
                                     </li>
-                                    <li>
-                                            <a href="<?php echo Yii::app()->createUrl('/farmacos') ?>">Farmacos</a>
+                                    <li id="enlace_protocolos">
+                                        <a href="<?php echo Yii::app()->createUrl('/protocolos') ?>">Protocolos</a>
                                     </li>
-                                    <li>
-                                            <a href="<?php echo Yii::app()->createUrl('/notas') ?>">Informes</a>
+                                    <li id="enlace_farmacos">
+                                        <a href="<?php echo Yii::app()->createUrl('/farmacos') ?>">Farmacos</a>
+                                    </li>
+                                    <li id="enlace_notas">
+                                        <a href="<?php echo Yii::app()->createUrl('/notas') ?>">Informes</a>
                                     </li>
                                     <li class="disabled">
-                                            <a href="#">Messages</a>
+                                            <a href="#">Preferencias</a>
                                     </li>
                                     <li>
                                             <a href="<?php echo Yii::app()->request->baseUrl; ?>/init/logout">Cerrar sesión</a>
