@@ -181,18 +181,14 @@ CREATE TABLE IF NOT EXISTS `farmacos_propios` (
   PRIMARY KEY (`id_farmaco`),
   UNIQUE KEY `id_farmaco` (`id_farmaco`),
   UNIQUE KEY `nombre_farmaco` (`nombre_farmaco`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10000 ;
 
 --
 -- Volcado de datos para la tabla `farmacos_propios`
 --
 
-INSERT INTO `farmacos_propios` (`id_farmaco`, `nombre_farmaco`, `nombre_fabricante`, `presentacion_farmaco`, `tipo_administracion`, `creado_en`, `modificado_en`, `descripcion_farmaco`, `borrado`) VALUES
-(1, 'Aspirina', 'Bayer', '500mg', 'comprimidos', '2014-01-13 22:46:18', '0000-00-00 00:00:00', '', 0),
-(2, 'Diazepam', 'Bayer', 'sobres', 'oral', '2014-01-13 23:27:03', '0000-00-00 00:00:00', '', 0),
-(3, 'Paracetamol', 'Cinfa', 'Comprimidos', 'oral', '2014-01-22 22:07:31', '0000-00-00 00:00:00', '', 0),
-(4, 'Gelocatil', 'Bayer', 'Comprimidos', 'oral', '2014-01-22 22:31:51', '0000-00-00 00:00:00', '', 0),
-(5, 'prueba', 'canción', 'de una vez y la niñera', 'de una vez y la niñera', '2014-05-22 22:19:28', '0000-00-00 00:00:00', 'pues algo con tildes, canción.\r\n\r\nAlgo con ñ: niño.', 0);
+/*INSERT INTO `farmacos_propios` (`id_farmaco`, `nombre_farmaco`, `nombre_fabricante`, `presentacion_farmaco`, `tipo_administracion`, `creado_en`, `modificado_en`, `descripcion_farmaco`, `borrado`) VALUES
+(10001, 'prueba', 'canción', 'de una vez y la niñera', 'de una vez y la niñera', '2014-05-22 22:19:28', '0000-00-00 00:00:00', 'pues algo con tildes, canción.\r\n\r\nAlgo con ñ: niño.', 0);*/
 
 -- --------------------------------------------------------
 
@@ -305,6 +301,7 @@ CREATE TABLE IF NOT EXISTS `rel1n_farmacos_propios_usuarios` (
   `id_farmaco` int(11) NOT NULL,
   `rel_creada_en` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `rel_actualizada_en` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `borrado` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`email_usuario`,`id_farmaco`),
   KEY `id_farmaco` (`id_farmaco`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -313,9 +310,9 @@ CREATE TABLE IF NOT EXISTS `rel1n_farmacos_propios_usuarios` (
 -- Volcado de datos para la tabla `rel1n_farmacos_propios_usuarios`
 --
 
-INSERT INTO `rel1n_farmacos_propios_usuarios` (`email_usuario`, `id_farmaco`, `rel_creada_en`, `rel_actualizada_en`) VALUES
+/*INSERT INTO `rel1n_farmacos_propios_usuarios` (`email_usuario`, `id_farmaco`, `rel_creada_en`, `rel_actualizada_en`) VALUES
 ('ale7jandra.89@gmail.com', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-('ricardocb48@gmail.com', 5, '2014-05-22 22:19:28', '0000-00-00 00:00:00');
+('ricardocb48@gmail.com', 5, '2014-05-22 22:19:28', '0000-00-00 00:00:00');*/
 
 -- --------------------------------------------------------
 
@@ -328,6 +325,7 @@ CREATE TABLE IF NOT EXISTS `relnm_farmacos_publicos_usuarios` (
   `id_farmaco` int(11) NOT NULL,
   `rel_creada_en` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `rel_actualizada_en` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `borrado` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`email_usuario`,`id_farmaco`),
   KEY `id_farmaco` (`id_farmaco`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
