@@ -24,16 +24,20 @@ class FarmacosController extends Controller
     
     public function actionEditar($id)
     { 
-        $this->accion = "actualizar";
+        //FIXME
+        
+        $this->accion = "editar";
         $email_usuario = Yii::app()->user->getName();
         $model = new Farmacos();
        
         $farmaco = $model->obtener_farmaco($id, $email_usuario);
-        $this->render('index',compact("protocolo"));
+        $this->render('index',compact("farmaco"));
     }
     
     public function actionEliminar()
     { 
+        //FIXME
+        
         $this->accion = "eliminar";
         $email_usuario = Yii::app()->user->getName();
         $model = new Farmacos();
@@ -77,7 +81,7 @@ class FarmacosController extends Controller
         
     }   
     
-    /* actionActualizar: Da de alta un fármaco propio. */
+    /* actionActualizar: Genenra la relación entre fármaco publico y usuario. */
     public function actionActualizar()
     { 
         //$this->accion = "farmacosPublicos";
@@ -92,9 +96,9 @@ class FarmacosController extends Controller
         
         $model = new Farmacos();
         $result_ins = $model->add_rel_farmacos_publicos($id_farmaco, $no_farmaco, $no_fabricante, $presentacion, $tipo_admin, $des_farmaco, $email_usuario);
-                 
-        $this->redirect(Yii::app()->user->returnUrl."farmacos");
-        //$this->render('farmacosPublicos',compact("result_set"));
+        
+        $this->redirect(Yii::app()->createUrl('/farmacos'));
+        //$this->redirect(Yii::app()->user->returnUrl."farmacos");
     }
 }
 

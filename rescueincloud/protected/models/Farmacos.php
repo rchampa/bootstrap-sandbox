@@ -34,7 +34,8 @@ class Farmacos {
        
         $sql="SELECT NEW.*
               FROM 
-              farmacos_publicos NEW,
+                farmacos_publicos NEW
+              LEFT JOIN
               ( 
                 SELECT Pro.*
                 FROM farmacos_propios                Pro,
@@ -50,11 +51,16 @@ class Farmacos {
                 WHERE Pub.id_farmaco = PuU.id_farmaco
                   AND PuU.email_usuario = '".$email_usuario."'
               )NotNEW
-              WHERE NEW.id_farmaco           <> NotNEW.id_farmaco
-                AND NEW.nombre_farmaco       <> NotNEW.nombre_farmaco
-                AND NEW.nombre_fabricante    <> NotNEW.nombre_fabricante
-                AND NEW.presentacion_farmaco <> NotNEW.presentacion_farmaco
-                AND NEW.tipo_administracion  <> NotNEW.tipo_administracion";
+                 ON NEW.id_farmaco           = NotNEW.id_farmaco
+                AND NEW.nombre_farmaco       = NotNEW.nombre_farmaco
+                AND NEW.nombre_fabricante    = NotNEW.nombre_fabricante
+                AND NEW.presentacion_farmaco = NotNEW.presentacion_farmaco
+                AND NEW.tipo_administracion  = NotNEW.tipo_administracion
+                AND NEW.creado_en            = NotNEW.creado_en
+                AND NEW.modificado_en        = NotNEW.modificado_en
+                AND NEW.descripcion_farmaco  = NotNEW.descripcion_farmaco
+                AND NEW.borrado              = NotNEW.borrado
+              WHERE NotNEW.id_farmaco IS NULL";
         $sql.=" LIMIT ".$ini.", ".$lenght;
         $result_rows=$this->connection->createCommand($sql)->queryAll();
         
@@ -69,6 +75,8 @@ class Farmacos {
             $sqlRel="INSERT INTO relnm_farmacos_publicos_usuarios VALUES ('".$email_usuario."', ".$id_farmaco.", now(), '0000-00-00 00:00:00');";  
             $commandRel=$this->connection->createCommand($sqlRel);
             $row_countRel = $commandRel->execute();
+            
+            $transaction->commit();
             
         } catch (Exception $ex) 
         {
