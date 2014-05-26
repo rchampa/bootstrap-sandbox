@@ -24,14 +24,12 @@ class FarmacosController extends Controller
     
     public function actionEditar($id)
     { 
-        //FIXME
-        
         $this->accion = "editar";
         $email_usuario = Yii::app()->user->getName();
         $model = new Farmacos();
        
         $farmaco = $model->obtener_farmaco($id, $email_usuario);
-        $this->render('index',compact("farmaco"));
+        $this->render('editar',compact("farmaco"));
     }
     
     public function actionEliminar()

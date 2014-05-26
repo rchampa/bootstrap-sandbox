@@ -121,6 +121,48 @@ class Farmacos {
             $transaction->rollBack();
         }
     }
+    
+    public function obtener_farmaco ($id, $email_usuario) {
+        $transaction=$this->connection->beginTransaction();
+        try
+        {
+            // En caso de que sea público, cuando se haya editado se almacena como propio.
+            // Y se desvincula el fármaco público del usuario marcándolo como borrado.
+            if ($id < 10000 ){ // se trata de un fármaco público
+                
+                $sql="SELECT Pub.*
+                      FROM farmacos_publicos                Pub,
+                           relnm_farmacos_publicos_usuarios PuU
+                      WHERE Pub.id_farmaco = PuU.id_farmaco
+                        AND Pub.id_farmaco = ".$id." 
+                        AND PuU.email_usuario = '".$email_usuario."'";
+            } 
+            // En caso de que sea propio, se modifica directamente.
+            else {
+                $sql="SELECT Pro.*
+                      FROM farmacos_propios                Pro,
+                           rel1n_farmacos_propios_usuarios PrU
+                      WHERE Pro.id_farmaco    = PrU.id_farmaco
+                        AND Pro.id_farmaco = ".$id."
+                        AND PrU.email_usuario = '".$email_usuario."'";
+            }
+            
+            $command=$this->connection->createCommand($sql);
+            $row_count = $command->queryAll();
+                        
+            $transaction->commit();
+            
+            return $row_count[0];
+            
+        } catch (Exception $ex) 
+        {
+            $transaction->rollBack();
+        }
+         
+    }
+             
+    
+    
 }
 
 ?>
