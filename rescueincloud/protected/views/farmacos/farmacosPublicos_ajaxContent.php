@@ -49,12 +49,6 @@
                         <td><?php echo $dato["tipo_administracion"] ?></td>
                         <td><?php echo $dato["descripcion_farmaco"] ?></td>
                         <td>
-                            <!--
-                            <a href="<?php// echo Yii::app()->request->baseUrl; ?>/farmacos/index" class="btn btn-block btn-xs btn-primary">
-                                <img src="<?php// echo Yii::app()->request->baseUrl; ?>/img/AddFarmacosIcon.png">
-                                Añadir a Mis Fármacos
-                            </a>
-                            -->
                             <?php 
                             echo CHtml::ajaxLink(
                                     '<i class="glyphicon glyphicon-saved"></i>',
@@ -68,10 +62,7 @@
                                                        'tipo_administracion' =>  $dato["tipo_administracion"],
                                                        'descripcion_farmaco' =>  $dato["descripcion_farmaco"]
                                                      )
-                                    )/*,
-                                    array( //htmlOptions
-                                      'href' => Yii::app()->createUrl('/farmacos/')
-                                    )*/
+                                    )
                                   );    
                                 
                             
