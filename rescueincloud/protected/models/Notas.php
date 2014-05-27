@@ -28,10 +28,11 @@ class Notas {
         {
            
             $sql="UPDATE notas 
-                  SET nombre_nota   = '".$nombre_nota."', 
-                      modificado_en = NOW(),
-                      descripcion   = '".$descripcion."' 
-                  WHERE id_nota   = ".$id_nota.";";
+                  SET nombre_nota        = '".$nombre_nota."', 
+                      nota_modificada_en = NOW(),
+                      descripcion        = '".$descripcion."' 
+                  WHERE id_nota       = ".$id_nota." 
+                    AND email_usuario = '".$email_usuario."';";
             $command=$this->connection->createCommand($sql);
             $row_count = $command->execute();
                 

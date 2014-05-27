@@ -45,7 +45,7 @@
           <div class="form-group">
             <label for="InputDescripcion">Descripción Fármaco</label>
             <div class="input-group">
-                <textarea name="InputDescripcion" id="InputDescripcion" value="<?php echo $farmaco["descripcion_farmaco"]?>" class="form-control" rows="4" cols="76" ></textarea>
+                <textarea name="InputDescripcion" id="InputDescripcion" class="form-control" rows="4" cols="76" ><?php echo $farmaco["descripcion_farmaco"]?></textarea>
               <span class="input-group"></span></div>
           </div>
 

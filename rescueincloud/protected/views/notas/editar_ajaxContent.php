@@ -25,16 +25,16 @@
               <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span></div>
           </div>
           <div class="form-group">
-            <label for="InputDescripcion">Descripción:</label>
-            <div class="input-group">
-                <textarea name="InputDescripcion" id="InputDescripcion" value="<?php echo $nota["descripcion"]?>" class="form-control" rows="4" cols="76" ></textarea>
-              <span class="input-group"></span></div>
-          </div>
-          <div class="form-group">
             <label for="InputCreacion">Fecha de creación de la nota:</label>
             <div class="input-group">
                 <input type="text" class="form-control" id="InputPresentacion" name="InputCreacion" value="<?php echo $nota["nota_creada_en"]?>" disabled="true" required  >
               <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span></div>
+          </div>
+          <div class="form-group">
+            <label for="InputDescripcion">Descripción:</label>
+            <div class="input-group">
+                <textarea name="InputDescripcion" id="InputDescripcion" class="form-control" rows="4" cols="76" ><?php echo $nota["descripcion"]?></textarea>
+              <span class="input-group"></span></div>
           </div>
 
           <input type="submit" name="Confirmar" id="Confirmar" value="Confirmar" class="btn btn-primary pull-right">
