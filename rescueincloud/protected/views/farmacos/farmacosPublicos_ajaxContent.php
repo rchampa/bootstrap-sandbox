@@ -49,24 +49,10 @@
                         <td><?php echo $dato["tipo_administracion"] ?></td>
                         <td><?php echo $dato["descripcion_farmaco"] ?></td>
                         <td>
-                            <?php 
-                            echo CHtml::ajaxLink(
-                                    '<i class="glyphicon glyphicon-saved"></i>',
-                                    Yii::app()->createUrl('/farmacos/actualizar'),
-                                    array( // ajaxOptions
-                                      'type' => 'POST',
-                                      'data' => array( 'id_farmaco' =>  $dato["id_farmaco"],
-                                                       'nombre_farmaco' =>  $dato["nombre_farmaco"],
-                                                       'nombre_fabricante' =>  $dato["nombre_fabricante"],
-                                                       'presentacion_farmaco' =>  $dato["presentacion_farmaco"],
-                                                       'tipo_administracion' =>  $dato["tipo_administracion"],
-                                                       'descripcion_farmaco' =>  $dato["descripcion_farmaco"]
-                                                     )
-                                    )
-                                  );    
-                                
-                            
-                            ?>
+                            <?php $id=$dato["id_farmaco"] ?>
+                            <a href="<?php echo Yii::app()->createUrl('/farmacos/actualizar/'.$id)?>">
+                                <i class="glyphicon glyphicon-saved"></i>
+                            </a>
                         </td>
                         </tr>
                         <?php 

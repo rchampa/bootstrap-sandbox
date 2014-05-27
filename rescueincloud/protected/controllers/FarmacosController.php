@@ -100,20 +100,15 @@ class FarmacosController extends Controller
     }   
     
     /* actionActualizar: Genenra la relación entre fármaco publico y usuario. */
-    public function actionActualizar()
+    public function actionActualizar($id)
     { 
-        //$this->accion = "farmacosPublicos";
-        //bbdd borras fila segun id
+        $this->accion = "actualizar";
         $email_usuario = Yii::app()->user->getName();
-        $id_farmaco =  $_POST['id_farmaco'];
-        $no_farmaco = $_POST['nombre_farmaco'];
-        $no_fabricante = $_POST['nombre_fabricante'];
-        $presentacion = $_POST['presentacion_farmaco'];
-        $tipo_admin = $_POST['tipo_administracion'];
-        $des_farmaco = $_POST['descripcion_farmaco'];
-        
         $model = new Farmacos();
-        $result_ins = $model->add_rel_farmacos_publicos($id_farmaco, $no_farmaco, $no_fabricante, $presentacion, $tipo_admin, $des_farmaco, $email_usuario);
+        
+        $result_ins = $model->add_rel_farmacos_publicos($id, $email_usuario);
+        
+        $this->redirect(Yii::app()->user->returnUrl."farmacos/farmacosPublicos");
       
     }
 }

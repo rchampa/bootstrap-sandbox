@@ -5,6 +5,10 @@
 <h6>
     <b> · Lista de Mis fármacos: </b>
 </h6>
+</h6>
+<h6 style="color:#A4A4A4;">
+    Haz click en el botón de la derecha para editarlo.
+</h6>
 <div style="height:10px; background: transparent;">
     <hr style="display:none;" />
 </div>

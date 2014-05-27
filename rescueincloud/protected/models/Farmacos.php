@@ -72,13 +72,17 @@ class Farmacos {
     }
     
     
-    public function add_rel_farmacos_publicos($id_farmaco, $no_farmaco, $no_fabricante, $presentacion, $tipo_admin, $des_farmaco, $email_usuario){
+    
+    public function add_rel_farmacos_publicos ($id, $email_usuario){
         $transaction=$this->connection->beginTransaction();
         try
         {
-            $sqlRel="INSERT INTO relnm_farmacos_publicos_usuarios VALUES ('".$email_usuario."', ".$id_farmaco.", now(), '0000-00-00 00:00:00', 0);";  
-            $commandRel=$this->connection->createCommand($sqlRel);
-            $row_countRel = $commandRel->execute();
+            if ($id < 10000 ){ // Siempre debería ser un fármaco público
+                
+                $sqlRel="INSERT INTO relnm_farmacos_publicos_usuarios VALUES ('".$email_usuario."', ".$id.", now(), '0000-00-00 00:00:00', 0);";  
+                $commandRel=$this->connection->createCommand($sqlRel);
+                $row_countRel = $commandRel->execute();
+            }
             
             $transaction->commit();
             
