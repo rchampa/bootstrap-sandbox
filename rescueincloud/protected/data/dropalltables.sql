@@ -1,0 +1,9 @@
+drop table notas;
+drop table cajatexto;
+drop table cajatexto_hijos;
+drop table protocolos;
+drop table rel1n_farmacos_propios_usuarios;
+drop table relnm_farmacos_publicos_usuarios;
+drop table farmacos_propios;
+drop table farmacos_publicos;
+drop table usuarios;
