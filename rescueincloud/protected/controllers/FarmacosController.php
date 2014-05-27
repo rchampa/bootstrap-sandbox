@@ -50,15 +50,17 @@ class FarmacosController extends Controller
         
     }   
     
-    public function actionEliminar()
+    
+    //FIXMEEEEE
+    public function actionEliminar($id)
     { 
-        //FIXME
-        
         $this->accion = "eliminar";
         $email_usuario = Yii::app()->user->getName();
         $model = new Farmacos();
-        $result_set = $model->listar_farmacos_usuario(0, 5, $email_usuario);
-        $this->render('eliminar',compact("result_set"));
+                
+        $res = $model->eliminar_farmaco($id, $email_usuario);
+        //se podría añadir un mensaje estilo: El fármaco se ha eliminado correctamente
+        $this->redirect(Yii::app()->user->returnUrl."farmacos");        
     }
     
     public function actionFarmacosPublicos()

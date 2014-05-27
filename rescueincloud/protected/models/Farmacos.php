@@ -88,15 +88,12 @@ class Farmacos {
         }
     }
     
-    
-    
+      
     public function add_rel_farmacos_propios($id_farmaco, $no_farmaco, $no_fabricante, $presentacion, $tipo_admin, $des_farmaco, $email_usuario){
         
         $res = $this->insertar_farmaco_propio($no_farmaco, $no_fabricante, $presentacion, $tipo_admin, $des_farmaco, $email_usuario);
           
     }
-    
-    
     
     public function insertar_farmaco_propio($nombre_farmaco, $nombre_fabricante, $presentacion_farmaco, $tipo_administracion, $descripcion_farmaco, $email_usuario){
         
@@ -169,8 +166,6 @@ class Farmacos {
         $transaction=$this->connection->beginTransaction();
         try
         {
-            // En caso de que sea público, cuando se haya editado se almacena como propio.
-            // Y se desvincula el fármaco público del usuario marcándolo como borrado.
             if ($id_farmaco < 10000 ){ // se trata de un fármaco público            
                 //desvinculamos el fármaco público del usuario marcándolo como borrado:
                 $sql="UPDATE relnm_farmacos_publicos_usuarios 
@@ -214,6 +209,39 @@ class Farmacos {
         } catch (Exception $ex) 
         {
             $transaction->rollBack();
+        }
+        
+    }
+    
+    public function eliminar_farmaco($id, $email_usuario) {
+        
+        $transaction=$this->connection->beginTransaction();
+        try
+        {
+            if ($id_farmaco < 10000 ){ // se trata de un fármaco público            
+                
+                $sql="UPDATE relnm_farmacos_publicos_usuarios 
+                      SET borrado = 1 
+                      WHERE id_farmaco    = ".$id_farmaco." 
+                        AND email_usuario = '".$email_usuario."';";                
+            }
+            else { // se trata de un fármaco propio
+                
+                $sql="UPDATE rel1n_farmacos_propios_usuarios 
+                      SET borrado = 1 
+                      WHERE id_farmaco    = ".$id_farmaco." 
+                        AND email_usuario = '".$email_usuario."';";
+            }
+            $command=$this->connection->createCommand($sql);
+            $row_count = $command->execute();
+            
+            $transaction->commit();
+            
+            return $row_count;
+            
+        } catch (Exception $ex) 
+        {
+           $transaction->rollBack(); 
         }
         
     }
