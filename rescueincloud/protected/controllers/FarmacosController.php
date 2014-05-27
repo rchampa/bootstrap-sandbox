@@ -32,6 +32,24 @@ class FarmacosController extends Controller
         $this->render('editar',compact("farmaco"));
     }
     
+    public function actionEditarFarmaco()
+    { 
+        $id_farmaco = $_POST['InputID'];
+        $nombre_farmaco = $_POST['InputNombre'];
+        $nombre_fabricante = $_POST['InputFabricante'];
+        $presentacion_farmaco = $_POST['InputPresentacion'];
+        $tipo_administracion = $_POST['InputPresentacion'];
+        $descripcion_farmaco = $_POST['InputDescripcion'];
+        
+        $email_usuario = Yii::app()->user->getName();
+        
+        $model = new Farmacos();
+        $model->editar_farmaco($id_farmaco, $nombre_farmaco, $nombre_fabricante, $presentacion_farmaco, $tipo_administracion, $descripcion_farmaco, $email_usuario);
+        
+        $this->redirect(Yii::app()->user->returnUrl."farmacos");
+        
+    }   
+    
     public function actionEliminar()
     { 
         //FIXME
@@ -94,10 +112,7 @@ class FarmacosController extends Controller
         
         $model = new Farmacos();
         $result_ins = $model->add_rel_farmacos_publicos($id_farmaco, $no_farmaco, $no_fabricante, $presentacion, $tipo_admin, $des_farmaco, $email_usuario);
-        
-        /*$this->accion = "index";
-        $result_set = $model->listar_farmacos_usuario(0, 5, $email_usuario);
-        $this->render('index',compact("result_set"));*/
+      
     }
 }
 

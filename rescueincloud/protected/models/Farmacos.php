@@ -15,6 +15,7 @@ class Farmacos {
               FROM farmacos_propios                Pro,
                    rel1n_farmacos_propios_usuarios PrU
               WHERE Pro.id_farmaco    = PrU.id_farmaco
+                AND PrU.borrado       = 0
                 AND PrU.email_usuario = '".$email_usuario."'
 
               UNION 
@@ -22,7 +23,8 @@ class Farmacos {
               SELECT Pub.*
               FROM farmacos_publicos                Pub,
                    relnm_farmacos_publicos_usuarios PuU
-              WHERE Pub.id_farmaco = PuU.id_farmaco
+              WHERE Pub.id_farmaco    = PuU.id_farmaco
+                AND PuU.borrado       = 0
                 AND PuU.email_usuario = '".$email_usuario."'";
         $sql.=" LIMIT ".$ini.", ".$lenght;
         $result_rows=$this->connection->createCommand($sql)->queryAll();
@@ -41,6 +43,7 @@ class Farmacos {
                 FROM farmacos_propios                Pro,
                      rel1n_farmacos_propios_usuarios PrU
                 WHERE Pro.id_farmaco    = PrU.id_farmaco
+                  AND PrU.borrado       = 0
                   AND PrU.email_usuario = '".$email_usuario."'
 
                 UNION 
@@ -48,7 +51,8 @@ class Farmacos {
                 SELECT Pub.*
                 FROM farmacos_publicos                Pub,
                      relnm_farmacos_publicos_usuarios PuU
-                WHERE Pub.id_farmaco = PuU.id_farmaco
+                WHERE Pub.id_farmaco    = PuU.id_farmaco
+                  AND PuU.borrado       = 0
                   AND PuU.email_usuario = '".$email_usuario."'
               )NotNEW
                  ON NEW.id_farmaco           = NotNEW.id_farmaco
@@ -161,7 +165,58 @@ class Farmacos {
          
     }
              
-    
+    public function editar_farmaco($id_farmaco, $nombre_farmaco, $nombre_fabricante, $presentacion_farmaco, $tipo_administracion, $descripcion_farmaco, $email_usuario) {
+        $transaction=$this->connection->beginTransaction();
+        try
+        {
+            // En caso de que sea público, cuando se haya editado se almacena como propio.
+            // Y se desvincula el fármaco público del usuario marcándolo como borrado.
+            if ($id_farmaco < 10000 ){ // se trata de un fármaco público            
+                //desvinculamos el fármaco público del usuario marcándolo como borrado:
+                $sql="UPDATE relnm_farmacos_publicos_usuarios 
+                      SET borrado = 1 
+                      WHERE id_farmaco    = ".$id_farmaco." 
+                        AND email_usuario = '".$email_usuario."';";
+                $command=$this->connection->createCommand($sql);
+                $row_count = $command->execute();
+                
+                // El fármaco público editado se inserta como fármaco propio.
+                $sqlIns="INSERT INTO farmacos_propios (id_farmaco, nombre_farmaco, nombre_fabricante, presentacion_farmaco, tipo_administracion, creado_en, modificado_en, descripcion_farmaco, borrado)";
+                $sqlIns.="VALUES (NULL,'".$nombre_farmaco."','".$nombre_fabricante."','".$presentacion_farmaco."','".$tipo_administracion."', now(), '0000-00-00 00:00:00','".$descripcion_farmaco."', '0')"; 
+
+                $commandIns=$this->connection->createCommand($sqlIns);
+                $row_countIns = $commandIns->execute();
+
+                if ($row_countIns == 1) {
+                    $id_farmaco = $this->connection->getLastInsertID();
+
+                    $sqlRel="INSERT INTO rel1n_farmacos_propios_usuarios VALUES ('".$email_usuario."', ".$id_farmaco.", now(), '0000-00-00 00:00:00', 0);";  
+                    $commandRel=$this->connection->createCommand($sqlRel);
+                    $row_countRel = $commandRel->execute();
+                }
+            } 
+            // En caso de que sea propio, se modifica directamente.
+            else {
+                $sql="UPDATE farmacos_propios 
+                      SET nombre_farmaco       = '".$nombre_farmaco."', 
+                          nombre_fabricante    = '".$nombre_fabricante."', 
+                          presentacion_farmaco = '".$presentacion_farmaco."', 
+                          tipo_administracion  = '".$tipo_administracion."',
+                          modificado_en        = NOW(),
+                          descripcion_farmaco  = '".$descripcion_farmaco."' 
+                      WHERE id_farmaco    = ".$id_farmaco.";";
+                $command=$this->connection->createCommand($sql);
+                $row_count = $command->execute();
+                
+            }
+            $transaction->commit();
+                       
+        } catch (Exception $ex) 
+        {
+            $transaction->rollBack();
+        }
+        
+    }
     
 }
 
