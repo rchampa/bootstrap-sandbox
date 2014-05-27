@@ -14,7 +14,7 @@
 
 <div class="row clearfix">
     <div class="col-md-2 column">
-        <div style="height:1px; background: transparent;">
+        <div style="height:10px; background: transparent;">
             <hr style="display:none;" />
         </div>
         <ul class="nav nav-pills nav-stacked">

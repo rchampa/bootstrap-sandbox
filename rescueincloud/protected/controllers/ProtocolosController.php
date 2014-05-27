@@ -6,7 +6,7 @@ class ProtocolosController extends ControllerAuth
     public $layout = 'plantilla';
     public $accion = "index"; //solo peude tener 4 valores: index, crear, eliminar, buscar
     
-    private $num_protolocos_pagina=5;
+    private $num_protolocos_pagina=8;
     
     public function actionIndex()
     { 

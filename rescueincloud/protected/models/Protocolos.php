@@ -22,8 +22,9 @@ class Protocolos {
     
     public function listar_protocolos($ini, $lenght, $email_usuario){
         
-        $sql="SELECT * FROM protocolos where 1=1 and ";
-        $sql.= "email_usuario='".$email_usuario."' ";
+        $sql="SELECT * FROM protocolos where 1=1 AND ";
+        $sql.= "email_usuario='".$email_usuario."' AND ";
+        $sql.= "borrado=false ";
         $sql.=" LIMIT ".$ini.", ".$lenght;
         $result_rows=$this->connection->createCommand($sql)->queryAll();
         

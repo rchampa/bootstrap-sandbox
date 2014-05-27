@@ -35,7 +35,7 @@
         
         <?php
             $num_pag = 1;
-            $num_paginas = ceil($num_protocolos/5);//la funcion ceil redondea hacia arriba
+            $num_paginas = ceil($num_protocolos/8);//la funcion ceil redondea hacia arriba
             
             $pag_actual = 1;
             if($this->accion==="pagina"){

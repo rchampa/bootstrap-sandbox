@@ -31,6 +31,7 @@ CREATE TABLE IF NOT EXISTS `cajatexto` (
   `tipo` tinyint(2) NOT NULL,
   `contenido` varchar(320) NOT NULL,
   `id_protocolo` int(11) NOT NULL,
+  `sincronizado` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_caja_texto`,`id_protocolo`),
   KEY `fk_CajaTexto_Protocolos` (`id_protocolo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -104,6 +105,7 @@ CREATE TABLE IF NOT EXISTS `cajatexto_hijos` (
   `id_hijo` int(3) NOT NULL,
   `id_padre` int(3) NOT NULL,
   `relacion` tinyint(2) NOT NULL,
+  `sincronizado` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`,`id_protocolo`),
   KEY `fk_CajaTexto_has_CajaTexto1_CajaTexto1` (`id_protocolo`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=94 ;
@@ -177,6 +179,7 @@ CREATE TABLE IF NOT EXISTS `farmacos_propios` (
   `creado_en` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `modificado_en` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `descripcion_farmaco` varchar(500) NOT NULL,
+  `sincronizado` tinyint(1) NOT NULL DEFAULT '0',
   `borrado` tinyint(4) NOT NULL,
   PRIMARY KEY (`id_farmaco`),
   UNIQUE KEY `id_farmaco` (`id_farmaco`),
@@ -205,6 +208,7 @@ CREATE TABLE IF NOT EXISTS `farmacos_publicos` (
   `creado_en` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `modificado_en` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `descripcion_farmaco` varchar(500) NOT NULL,
+  `sincronizado` tinyint(1) NOT NULL DEFAULT '0',
   `borrado` tinyint(4) NOT NULL,
   PRIMARY KEY (`id_farmaco`),
   UNIQUE KEY `id_farmaco` (`id_farmaco`),
@@ -238,6 +242,7 @@ CREATE TABLE IF NOT EXISTS `notas` (
   `nota_creada_en` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `nota_modificada_en` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `borrado` tinyint(1) NOT NULL DEFAULT '0',
+  `sincronizado` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_nota`,`email_usuario`),
   KEY `notas_ibfk_1` (`email_usuario`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
@@ -268,6 +273,7 @@ CREATE TABLE IF NOT EXISTS `protocolos` (
   `borrado` tinyint(1) NOT NULL DEFAULT '0',
   `creado_en` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `actualizado_en` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `sincronizado` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_protocolo`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
 
@@ -301,6 +307,7 @@ CREATE TABLE IF NOT EXISTS `rel1n_farmacos_propios_usuarios` (
   `id_farmaco` int(11) NOT NULL,
   `rel_creada_en` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `rel_actualizada_en` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `sincronizado` tinyint(1) NOT NULL DEFAULT '0',
   `borrado` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`email_usuario`,`id_farmaco`),
   KEY `id_farmaco` (`id_farmaco`)
@@ -326,6 +333,7 @@ CREATE TABLE IF NOT EXISTS `relnm_farmacos_publicos_usuarios` (
   `rel_creada_en` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `rel_actualizada_en` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `borrado` tinyint(1) NOT NULL DEFAULT '0',
+  `sincronizado` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`email_usuario`,`id_farmaco`),
   KEY `id_farmaco` (`id_farmaco`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
