@@ -354,6 +354,7 @@ INSERT INTO `relnm_farmacos_publicos_usuarios` (`email_usuario`, `id_farmaco`, `
 
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `email_usuario` varchar(100) NOT NULL,
+  `password` text NOT NULL,
   `nombre` varchar(30) NOT NULL,
   `apellidos` varchar(30) NOT NULL,
   `genero` tinyint(1) NOT NULL,
