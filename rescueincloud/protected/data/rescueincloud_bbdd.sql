@@ -208,6 +208,7 @@ CREATE TABLE IF NOT EXISTS `farmacos_publicos` (
   `creado_en` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `modificado_en` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `descripcion_farmaco` varchar(500) NOT NULL,
+  `sincronizado` tinyint(1) NOT NULL DEFAULT '0',
   `borrado` tinyint(4) NOT NULL,
   PRIMARY KEY (`id_farmaco`),
   UNIQUE KEY `id_farmaco` (`id_farmaco`),
