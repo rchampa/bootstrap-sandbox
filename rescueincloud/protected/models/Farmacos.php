@@ -79,7 +79,7 @@ class Farmacos {
         {
             if ($id < 10000 ){ // Siempre debería ser un fármaco público
                 
-                $sqlRel="INSERT INTO relnm_farmacos_publicos_usuarios VALUES ('".$email_usuario."', ".$id.", now(), '0000-00-00 00:00:00', 0);";  
+                $sqlRel="INSERT INTO relnm_farmacos_publicos_usuarios VALUES ('".$email_usuario."', ".$id.", now(), '0000-00-00 00:00:00', 0, 0);";  
                 $commandRel=$this->connection->createCommand($sqlRel);
                 $row_countRel = $commandRel->execute();
             }
@@ -104,8 +104,8 @@ class Farmacos {
         $transaction=$this->connection->beginTransaction();
         try
         {
-            $sql="INSERT INTO farmacos_propios (id_farmaco, nombre_farmaco, nombre_fabricante, presentacion_farmaco, tipo_administracion, creado_en, modificado_en, descripcion_farmaco, borrado)";
-            $sql.="VALUES (NULL,'".$nombre_farmaco."','".$nombre_fabricante."','".$presentacion_farmaco."','".$tipo_administracion."', now(), '0000-00-00 00:00:00','".$descripcion_farmaco."', '0')"; 
+            $sql="INSERT INTO farmacos_propios ";
+            $sql.="VALUES (NULL,'".$nombre_farmaco."','".$nombre_fabricante."','".$presentacion_farmaco."','".$tipo_administracion."', now(), '0000-00-00 00:00:00','".$descripcion_farmaco."', 0, 0)"; 
             
             $command=$this->connection->createCommand($sql);
             $row_count = $command->execute();
@@ -113,7 +113,7 @@ class Farmacos {
             if ($row_count == 1) {
                 $id_farmaco = $this->connection->getLastInsertID();
                 
-                $sqlRel="INSERT INTO rel1n_farmacos_propios_usuarios VALUES ('".$email_usuario."', ".$id_farmaco.", now(), '0000-00-00 00:00:00', 0);";  
+                $sqlRel="INSERT INTO rel1n_farmacos_propios_usuarios VALUES ('".$email_usuario."', ".$id_farmaco.", now(), '0000-00-00 00:00:00', 0, 0);";  
                 $commandRel=$this->connection->createCommand($sqlRel);
                 $row_countRel = $commandRel->execute();
             }
@@ -180,8 +180,8 @@ class Farmacos {
                 $row_count = $command->execute();
                 
                 // El fármaco público editado se inserta como fármaco propio.
-                $sqlIns="INSERT INTO farmacos_propios (id_farmaco, nombre_farmaco, nombre_fabricante, presentacion_farmaco, tipo_administracion, creado_en, modificado_en, descripcion_farmaco, borrado)";
-                $sqlIns.="VALUES (NULL,'".$nombre_farmaco."','".$nombre_fabricante."','".$presentacion_farmaco."','".$tipo_administracion."', now(), '0000-00-00 00:00:00','".$descripcion_farmaco."', '0')"; 
+                $sqlIns="INSERT INTO farmacos_propios ";
+                $sqlIns.="VALUES (NULL,'".$nombre_farmaco."','".$nombre_fabricante."','".$presentacion_farmaco."','".$tipo_administracion."', now(), '0000-00-00 00:00:00','".$descripcion_farmaco."', 0, 0)"; 
 
                 $commandIns=$this->connection->createCommand($sqlIns);
                 $row_countIns = $commandIns->execute();
@@ -189,7 +189,7 @@ class Farmacos {
                 if ($row_countIns == 1) {
                     $id_farmaco = $this->connection->getLastInsertID();
 
-                    $sqlRel="INSERT INTO rel1n_farmacos_propios_usuarios VALUES ('".$email_usuario."', ".$id_farmaco.", now(), '0000-00-00 00:00:00', 0);";  
+                    $sqlRel="INSERT INTO rel1n_farmacos_propios_usuarios VALUES ('".$email_usuario."', ".$id_farmaco.", now(), '0000-00-00 00:00:00', 0, 0);";  
                     $commandRel=$this->connection->createCommand($sqlRel);
                     $row_countRel = $commandRel->execute();
                 }
