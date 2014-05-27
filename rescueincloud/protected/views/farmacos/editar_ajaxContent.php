@@ -1,4 +1,10 @@
-<div style="height:30px; background: transparent;">
+<div style="height:20px; background: transparent;">
+    <hr style="display:none;" />
+</div>
+<h6>
+    <b> · Actualiza la información: </b>
+</h6>
+<div style="height:10px; background: transparent;">
     <hr style="display:none;" />
 </div>
 <div class="container">

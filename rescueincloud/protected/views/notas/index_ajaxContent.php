@@ -43,11 +43,9 @@
                                 <td><?php echo $dato["nota_creada_en"] ?></td>
                                 <td>
                                     <?php $id=$dato["id_nota"] ?>
-                                    <!--
-                                    <a href="<?php //echo Yii::app()->createUrl('/notas/editar/'.$id)?>">
+                                    <a href="<?php echo Yii::app()->createUrl('/notas/editar/'.$id)?>">
                                        <i class="glyphicon glyphicon-edit"></i>
                                     </a>
-                                    -->
                                 </td>
                             </tr>
                             <?php 
