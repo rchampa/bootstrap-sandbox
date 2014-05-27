@@ -68,7 +68,7 @@
             <div class="carousel-caption">
               <h1>Emergency Medical Service</h1>
               <p>Accede a una herramineta creada para servicios médicos de emergencia.</p>
-              <p><a class="btn btn-lg btn-primary" href="<?php echo Yii::app()->request->baseUrl; ?>/init/login" role="button">Sign up today</a></p>
+              <p><a class="btn btn-lg btn-primary" href="<?php echo Yii::app()->request->baseUrl; ?>/init/login" role="button">Inicia sesión</a></p>
             </div>
           </div>
         </div>

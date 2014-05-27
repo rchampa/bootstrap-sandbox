@@ -16,7 +16,9 @@ class InitController extends Controller
     { 
         if(isset($_POST['email']) && isset($_POST['password']))
         {
-            $email_introducido = $_POST['email'];          
+            $email_introducido = $_POST['email'];     
+            
+            //TODO: Validar Password!
             $identity=new UserIdentity($email_introducido,"");
             if($identity->authenticate()){
                 Yii::app()->user->login($identity);
