@@ -32,11 +32,30 @@ class InitController extends Controller
         
     }
     
-    public function actionRegistrar()
+    public function actionRegistro()
     { 
-        
-        $this->redirect(array('farmacos/index'));
+        $this->render('registro');
     }
+    
+    
+    public function actionActualizarRegistro()
+    { 
+        $email_usuario = $_POST['EmailUsuario'];
+        $nombre = $_POST['NombreUsuario'];
+        $apellidos = $_POST['ApellidosUsuario'];
+        $genero = $_POST['GeneroUsuario'];
+        $fecha_nac = $_POST['NacimientoUsuario'];
+        $centro = $_POST['TrabajoUsuario'];
+        $password = $_POST['PasswordUsuario'];
+        
+           
+        $model = new Usuarios();
+        $model->registrarUsuario($email_usuario, $password, $nombre, $apellidos, $genero, $fecha_nac, $centro);
+        
+        $this->redirect(Yii::app()->user->returnUrl."init");
+    }
+    
+    
     
     public function actionLogout()
     { 
