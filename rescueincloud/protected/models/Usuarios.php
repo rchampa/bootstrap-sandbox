@@ -38,10 +38,10 @@ class Usuarios {
          */
         
         $sql="INSERT INTO usuarios ";
-        $sql.= "( email_usuario, password, nombre, apellidos, genero, fecha_nacimiento, centro_trabajo ) ";
+        $sql.= "( email_usuario, password, nombre, apellidos, genero, fecha_nacimiento, centro_trabajo, usuario_creado_en) ";
         $sql.= "VALUES ";
         $sql.= "( '".$email_usuario."','".$password."','".$nombre."','".
-                $apellidos."',".$genero.",'".$fecha_nac."','".$centro."' ) ";
+                $apellidos."',".$genero.",'".$fecha_nac."','".$centro."', null ) ";
         $rows=$this->connection->createCommand($sql)->execute();
         if(count($rows)>0){
             return true;

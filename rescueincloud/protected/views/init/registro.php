@@ -47,7 +47,7 @@
               <div class="form-group">
                 <label class="control-label" for="EmailUsuario">E-mail:</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" name="EmailUsuario" id="EmailUsuario" placeholder="E-mail" required="" data-validation-email-message="Por favor, introduce un e-mail válido">
+                    <input type="email" class="form-control" name="EmailUsuario" id="EmailUsuario" placeholder="E-mail" required="" data-validation-email-message="Por favor, introduce un e-mail válido">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-ok form-control-feedback"></i></span></div>
               </div>
 

@@ -50,9 +50,11 @@ class InitController extends Controller
         
            
         $model = new Usuarios();
-        $model->registrarUsuario($email_usuario, $password, $nombre, $apellidos, $genero, $fecha_nac, $centro);
-        
-        $this->redirect(Yii::app()->user->returnUrl."init");
+        $ok = $model->registrarUsuario($email_usuario, $password, $nombre, $apellidos, $genero, $fecha_nac, $centro);
+        if($ok===true){
+            //$this->redirect(Yii::app()->user->returnUrl."init");
+            $this->render('registrocompleto');
+        }
     }
     
     

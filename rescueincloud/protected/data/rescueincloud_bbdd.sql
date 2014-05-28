@@ -361,7 +361,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `fecha_nacimiento` date NOT NULL,
   `centro_trabajo` varchar(100) NOT NULL,
   `usuario_creado_en` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `usuario_actualizado_en` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `usuario_actualizado_en` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `borrado` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`email_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
