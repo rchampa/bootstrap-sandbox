@@ -24,6 +24,32 @@ class Usuarios {
         }
         
     }
+    
+    
+    public function registrarUsuario($email_usuario, $password, $nombre, $apellidos,
+            $genero,$fecha_nac, $centro){
+        /**
+         * INSERT INTO `ems`.`usuarios` 
+         * (`email_usuario`, `password`, `nombre`, `apellidos`, `genero`, `fecha_nacimiento`, 
+         * `centro_trabajo`, `usuario_creado_en`, `usuario_actualizado_en`, `borrado`) 
+         * VALUES 
+         * ('admin', 'admin', 'admin', 'admin', '0', '2010-01-01', 'ucm fdi', 
+         * '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0');
+         */
+        $sql="INSERT INTO usuarios ";
+        $sql.= "( email_usuario,password,nombre,apellidos,genero,fecha_nacimiento,centro_trabajo ) ";
+        $sql.= "VALUES ";
+        $sql.= "( '".$email_usuario."','".$password."','".$nombre."','".
+                $apellidos."',".$genero.","."null".",'".$centro."' ) ";
+        $rows=$this->connection->createCommand($sql)->execute();
+        if(count($rows)>0){
+            return true;
+        }
+        else{
+            return false;
+        }
+        
+    }
   
     
 }
