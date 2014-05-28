@@ -370,9 +370,9 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`email_usuario`, `nombre`, `apellidos`, `genero`, `fecha_nacimiento`, `centro_trabajo`, `usuario_creado_en`, `usuario_actualizado_en`, `borrado`) VALUES
-('ale7jandra.89@gmail.com', 'Alejandra', 'González ', 2, '1989-08-03', 'Bayes', '2013-11-17 23:00:00', '0000-00-00 00:00:00', 0),
-('ricardocb48@gmail.com', 'Ricardo', 'Champa', 1, '1988-04-04', 'REDK', '2013-11-15 15:02:18', '0000-00-00 00:00:00', 0);
+INSERT INTO `usuarios` (`email_usuario`, `password`,`nombre`, `apellidos`, `genero`, `fecha_nacimiento`, `centro_trabajo`, `usuario_creado_en`, `usuario_actualizado_en`, `borrado`) VALUES
+('ale7jandra.89@gmail.com', 'admin', 'Alejandra', 'González ', 2, '1989-08-03', 'Bayes', '2013-11-17 23:00:00', '0000-00-00 00:00:00', 0),
+('ricardocb48@gmail.com', 'admin', 'Ricardo', 'Champa', 1, '1988-04-04', 'REDK', '2013-11-15 15:02:18', '0000-00-00 00:00:00', 0);
 
 --
 -- Restricciones para tablas volcadas

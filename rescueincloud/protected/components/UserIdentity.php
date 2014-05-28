@@ -21,7 +21,7 @@ class UserIdentity extends CUserIdentity
                 //User::model()
                 
                 $model = new Usuarios();
-                if($model->validarUsuarios($this->username)){
+                if($model->validarUsuarios($this->username,$this->password)){
                     $this->errorCode=self::ERROR_NONE;
                 }
 		else{

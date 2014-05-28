@@ -11,10 +11,11 @@ class Usuarios {
     }
     
     //Read
-    public function validarUsuarios($email_usuario){
+    public function validarUsuarios($email_usuario, $pass){
         
         $sql="select * from usuarios where 1=1 and ";
-        $sql.= "email_usuario='".$email_usuario."' ;";     
+        $sql.= "email_usuario='".$email_usuario."' and ";     
+        $sql.= "password='".$pass."' ;";     
         $rows=$this->connection->createCommand($sql)->queryAll();
         if(count($rows)>0){
             return true;
