@@ -2,15 +2,20 @@
 /**
  * Database config variables
  */
-/*
-define("DB_HOST", "mysql.hostinger.es");
-define("DB_USER", "u292523446_mem1");
-define("DB_PASSWORD", "ios.weekend18");
-define("DB_DATABASE", "u292523446_mem");
-*/
-define("DB_HOST", "localhost");
-define("DB_USER", "root");
-define("DB_PASSWORD", "");
-define("DB_DATABASE", "ems");
+//$host = getenv('OPENSHIFT_MYSQL_DB_HOST');// . ':' . getenv('OPENSHIFT_MYSQL_DB_PORT');
+////$host = getenv('OPENSHIFT_MYSQL_DB_HOST'). ':' . getenv('OPENSHIFT_MYSQL_DB_PORT');
+//$dbname = getenv('OPENSHIFT_APP_NAME');
+//$username = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
+//$password = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
+
+$host = "localhost";
+$dbname = "ems";
+$username = "root";
+$password = "";
+
+define("DB_HOST", $host);
+define("DB_USER", $username);
+define("DB_PASSWORD", $password);
+define("DB_DATABASE", $dbname);
  
 ?>
