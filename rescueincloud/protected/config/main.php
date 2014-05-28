@@ -5,6 +5,18 @@
 
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
+
+//$host = getenv('OPENSHIFT_MYSQL_DB_HOST');// . ':' . getenv('OPENSHIFT_MYSQL_DB_PORT');
+////$host = getenv('OPENSHIFT_MYSQL_DB_HOST'). ':' . getenv('OPENSHIFT_MYSQL_DB_PORT');
+//$dbname = getenv('OPENSHIFT_APP_NAME');
+//$username = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
+//$password = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
+
+$host = "localhost";
+$dbname = "ems";
+$username = "root";
+$password = "";
+
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Rescue in cloud',
@@ -52,10 +64,10 @@ return array(
 		// uncomment the following to use a MySQL database
 		
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=ems;charset=utf8',
+			'connectionString' => 'mysql:host='.$host.';dbname='.$dbname.';charset=utf8',
 			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => '',
+			'username' => $username,
+			'password' => $password,
 			'charset' => 'utf8',
                         'initSQLs'=>array('SET NAMES utf8')
 		),
@@ -85,6 +97,6 @@ return array(
 	// using Yii::app()->params['paramName']
 	'params'=>array(
 		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
+		'adminEmail'=>'ricardocb48@gmail.com',
 	),
 );
