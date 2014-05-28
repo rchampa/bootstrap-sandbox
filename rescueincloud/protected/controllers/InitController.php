@@ -32,6 +32,12 @@ class InitController extends Controller
         
     }
     
+    public function actionRegistrar()
+    { 
+        
+        $this->redirect(array('farmacos/index'));
+    }
+    
     public function actionLogout()
     { 
         Yii::app()->user->logout();
